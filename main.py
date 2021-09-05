@@ -1,29 +1,38 @@
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
-# Initiate Labels from main window
-from Main_labels.mains_labels import Main_labels
-from GUI.bar import Bar  # Initiate bar-structure
+# Initiate labels from main window
+from functions.main_labels import Main_labels
+# Initiate buttons from main window
+from functions.main_buttons import Main_buttons
+# Initiate buttons from main window
+from functions.main_text_edit import Main_text_edit
+# Initiate bar-structure
+from GUI.bar import Bar
 # -----------------------------------------------------------
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 import sys
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget,
+    QApplication, QMainWindow, QGridLayout, QWidget, QGroupBox,
 )
 
 
 # Class to describe structure main window
-class Main_windows(QMainWindow, Bar, Main_labels):
+class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
 
     def __init__(self):
         super().__init__()
         # Set main setting "view window"
         self.main_window_parameter()
-        # initiate bar menu
+        # Initiate bar menu
         self.statusbar = self.statusBar()
         self.bar_category_fileMenu()  # Initiate Bar category fileMenu
-        # initiate grid
+        # Initiate main buttons
+        self.create_main_button()
+        # Initiate main text edit
+        self.create_main_text_edit()
+        # Initiate grid
         self.main_grid()
         # Run GUI
         self.show()
@@ -36,7 +45,7 @@ class Main_windows(QMainWindow, Bar, Main_labels):
     def main_grid(self):
         # realise main labels
         self.main_label_def()
-
+        self.horizontalGroupBox = QGroupBox()
         # create Grid
         grid = QGridLayout()
 
@@ -44,7 +53,6 @@ class Main_windows(QMainWindow, Bar, Main_labels):
         # add main labels
         # Information about words
         # -----------------------------------------------------------
-
         # timer from start
         grid.addWidget(self.timer_learn, 1, 1)
         # count words are for learning
@@ -55,7 +63,6 @@ class Main_windows(QMainWindow, Bar, Main_labels):
         grid.addWidget(self.true_words, 4, 0)
         # count words that can change
         grid.addWidget(self.change_words_learn, 5, 0)
-
         # -----------------------------------------------------------
         # Word that is checking
         # -----------------------------------------------------------
@@ -70,6 +77,9 @@ class Main_windows(QMainWindow, Bar, Main_labels):
         grid.addWidget(self.transcription_word_now, 9, 0)
         # Chapter
         grid.addWidget(self.chapter_word_now, 10, 0)
+
+        grid.addWidget(self.textEdit, 11, 0)
+        grid.addWidget(self.btn, 11, 1)
 
         # This is widget!
         widget = QWidget()

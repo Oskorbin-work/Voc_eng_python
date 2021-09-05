@@ -4,14 +4,11 @@
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QLabel
 from PyQt5 import QtCore
+from database.work_with_bd import Work_with_bd
 
-import os # Initiate project into operating system
-import sqlite3 # Database to Tooltip
-
-from setting import ROOT_DIR
 
 # Class to describe  main labels
-class Main_labels:
+class Main_labels(Work_with_bd):
     # create lables
     def name_labels(self):
         self.time = QtCore.QTime(0, 0, 0)
@@ -54,23 +51,16 @@ class Main_labels:
 
     # change word
     def label_set_text(self):
-        random_word = 1
-        # Connect database
-        conn = sqlite3.connect(ROOT_DIR + "database" + '\\' + 'data_word.sqlite')
-        cur = conn.cursor()
-        # get all command from database
-        cur.execute("select * from Main_table where id_main  = %d;"% random_word)
-        conn.commit()
-        ones = (cur.fetchall())[0]
-        print(ones)
+        random_id = 1
+        ones = self.get_row(random_id)
         self.sum_words_learn.\
-            setText(self.sum_words_learn.text() + ones[1])
+            setText(self.sum_words_learn.text() + str(self.get_count_all_word()))
         self.false_words.\
-            setText(self.false_words.text() + ones[1])
+            setText(self.false_words.text() + str(self.get_count_false_world()))
         self.true_words.\
-            setText(self.true_words.text() + ones[1])
+            setText(self.true_words.text() + str(self.get_count_true_world()))
         self.change_words_learn.\
-            setText(self.change_words_learn.text() + ones[1])
+            setText(self.change_words_learn.text() + str(self.get_count_change_world()))
         self.count_word_now.\
             setText(self.count_word_now.text() + str(ones[6]))
         self.parts_of_speech_word_now.\
