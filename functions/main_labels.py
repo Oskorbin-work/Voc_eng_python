@@ -51,22 +51,22 @@ class Main_labels(Work_with_bd):
 
     # change word
     def label_set_text(self):
-        random_id = 1
+        random_id = 2
         ones = self.get_row(random_id)
         self.sum_words_learn.\
-            setText(self.sum_words_learn.text() + str(self.get_count_all_word()))
+            setText(self.sum_words_learn.text() + str(self.get_count_all_word()[0]))
         self.false_words.\
-            setText(self.false_words.text() + str(self.get_count_false_world()))
+            setText(self.false_words.text() + str(self.get_count_false_world()[0]))
         self.true_words.\
-            setText(self.true_words.text() + str(self.get_count_true_world()))
+            setText(self.true_words.text() + str(self.get_count_true_world()[0]))
         self.change_words_learn.\
-            setText(self.change_words_learn.text() + str(self.get_count_change_world()))
+            setText(self.change_words_learn.text() + str(self.get_count_change_world()[0]))
         self.count_word_now.\
             setText(self.count_word_now.text() + str(ones[6]))
         self.parts_of_speech_word_now.\
-            setText(self.parts_of_speech_word_now.text() + ones[1])
+            setText(self.parts_of_speech_word_now.text() + ones[3])
         self.word_now.\
-            setText(self.word_now.text() + ones[3])
+            setText(self.word_now.text() + ones[1])
         self.transcription_word_now.\
             setText(self.transcription_word_now.text() + str(ones[4]))
         self.chapter_word_now.\
