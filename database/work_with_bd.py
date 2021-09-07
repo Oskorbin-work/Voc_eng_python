@@ -2,7 +2,10 @@ import sqlite3
 
 from settings import ROOT_DIR
 
+import random
 
+
+# decorator for query the database
 def request_bd(func):
     def wrapper(*args, **kwargs):
         conn = sqlite3.connect(ROOT_DIR + "database" + '\\' + 'data_word.sqlite')
@@ -17,6 +20,9 @@ def request_bd(func):
 # Class to work with bd
 class Work_with_bd:
 
+    def random_row_bd(self):
+        random_id = random.randint(1, 5)
+        print(random_id)
     # get row from database
     @request_bd
     def get_row(self, random_id):

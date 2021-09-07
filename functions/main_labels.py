@@ -6,23 +6,38 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5 import QtCore
 from database.work_with_bd import Work_with_bd
 
+import random
+
 
 # Class to describe  main labels
 class Main_labels(Work_with_bd):
-    # create lables
+    # create labels
     def name_labels(self):
         self.time = QtCore.QTime(0, 0, 0)
-        self.timer_learn = QLabel('Время: 00:00:00')
+        self.text_labels = [
+            'Время: 00:00:00',
+            'Всего слов: ',
+            'Непроверенные слова: ',
+            'Проверенные слова: ',
+            'Старые слова на проверку: ',
+            'Количество очков слова: ',
+            'Часть слова: ',
+            'Перевод слова: ',
+            'Транскрипция: ',
+            'Тема: ',
+                     ]
+        self.timer_learn = QLabel()
         self.timer()
-        self.sum_words_learn = QLabel('Всего слов: ')
-        self.false_words = QLabel('Непроверенные слова: ')
-        self.true_words = QLabel('Проверенные слова: ')
-        self.change_words_learn = QLabel('Старые слова на проверку: ')
-        self.count_word_now = QLabel('Количество очков слова: ')
-        self.parts_of_speech_word_now = QLabel('Часть слова: ')
-        self.word_now = QLabel('Перевод слова: ')
-        self.transcription_word_now = QLabel('Транскрипция: ')
-        self.chapter_word_now = QLabel('Тема: ')
+        self.sum_words_learn = QLabel()
+        self.false_words = QLabel()
+        self.true_words = QLabel()
+        self.change_words_learn = QLabel()
+        self.count_word_now = QLabel()
+        self.parts_of_speech_word_now = QLabel()
+        self.word_now = QLabel()
+        self.transcription_word_now = QLabel()
+        self.chapter_word_now = QLabel()
+
 
     # describe font and size labels text
     def label_set_font_and_size(self):
@@ -49,29 +64,31 @@ class Main_labels(Work_with_bd):
         self.chapter_word_now.\
             setFont(QFont(name_label_font, size_label_font))
 
-    # change word
-    def label_set_text(self):
-        random_id = 2
-        ones = self.get_row(random_id)
-        self.sum_words_learn.\
-            setText(self.sum_words_learn.text() + str(self.get_count_all_word()[0]))
-        self.false_words.\
-            setText(self.false_words.text() + str(self.get_count_false_world()[0]))
-        self.true_words.\
-            setText(self.true_words.text() + str(self.get_count_true_world()[0]))
-        self.change_words_learn.\
-            setText(self.change_words_learn.text() + str(self.get_count_change_world()[0]))
-        self.count_word_now.\
-            setText(self.count_word_now.text() + str(ones[6]))
-        self.parts_of_speech_word_now.\
-            setText(self.parts_of_speech_word_now.text() + ones[3])
-        self.word_now.\
-            setText(self.word_now.text() + ones[1])
-        self.transcription_word_now.\
-            setText(self.transcription_word_now.text() + str(ones[4]))
-        self.chapter_word_now.\
-            setText(self.chapter_word_now.text() + ones[7])
+    # def for get random row
+    def random_row_bd(self):
+        return random.randint(1, self.get_count_all_word()[0])
 
+    # change word
+    def label_set_text(self, random_id = 1):
+        list_now_word = self.get_row(random_id)
+        self.sum_words_learn.\
+            setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
+        self.false_words.\
+            setText(self.text_labels[2] + str(self.get_count_false_world()[0]))
+        self.true_words.\
+            setText(self.text_labels[3] + str(self.get_count_true_world()[0]))
+        self.change_words_learn.\
+            setText(self.text_labels[4] + str(self.get_count_change_world()[0]))
+        self.count_word_now.\
+            setText(self.text_labels[5] + str(list_now_word[6]))
+        self.parts_of_speech_word_now.\
+            setText(self.text_labels[6] + list_now_word[3])
+        self.word_now.\
+            setText(self.text_labels[7] + list_now_word[1])
+        self.transcription_word_now.\
+            setText(self.text_labels[8] + str(list_now_word[4]))
+        self.chapter_word_now.\
+            setText(self.text_labels[9] + list_now_word[7])
 
     # create timer
     def timer(self):
@@ -90,3 +107,12 @@ class Main_labels(Work_with_bd):
         self.name_labels()
         self.label_set_font_and_size()
         self.label_set_text()
+
+    # Functional button "Проверить"
+    def clicked_button(self):
+        # -----------------------------------------------
+        # section functional
+        random_id = self.random_row_bd()
+        # -----------------------------------------------
+        self.label_set_text(random_id)
+        # -----------------------------------------------

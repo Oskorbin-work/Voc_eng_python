@@ -46,6 +46,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # realise main labels
         self.main_label_def()
         self.horizontalGroupBox = QGroupBox()
+        self.btn.clicked.connect(lambda: self.clicked_button())
         # create Grid
         grid = QGridLayout()
 

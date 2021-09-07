@@ -2,9 +2,8 @@
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtWidgets import QPushButton
-
 # Class to describe  main buttons
-class Main_buttons:
+class Main_buttons():
 
     # def to create main_button
     def create_main_button(self):
