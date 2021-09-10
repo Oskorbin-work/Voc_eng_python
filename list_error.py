@@ -11,3 +11,4 @@ def view_error_critical(title, text):
     msg.setIcon(QMessageBox.Critical)
     msg.setWindowTitle(title)
     msg.setText(text)
+    msg.exec_()
