@@ -14,7 +14,7 @@ from GUI.bar import Bar
 # -----------------------------------------------------------
 import sys
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget, QGroupBox,
+    QApplication, QMainWindow, QGridLayout, QWidget,
 )
 
 
@@ -39,13 +39,13 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
 
     # place for main setting "view window"
     def main_window_parameter(self):
+        self.setMinimumWidth(470)
         self.setWindowTitle("Vocabulary_English")
 
     # place to main setting "view window"
     def main_grid(self):
         # realise main labels
         self.main_label_def()
-        self.horizontalGroupBox = QGroupBox()
         self.btn.clicked.connect(lambda: self.clicked_button())
         # create Grid
         grid = QGridLayout()
@@ -79,13 +79,25 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # Chapter
         grid.addWidget(self.chapter_word_now, 10, 0)
 
+        # Field for word
         grid.addWidget(self.textEdit, 11, 0)
+        # Button for check word
         grid.addWidget(self.btn, 11, 1)
 
         # This is widget!
         widget = QWidget()
         widget.setLayout(grid)
         self.setCentralWidget(widget)
+
+    # Functional button "Проверить"
+    def clicked_button(self):
+        # -----------------------------------------------
+        print(self.textEdit.text())
+        # section functional
+        random_id = self.random_row_bd()
+        # -----------------------------------------------
+        self.label_set_text(random_id)
+        # -----------------------------------------------
 
 
 # It for run program

@@ -38,7 +38,6 @@ class Main_labels(Work_with_bd):
         self.transcription_word_now = QLabel()
         self.chapter_word_now = QLabel()
 
-
     # describe font and size labels text
     def label_set_font_and_size(self):
         size_label_font = 10
@@ -69,7 +68,7 @@ class Main_labels(Work_with_bd):
         return random.randint(1, self.get_count_all_word()[0])
 
     # change word
-    def label_set_text(self, random_id = 1):
+    def label_set_text(self, random_id=1):
         list_now_word = self.get_row(random_id)
         self.sum_words_learn.\
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
@@ -107,12 +106,4 @@ class Main_labels(Work_with_bd):
         self.name_labels()
         self.label_set_font_and_size()
         self.label_set_text()
-
-    # Functional button "Проверить"
-    def clicked_button(self):
-        # -----------------------------------------------
-        # section functional
-        random_id = self.random_row_bd()
-        # -----------------------------------------------
-        self.label_set_text(random_id)
-        # -----------------------------------------------
+        self.add_work_count_life()
