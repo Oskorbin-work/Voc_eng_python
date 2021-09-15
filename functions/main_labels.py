@@ -25,6 +25,7 @@ class Main_labels(Work_with_bd):
             'Перевод слова: ',
             'Транскрипция: ',
             'Тема: ',
+            '*********************************************',
                      ]
         self.timer_learn = QLabel()
         self.timer()
@@ -37,6 +38,7 @@ class Main_labels(Work_with_bd):
         self.word_now = QLabel()
         self.transcription_word_now = QLabel()
         self.chapter_word_now = QLabel()
+        self.line_between_bd_and_word = QLabel()
 
     # describe font and size labels text
     def label_set_font_and_size(self):
@@ -62,13 +64,21 @@ class Main_labels(Work_with_bd):
             setFont(QFont(name_label_font, size_label_font))
         self.chapter_word_now.\
             setFont(QFont(name_label_font, size_label_font))
+        self.chapter_word_now. \
+            setFont(QFont(name_label_font, size_label_font))
+        self.line_between_bd_and_word. \
+            setFont(QFont(name_label_font, size_label_font))
 
     # def for get random row
     def random_row_bd(self):
         return random.randint(1, self.get_count_all_word()[0])
 
     # change word
-    def label_set_text(self, random_id=1):
+    def label_set_text(self, random_id=1, language ="ru" ):
+        if language == "ru":
+            lang_now = 2
+        elif language == "en":
+            lang_now = 1
         list_now_word = self.get_row(random_id)
         self.sum_words_learn.\
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
@@ -82,12 +92,19 @@ class Main_labels(Work_with_bd):
             setText(self.text_labels[5] + str(list_now_word[6]))
         self.parts_of_speech_word_now.\
             setText(self.text_labels[6] + list_now_word[3])
+
         self.word_now.\
-            setText(self.text_labels[7] + list_now_word[1])
-        self.transcription_word_now.\
-            setText(self.text_labels[8] + str(list_now_word[4]))
+            setText(self.text_labels[7] + list_now_word[lang_now])
+        if language == "en":
+            self.transcription_word_now.\
+                setText(self.text_labels[8] + str(list_now_word[4]))
+        else:
+            self.transcription_word_now. \
+                setText(self.text_labels[8] + " - ")
         self.chapter_word_now.\
             setText(self.text_labels[9] + list_now_word[7])
+        self.line_between_bd_and_word. \
+            setText(self.text_labels[10])
 
     # create timer
     def timer(self):

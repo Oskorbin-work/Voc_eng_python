@@ -64,25 +64,27 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         grid.addWidget(self.true_words, 4, 0)
         # count words that can change
         grid.addWidget(self.change_words_learn, 5, 0)
+        grid.addWidget(self.line_between_bd_and_word, 6, 0)
         # -----------------------------------------------------------
         # Word that is checking
         # -----------------------------------------------------------
 
         # Word is checking.
-        grid.addWidget(self.word_now, 6, 0)
+        grid.addWidget(self.word_now, 7, 0)
         # count words are for learning
-        grid.addWidget(self.count_word_now, 7, 0)
+        grid.addWidget(self.count_word_now, 8, 0)
+
         # Part of speech
-        grid.addWidget(self.parts_of_speech_word_now, 8, 0)
+        grid.addWidget(self.parts_of_speech_word_now, 9, 0)
         # Transcription
-        grid.addWidget(self.transcription_word_now, 9, 0)
+        grid.addWidget(self.transcription_word_now, 10, 0)
         # Chapter
-        grid.addWidget(self.chapter_word_now, 10, 0)
+        grid.addWidget(self.chapter_word_now, 11, 0)
 
         # Field for word
-        grid.addWidget(self.textEdit, 11, 0)
+        grid.addWidget(self.textEdit, 12, 0)
         # Button for check word
-        grid.addWidget(self.btn, 11, 1)
+        grid.addWidget(self.btn, 12, 1)
 
         # This is widget!
         widget = QWidget()
@@ -96,7 +98,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # section functional
         random_id = self.random_row_bd()
         # -----------------------------------------------
-        self.label_set_text(random_id)
+        self.label_set_text(random_id,self.choice_ru_or_en_word())
         # -----------------------------------------------
 
 
