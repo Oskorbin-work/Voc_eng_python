@@ -5,7 +5,7 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QLabel
 from PyQt5 import QtCore
 from database.work_with_bd import Work_with_bd
-
+from functions.main_buttons import Main_buttons
 import random
 
 
@@ -79,7 +79,7 @@ class Main_labels(Work_with_bd):
             lang_now = 2
         elif language == "en":
             lang_now = 1
-        list_now_word = self.get_row(random_id)
+        self.list_now_word = self.get_row(random_id)
         self.sum_words_learn.\
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
         self.false_words.\
@@ -89,20 +89,20 @@ class Main_labels(Work_with_bd):
         self.change_words_learn.\
             setText(self.text_labels[4] + str(self.get_count_change_world()[0]))
         self.count_word_now.\
-            setText(self.text_labels[5] + str(list_now_word[6]))
+            setText(self.text_labels[5] + str(self.list_now_word[6]))
         self.parts_of_speech_word_now.\
-            setText(self.text_labels[6] + list_now_word[3])
+            setText(self.text_labels[6] + self.list_now_word[3])
 
         self.word_now.\
-            setText(self.text_labels[7] + list_now_word[lang_now])
+            setText(self.text_labels[7] + self.list_now_word[lang_now])
         if language == "en":
             self.transcription_word_now.\
-                setText(self.text_labels[8] + str(list_now_word[4]))
+                setText(self.text_labels[8] + str(self.list_now_word[4]))
         else:
             self.transcription_word_now. \
                 setText(self.text_labels[8] + " - ")
         self.chapter_word_now.\
-            setText(self.text_labels[9] + list_now_word[7])
+            setText(self.text_labels[9] + self.list_now_word[7])
         self.line_between_bd_and_word. \
             setText(self.text_labels[10])
 
@@ -120,7 +120,9 @@ class Main_labels(Work_with_bd):
 
     # main label def
     def main_label_def(self):
+        self.random_id_now = self.random_row_bd()
+        self.random_language_now = Main_buttons.choice_ru_or_en_word(Main_buttons)
         self.name_labels()
         self.label_set_font_and_size()
-        self.label_set_text()
+        self.label_set_text(self.random_id_now, self.random_language_now)
         self.add_work_count_life()

@@ -93,12 +93,13 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
 
     # Functional button "Проверить"
     def clicked_button(self):
+        self.check_enter_word(self.random_id_now, self.random_language_now)
+        self.random_language_now = self.choice_ru_or_en_word()
         # -----------------------------------------------
-        print(self.textEdit.text())
         # section functional
-        random_id = self.random_row_bd()
+        self.random_id_now = self.random_row_bd()
         # -----------------------------------------------
-        self.label_set_text(random_id,self.choice_ru_or_en_word())
+        self.label_set_text(self.random_id_now, self.random_language_now)
         # -----------------------------------------------
 
 
