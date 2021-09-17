@@ -13,6 +13,7 @@ from GUI.bar import Bar
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 import sys
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QGridLayout, QWidget,
 )
@@ -39,7 +40,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
 
     # place for main setting "view window"
     def main_window_parameter(self):
-        self.setMinimumWidth(470)
+        self.setMinimumWidth(550)
         self.setWindowTitle("Vocabulary_English")
 
     # place to main setting "view window"
@@ -91,9 +92,17 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         widget.setLayout(grid)
         self.setCentralWidget(widget)
 
+    # This is GOD def keyboards!
+    def keyPressEvent(self, event):
+        # Qt.Key.Key_*Button* working but it have bug
+
+        # 16777220 is Enter.
+        if event.key() == 16777220:
+            self.clicked_button()
+        print(event.key())
     # Functional button "Проверить"
     def clicked_button(self):
-        self.check_enter_word(self.random_id_now, self.random_language_now)
+        self.check_enter_word(self.random_id_now, self.random_language_now,self.textEdit.text())
         self.random_language_now = self.choice_ru_or_en_word()
         # -----------------------------------------------
         # section functional

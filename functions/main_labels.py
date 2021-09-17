@@ -75,10 +75,7 @@ class Main_labels(Work_with_bd):
 
     # change word
     def label_set_text(self, random_id=1, language ="ru" ):
-        if language == "ru":
-            lang_now = 2
-        elif language == "en":
-            lang_now = 1
+        lang_now = Main_buttons.check_language_word(Main_buttons, language)
         self.list_now_word = self.get_row(random_id)
         self.sum_words_learn.\
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))

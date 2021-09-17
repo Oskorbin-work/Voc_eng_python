@@ -31,10 +31,22 @@ class Main_buttons(Work_with_bd):
     def choice_ru_or_en_word(self):
         return random.choice(LANGUAGE)
 
-    def check_enter_word(self, id_now_word,language ):
+    def check_language_word(self, language, reverse="reverse_off"):
+        if reverse == "reverse_off":
+            if language == "ru":
+                return 2
+            elif language == "en":
+                return 1
+        elif reverse == "reverse_on":
+            if language == "ru":
+                return 1
+            elif language == "en":
+                return 2
 
-        print(language)
-        if language == "ru":
-            print(str(id_now_word) + "ru")
-        elif language == "en":
-            print(str(id_now_word) + "en")
+    def check_enter_word(self, id_now_word, language, text_check):
+        row_now_word = self.get_row(id_now_word)
+        lang_now = self.check_language_word(language, "reverse_on")
+        if row_now_word[lang_now].lower() == text_check.lower():
+            print(True)
+        else:
+            print(False)
