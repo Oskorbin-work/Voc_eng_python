@@ -7,14 +7,14 @@ import sqlite3
 # Codes other files project
 # -----------------------------------------------------------
 from list_error import view_error_critical
-from settings import ROOT_DIR
+from settings import ROOT_MAIN_DB
 
 
 # Decorator for update query the database
 def request_bd_update(func):
     def wrapper(*args, **kwargs):
         try:
-            conn = sqlite3.connect(ROOT_DIR + "database" + '\\' + 'data_word.sqlite')
+            conn = sqlite3.connect(ROOT_MAIN_DB)
             cur = conn.cursor()
             cur.execute(func(*args, **kwargs))
             conn.commit()
@@ -29,7 +29,7 @@ def request_bd_update(func):
 def request_bd_select(func):
     def wrapper(*args, **kwargs):
         try:
-            conn = sqlite3.connect(ROOT_DIR + "database" + '\\' + 'data_word.sqlite')
+            conn = sqlite3.connect(ROOT_MAIN_DB)
             cur = conn.cursor()
             cur.execute(func(*args, **kwargs))
             value = (cur.fetchall())[0]

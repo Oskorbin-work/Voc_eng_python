@@ -100,6 +100,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         if event.key() == 16777220:
             self.clicked_button()
         print(event.key())
+
     # Functional button "Проверить"
     def clicked_button(self):
         self.check_enter_word(self.random_id_now, self.random_language_now,self.textEdit.text())
@@ -109,6 +110,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         self.random_id_now = self.random_row_bd()
         # -----------------------------------------------
         self.label_set_text(self.random_id_now, self.random_language_now)
+        self.textEdit.clear()
         # -----------------------------------------------
 
 

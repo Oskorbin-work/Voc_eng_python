@@ -74,7 +74,7 @@ class Main_labels(Work_with_bd):
         return random.randint(1, self.get_count_all_word()[0])
 
     # change word
-    def label_set_text(self, random_id=1, language ="ru" ):
+    def label_set_text(self, random_id=1, language ="ru"):
         lang_now = Main_buttons.check_language_word(Main_buttons, language)
         self.list_now_word = self.get_row(random_id)
         self.sum_words_learn.\
@@ -117,6 +117,7 @@ class Main_labels(Work_with_bd):
 
     # main label def
     def main_label_def(self):
+        self.order_main_table()
         self.random_id_now = self.random_row_bd()
         self.random_language_now = Main_buttons.choice_ru_or_en_word(Main_buttons)
         self.name_labels()

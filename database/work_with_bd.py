@@ -1,13 +1,44 @@
 # -----------------------------------------------------------
+# Import classical and Pyqt5`s modules
+# -----------------------------------------------------------
+import sqlite3
+# -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
 from database.functions_for_bd import (
     request_bd_update, request_bd_select
 )
+from settings import ROOT_MAIN_DB
 
 
 # Class to work with bd
 class Work_with_bd:
+    def order_main_table(self):
+        try:
+            conn = sqlite3.connect(ROOT_MAIN_DB)
+            cur = conn.cursor()
+
+            cur.execute("SELECT "
+                        "english_word," 
+                        "russian_word,"  
+                        "parts_of_speech," 
+                        "transcription,"    
+                        "definition,"       
+                        "count_life,"  
+                        "other_information," 
+                        "work_count_life "    
+                        "FROM Main_table "
+                        "Order by "
+                        "count_life ,"
+                        "english_word ")
+            all_row = [[str(j) for j in i] for i in cur.fetchall()]
+            for i in range(len(all_row)):
+                print(", ".join(all_row[i]))
+            conn.commit()
+            conn.close()
+        except sqlite3.Error:
+            view_error_critical("Not working sql:", self.order_main_table().__name__)
+
     def add_work_count_life(self):
         count_row = self.get_count_all_word()[0]
         for i in range(1, count_row+1):
