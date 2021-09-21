@@ -71,7 +71,7 @@ class Main_labels(Work_with_bd):
 
     # def for get random row
     def random_row_bd(self):
-        return random.randint(1, self.get_count_all_word()[0])
+        return random.randint(self.get_first_id_count_life_3()[0], self.get_count_all_word()[0])
 
     # change word
     def label_set_text(self, random_id=1, language ="ru"):

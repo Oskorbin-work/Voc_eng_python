@@ -17,7 +17,6 @@ class Work_with_bd:
         try:
             conn = sqlite3.connect(ROOT_MAIN_DB)
             cur = conn.cursor()
-
             cur.execute("SELECT "
                         "english_word," 
                         "russian_word,"  
@@ -32,8 +31,10 @@ class Work_with_bd:
                         "count_life ,"
                         "english_word ")
             all_row = [[str(j) for j in i] for i in cur.fetchall()]
+            cur.execute(f"DELETE FROM main_table;")
             for i in range(len(all_row)):
-                print(", ".join(all_row[i]))
+                string = f"'{i+1}', '" + "', '".join(all_row[i]) + "'"
+                cur.execute( f"INSERT INTO main_table VALUES ({string});")
             conn.commit()
             conn.close()
         except sqlite3.Error:
@@ -62,14 +63,19 @@ class Work_with_bd:
     # get count row " Проверенные" from database
     @request_bd_select
     def get_count_true_world(self):
-        return "select COUNT(*) from Main_table where count_life =0"
+        return "select COUNT(*) from Main_table where work_count_life =0"
 
     # get count row " Непроверенные" from database
     @request_bd_select
     def get_count_false_world(self):
-        return "select COUNT(*) from Main_table where count_life =3"
+        return "select COUNT(*) from Main_table where work_count_life =3"
+
+    # get first id word where default count life == 3
+    @request_bd_select
+    def get_first_id_count_life_3(self):
+        return "select id_main from Main_table where work_count_life =3"
 
     # get count row " Проверенные но с шансом на проверку" from database
     @request_bd_select
     def get_count_change_world(self):
-        return "select COUNT(*) from Main_table where count_life =-1"
+        return "select COUNT(*) from Main_table where work_count_life =-1"
