@@ -87,6 +87,15 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # Button for check word
         grid.addWidget(self.btn, 12, 1)
 
+        # -----------------------------------------------------------
+        # Wrong section
+        # -----------------------------------------------------------
+        index_check_word = 13
+        for row_check in self.list_wrong_check_word:
+            grid.addWidget(row_check, index_check_word, 0)
+            index_check_word += 1
+
+
         # This is widget!
         widget = QWidget()
         widget.setLayout(grid)
@@ -99,17 +108,18 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # 16777220 is Enter.
         if event.key() == 16777220:
             self.clicked_button()
-        print(event.key())
 
     # Functional button "Проверить"
     def clicked_button(self):
-        self.check_enter_word(self.random_id_now, self.random_language_now,self.textEdit.text())
+        status_word = (self.check_enter_word(self.random_id_now, self.random_language_now,self.textEdit.text()))
+        self.wrong_enter_world(self.random_id_now, status_word,self.textEdit.text())
         self.random_language_now = self.choice_ru_or_en_word()
         # -----------------------------------------------
         # section functional
-        self.random_id_now = self.random_row_bd()
+        self.random_id_now = self.get_id_row_bd()
         # -----------------------------------------------
         self.label_set_text(self.random_id_now, self.random_language_now)
+
         self.textEdit.clear()
         # -----------------------------------------------
 

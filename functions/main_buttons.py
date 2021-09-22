@@ -47,6 +47,6 @@ class Main_buttons(Work_with_bd):
         row_now_word = self.get_row(id_now_word)
         lang_now = self.check_language_word(language, "reverse_on")
         if row_now_word[lang_now].lower() == text_check.lower():
-            print(True)
+            return True
         else:
-            print(False)
+            return False
