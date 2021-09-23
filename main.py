@@ -120,6 +120,8 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # -----------------------------------------------
         self.label_set_text(self.random_id_now, self.random_language_now)
 
+        # -----------------------------------------------
+        self.textEdit.setFocus()
         self.textEdit.clear()
         # -----------------------------------------------
 
