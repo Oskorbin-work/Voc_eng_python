@@ -6,7 +6,9 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5 import QtCore
 from database.work_with_bd import Work_with_bd
 from functions.main_buttons import Main_buttons
+from settings import KEYBOARD_ENGLISH,KEYBOARD_RUSSIAN
 import random
+import win32api
 
 
 # Class to describe  main labels
@@ -104,10 +106,14 @@ class Main_labels(Work_with_bd):
 
         self.word_now. \
             setText(self.text_labels[7] + self.list_now_word[lang_now])
+        print(win32api.GetKeyboardLayout())
         if language == "en":
+            print(language)
+            win32api.LoadKeyboardLayout(f'{KEYBOARD_RUSSIAN}', 1)
             self.transcription_word_now. \
                 setText(self.text_labels[8] + str(self.list_now_word[4]))
-        else:
+        elif language == "ru":
+            win32api.LoadKeyboardLayout(f'{KEYBOARD_ENGLISH}', 1)
             self.transcription_word_now. \
                 setText(self.text_labels[8] + " - ")
         self.chapter_word_now. \
@@ -137,6 +143,7 @@ class Main_labels(Work_with_bd):
             for row_check in self.list_wrong_check_word:
                 row_check.setText("")
                 index_check_word += 1
+
     # create timer
     def timer(self):
         self.timer_learn_1 = QtCore.QTimer(self)
