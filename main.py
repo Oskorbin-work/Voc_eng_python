@@ -112,7 +112,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
     # Functional button "Проверить"
     def clicked_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now,self.textEdit.text()))
-        self.wrong_enter_world(self.random_id_now, status_word,self.textEdit.text())
+        self.wrong_enter_world(self.random_id_now, status_word, self.textEdit.text())
         self.random_language_now = self.choice_ru_or_en_word()
         # -----------------------------------------------
         # section functional

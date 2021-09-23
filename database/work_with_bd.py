@@ -45,7 +45,9 @@ class Work_with_bd:
         for i in range(1, count_row+1):
             self.edit_work_count_life(i, str(self.get_row(i)[6]))
 
-    # get row from database
+    # edit work_count_life.
+    # Uses for copy values from count_life in work_count_life
+    # Uses for update value work_count_life while user has doing wrong
     @request_bd_update
     def edit_work_count_life(self, id_row, count_life):
         return f'update Main_table set work_count_life = {count_life} where id_main = {id_row};'
@@ -68,12 +70,12 @@ class Work_with_bd:
     # get count row " Непроверенные" from database
     @request_bd_select
     def get_count_false_world(self):
-        return "select COUNT(*) from Main_table where work_count_life =3"
+        return "select COUNT(*) from Main_table where work_count_life >0"
 
     # get first id word where default count life == 3
     @request_bd_select
     def get_first_id_count_life_3(self):
-        return "select id_main from Main_table where work_count_life =3"
+        return "select id_main from Main_table where work_count_life >0"
 
     # get count row " Проверенные но с шансом на проверку" from database
     @request_bd_select

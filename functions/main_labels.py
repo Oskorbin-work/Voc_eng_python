@@ -106,9 +106,7 @@ class Main_labels(Work_with_bd):
 
         self.word_now. \
             setText(self.text_labels[7] + self.list_now_word[lang_now])
-        print(win32api.GetKeyboardLayout())
         if language == "en":
-            print(language)
             win32api.LoadKeyboardLayout(f'{KEYBOARD_RUSSIAN}', 1)
             self.transcription_word_now. \
                 setText(self.text_labels[8] + str(self.list_now_word[4]))
@@ -139,6 +137,9 @@ class Main_labels(Work_with_bd):
                 f"{self.text_labels[index_check_word + 3]}"
                 f" [ {list_now_word[4]} ]")
         else:
+            if list_now_word[6]>0:
+                self.edit_work_count_life(random_id_now,list_now_word[6]-1)
+                print(list_now_word[6])
             index_check_word = 11
             for row_check in self.list_wrong_check_word:
                 row_check.setText("")
