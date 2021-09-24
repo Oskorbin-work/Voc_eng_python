@@ -18,7 +18,6 @@ from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QGridLayout, QWidget,
 )
 
-
 # Class to describe structure main window
 class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
 
@@ -104,7 +103,6 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
     # This is GOD def keyboards!
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working but it have bug
-
         # 16777220 is Enter.
         if event.key() == 16777220:
             self.clicked_button()

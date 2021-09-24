@@ -100,7 +100,7 @@ class Main_labels(Work_with_bd):
         self.change_words_learn. \
             setText(self.text_labels[4] + str(self.get_count_change_world()[0]))
         self.count_word_now. \
-            setText(self.text_labels[5] + str(self.list_now_word[6]))
+            setText(self.text_labels[5] + str(self.list_now_word[8]))
         self.parts_of_speech_word_now. \
             setText(self.text_labels[6] + self.list_now_word[3])
 
@@ -137,9 +137,9 @@ class Main_labels(Work_with_bd):
                 f"{self.text_labels[index_check_word + 3]}"
                 f" [ {list_now_word[4]} ]")
         else:
-            if list_now_word[6]>0:
-                self.edit_work_count_life(random_id_now,list_now_word[6]-1)
-                print(list_now_word[6])
+            if list_now_word[8] > 0:
+
+                self.edit_work_count_life(random_id_now,list_now_word[8]-1)
             index_check_word = 11
             for row_check in self.list_wrong_check_word:
                 row_check.setText("")
@@ -160,9 +160,10 @@ class Main_labels(Work_with_bd):
     # main label def
     def main_label_def(self):
         self.order_main_table()
+        self.add_work_count_life()
         self.random_id_now = self.get_id_row_bd()
         self.random_language_now = Main_buttons.choice_ru_or_en_word(Main_buttons)
         self.name_labels()
         self.label_set_font_and_size()
         self.label_set_text(self.random_id_now, self.random_language_now)
-        self.add_work_count_life()
+
