@@ -2,6 +2,7 @@
 # Codes other files project
 # -----------------------------------------------------------
 # Initiate labels from main window
+import settings
 from functions.main_labels import Main_labels
 # Initiate buttons from main window
 from functions.main_buttons import Main_buttons
@@ -12,6 +13,7 @@ from GUI.bar import Bar
 # -----------------------------------------------------------
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
+import win32api
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
@@ -30,6 +32,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         self.bar_category_fileMenu()  # Initiate Bar category fileMenu
         # Initiate main buttons
         self.create_main_button()
+        self.create_button_start_pause()
         # Initiate main text edit
         self.create_main_text_edit()
         # Initiate grid
@@ -46,7 +49,9 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
     def main_grid(self):
         # realise main labels
         self.main_label_def()
-        self.btn.clicked.connect(lambda: self.clicked_button())
+        self.btn.clicked.connect(lambda: self.clicked_main_button())
+        self.btn.setDisabled(1)
+        self.btn_start_pause.clicked.connect(lambda: self.clicked_button_start_pause())
         # create Grid
         grid = QGridLayout()
 
@@ -83,9 +88,9 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
 
         # Field for word
         grid.addWidget(self.textEdit, 12, 0)
-        # Button for check word
+        # Buttons for check word
         grid.addWidget(self.btn, 12, 1)
-
+        grid.addWidget(self.btn_start_pause, 13, 1)
         # -----------------------------------------------------------
         # Wrong section
         # -----------------------------------------------------------
@@ -93,7 +98,6 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         for row_check in self.list_wrong_check_word:
             grid.addWidget(row_check, index_check_word, 0)
             index_check_word += 1
-
 
         # This is widget!
         widget = QWidget()
@@ -105,10 +109,10 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # Qt.Key.Key_*Button* working but it have bug
         # 16777220 is Enter.
         if event.key() == 16777220:
-            self.clicked_button()
+            self.clicked_main_button()
 
     # Functional button "Проверить"
-    def clicked_button(self):
+    def clicked_main_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now,self.textEdit.text()))
         self.wrong_enter_world(self.random_id_now, status_word, self.textEdit.text())
         self.random_language_now = self.choice_ru_or_en_word()
@@ -123,6 +127,23 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         self.textEdit.clear()
         # -----------------------------------------------
 
+    def clicked_button_start_pause(self):
+
+        if self.random_language_now == "en":
+            print(self.random_language_now)
+            win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
+        elif self.random_language_now == "ru":
+            print(self.random_language_now)
+            win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
+
+        if settings.TIMER_INTERVAL == 0:
+            settings.TIMER_INTERVAL = 1
+            self.btn_start_pause.setText("Стоп")
+            self.btn.setEnabled(1)
+        else:
+            self.btn.setDisabled(1)
+            settings.TIMER_INTERVAL = 0
+            self.btn_start_pause.setText("Старт")
 
 # It for run program
 if __name__ == '__main__':

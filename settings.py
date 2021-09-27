@@ -14,3 +14,6 @@ ROOT_MAIN_DB = ROOT_DIR + "database" + '\\' + 'data_word.sqlite'
 LANGUAGE = ("ru", "en")
 KEYBOARD_ENGLISH = '67699721'
 KEYBOARD_RUSSIAN = '00000419'
+
+# Setting timer
+TIMER_INTERVAL = 1

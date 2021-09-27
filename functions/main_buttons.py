@@ -28,6 +28,19 @@ class Main_buttons(Work_with_bd):
                                "}"
                                )
 
+    def create_button_start_pause (self):
+        self.btn_start_pause = QPushButton('Старт', self)
+        self.btn_start_pause .setStyleSheet("QPushButton"
+                               "{"
+                               "background-color : lightblue;"
+                               "}"
+                               "QPushButton::pressed"
+                               "{"
+                               "background-color : gray;"
+                               "}"
+                               )
+
+
     def choice_ru_or_en_word(self):
         return random.choice(LANGUAGE)
 

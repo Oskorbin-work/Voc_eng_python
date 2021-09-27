@@ -6,7 +6,8 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5 import QtCore
 from database.work_with_bd import Work_with_bd
 from functions.main_buttons import Main_buttons
-from settings import KEYBOARD_ENGLISH,KEYBOARD_RUSSIAN
+from settings import KEYBOARD_ENGLISH,KEYBOARD_RUSSIAN,TIMER_INTERVAL
+import settings
 import random
 import win32api
 
@@ -151,11 +152,13 @@ class Main_labels(Work_with_bd):
         self.timer_learn_1.setInterval(1000)
         self.timer_learn_1.timeout.connect(self.timer_text)
         self.timer_learn_1.start()
+        settings.TIMER_INTERVAL = 0
 
     # change time to timer
     def timer_text(self):
-        self.time = self.time.addSecs(1)
+        self.time = self.time.addSecs(settings.TIMER_INTERVAL)
         self.timer_learn.setText(self.time.toString("Время: hh:mm:ss"))
+
 
     # main label def
     def main_label_def(self):
@@ -166,4 +169,3 @@ class Main_labels(Work_with_bd):
         self.name_labels()
         self.label_set_font_and_size()
         self.label_set_text(self.random_id_now, self.random_language_now)
-
