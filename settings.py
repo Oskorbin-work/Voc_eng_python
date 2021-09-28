@@ -17,3 +17,6 @@ KEYBOARD_RUSSIAN = '00000419'
 
 # Setting timer
 TIMER_INTERVAL = 1
+
+# setting status learn words
+PROGRAM_STATUS = True

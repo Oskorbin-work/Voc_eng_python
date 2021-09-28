@@ -40,7 +40,6 @@ class Main_buttons(Work_with_bd):
                                "}"
                                )
 
-
     def choice_ru_or_en_word(self):
         return random.choice(LANGUAGE)
 

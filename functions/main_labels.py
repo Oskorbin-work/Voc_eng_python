@@ -86,12 +86,20 @@ class Main_labels(Work_with_bd):
 
     # def for get random row
     def get_id_row_bd(self):
-        return random.randint(self.get_first_id_count_life_3()[0], self.get_count_all_word()[0])
+        try:
+            return random.randint(self.get_first_id_count_life_3()[0], self.get_count_all_word()[0])
+        except:
+            settings.PROGRAM_STATUS = False
+            return -1
 
     # change word
     def label_set_text(self, random_id=1, language="ru"):
         lang_now = Main_buttons.check_language_word(Main_buttons, language)
-        self.list_now_word = self.get_row(random_id)
+        if random_id !=-1:
+            self.list_now_word = self.get_row(random_id)
+        else:
+            self.list_now_word = ["","","","","","","","",""]
+
         self.sum_words_learn. \
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
         self.false_words. \

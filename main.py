@@ -108,7 +108,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working but it have bug
         # 16777220 is Enter.
-        if event.key() == 16777220:
+        if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
 
     # Functional button "Проверить"
@@ -126,6 +126,11 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         self.textEdit.setFocus()
         self.textEdit.clear()
         # -----------------------------------------------
+        try:
+            print(self.get_first_id_count_life_3()[0])
+        except:
+            self.game_over()
+
 
     def clicked_button_start_pause(self):
 
@@ -133,9 +138,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
             print(self.random_language_now)
             win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
         elif self.random_language_now == "ru":
-            print(self.random_language_now)
             win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
-
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1
             self.btn_start_pause.setText("Стоп")
@@ -145,6 +148,13 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
             settings.TIMER_INTERVAL = 0
             self.btn_start_pause.setText("Старт")
 
+        self.textEdit.setFocus()
+
+    def game_over(self):
+        settings.PROGRAM_STATUS = False
+        self.btn.setDisabled(1)
+        self.btn_start_pause.setDisabled(1)
+        settings.TIMER_INTERVAL = 0
 # It for run program
 if __name__ == '__main__':
     app = QApplication(sys.argv)
