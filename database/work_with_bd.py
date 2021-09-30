@@ -1,10 +1,12 @@
 # -----------------------------------------------------------
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
+import random
 import sqlite3
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
+import settings
 from database.functions_for_bd import (
     request_bd_update, request_bd_select
 )
@@ -28,7 +30,7 @@ class Work_with_bd:
                         "work_count_life "    
                         "FROM Main_table "
                         "Order by "
-                        "count_life ,"
+                        "work_count_life ,"
                         "english_word ")
             all_row = [[str(j) for j in i] for i in cur.fetchall()]
             cur.execute(f"DELETE FROM main_table;")
@@ -43,7 +45,11 @@ class Work_with_bd:
     def add_work_count_life(self):
         count_row = self.get_count_all_word()[0]
         for i in range(1, count_row+1):
-            self.edit_work_count_life(i, str(self.get_row(i)[6]))
+            count_life = self.get_row(i)[6]
+            if count_life == -1 and random.random() <= settings.RANDOM_OLD_WORD :
+                print(random.random())
+                count_life = 1
+            self.edit_work_count_life(i, str(count_life))
 
     # edit work_count_life.
     # Uses for copy values from count_life in work_count_life

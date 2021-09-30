@@ -20,3 +20,6 @@ TIMER_INTERVAL = 1
 
 # setting status learn words
 PROGRAM_STATUS = True
+
+# setting random for old words
+RANDOM_OLD_WORD = 0.05

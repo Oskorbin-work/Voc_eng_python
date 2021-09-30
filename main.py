@@ -110,6 +110,8 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # 16777220 is Enter.
         if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
+        elif event.key() == 16777222:
+            self.clicked_button_start_pause()
 
     # Functional button "Проверить"
     def clicked_main_button(self):
@@ -127,7 +129,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         self.textEdit.clear()
         # -----------------------------------------------
         try:
-            print(self.get_first_id_count_life_3()[0])
+            self.get_first_id_count_life_3()[0]
         except:
             self.game_over()
 
@@ -135,7 +137,6 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
     def clicked_button_start_pause(self):
 
         if self.random_language_now == "en":
-            print(self.random_language_now)
             win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
         elif self.random_language_now == "ru":
             win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)

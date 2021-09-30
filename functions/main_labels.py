@@ -22,7 +22,7 @@ class Main_labels(Work_with_bd):
             'Всего слов: ',
             'Непроверенные слова: ',
             'Проверенные слова: ',
-            'Старые слова на проверку: ',
+            'Старые слова: ',
             'Количество очков слова: ',
             'Часть слова: ',
             'Перевод слова: ',
@@ -130,6 +130,7 @@ class Main_labels(Work_with_bd):
 
     def wrong_enter_world(self, random_id_now, status_word = "True",text_check = ""):
         list_now_word = self.get_row(random_id_now)
+
         if not status_word:
             index_check_word = 11
             self.list_wrong_check_word[0].setText(
@@ -145,14 +146,16 @@ class Main_labels(Work_with_bd):
             self.list_wrong_check_word[3].setText(
                 f"{self.text_labels[index_check_word + 3]}"
                 f" [ {list_now_word[4]} ]")
+            if list_now_word[8] < 3:
+                self.edit_work_count_life(random_id_now, list_now_word[8] + 1)
         else:
             if list_now_word[8] > 0:
-
                 self.edit_work_count_life(random_id_now,list_now_word[8]-1)
             index_check_word = 11
             for row_check in self.list_wrong_check_word:
                 row_check.setText("")
                 index_check_word += 1
+            self.list_wrong_check_word[0].setText("Правильно")
 
     # create timer
     def timer(self):
@@ -170,8 +173,8 @@ class Main_labels(Work_with_bd):
 
     # main label def
     def main_label_def(self):
-        self.order_main_table()
         self.add_work_count_life()
+        self.order_main_table()
         self.random_id_now = self.get_id_row_bd()
         self.random_language_now = Main_buttons.choice_ru_or_en_word(Main_buttons)
         self.name_labels()
