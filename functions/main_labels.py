@@ -4,11 +4,16 @@
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QLabel
 from PyQt5 import QtCore
+import random
+# -----------------------------------------------------------
+# Codes other files project
+# -----------------------------------------------------------
 from database.work_with_bd import Work_with_bd
 from functions.main_buttons import Main_buttons
-from settings import KEYBOARD_ENGLISH,KEYBOARD_RUSSIAN,TIMER_INTERVAL
 import settings
-import random
+# -----------------------------------------------------------
+# Import other modules
+# -----------------------------------------------------------
 import win32api
 
 
@@ -99,7 +104,6 @@ class Main_labels(Work_with_bd):
             self.list_now_word = self.get_row(random_id)
         else:
             self.list_now_word = ["","","","","","","","",""]
-
         self.sum_words_learn. \
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
         self.false_words. \
@@ -116,11 +120,11 @@ class Main_labels(Work_with_bd):
         self.word_now. \
             setText(self.text_labels[7] + self.list_now_word[lang_now])
         if language == "en":
-            win32api.LoadKeyboardLayout(f'{KEYBOARD_RUSSIAN}', 1)
+            win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
             self.transcription_word_now. \
                 setText(self.text_labels[8] + str(self.list_now_word[4]))
         elif language == "ru":
-            win32api.LoadKeyboardLayout(f'{KEYBOARD_ENGLISH}', 1)
+            win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
             self.transcription_word_now. \
                 setText(self.text_labels[8] + " - ")
         self.chapter_word_now. \
@@ -128,10 +132,14 @@ class Main_labels(Work_with_bd):
         self.line_between_bd_and_word. \
             setText(self.text_labels[10])
 
-    def wrong_enter_world(self, random_id_now, status_word = "True",text_check = ""):
+    # check enter word
+    def wrong_enter_word(self, random_id_now, status_word = "True",text_check = ""):
         list_now_word = self.get_row(random_id_now)
-
+        # if enter word is false
         if not status_word:
+            # -----------------------------------------------------------
+            # Output information about true translate now word
+            # -----------------------------------------------------------
             index_check_word = 11
             self.list_wrong_check_word[0].setText(
                 f"{self.text_labels[index_check_word]}")
@@ -146,18 +154,25 @@ class Main_labels(Work_with_bd):
             self.list_wrong_check_word[3].setText(
                 f"{self.text_labels[index_check_word + 3]}"
                 f" [ {list_now_word[4]} ]")
+            # -----------------------------------------------------------
+            # add 1 life to now word
             if list_now_word[8] < 3:
                 self.edit_work_count_life(random_id_now, list_now_word[8] + 1)
+
+        # if enter word is true
         else:
-            if list_now_word[8] > 0:
-                self.edit_work_count_life(random_id_now,list_now_word[8]-1)
             index_check_word = 11
+            # clear information about last word
             for row_check in self.list_wrong_check_word:
                 row_check.setText("")
                 index_check_word += 1
+            # output information that translate now word is true
             self.list_wrong_check_word[0].setText("Правильно")
+            # add 1 life to now word
+            if list_now_word[8] > 0:
+                self.edit_work_count_life(random_id_now,list_now_word[8]-1)
 
-    # create timer
+    # Create timer
     def timer(self):
         self.timer_learn_1 = QtCore.QTimer(self)
         self.timer_learn_1.setInterval(1000)
@@ -165,13 +180,12 @@ class Main_labels(Work_with_bd):
         self.timer_learn_1.start()
         settings.TIMER_INTERVAL = 0
 
-    # change time to timer
+    # Change time to timer
     def timer_text(self):
         self.time = self.time.addSecs(settings.TIMER_INTERVAL)
         self.timer_learn.setText(self.time.toString("Время: hh:mm:ss"))
 
-
-    # main label def
+    # Main label def
     def main_label_def(self):
         self.add_work_count_life()
         self.order_main_table()

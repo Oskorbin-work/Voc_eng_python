@@ -1,4 +1,12 @@
 # -----------------------------------------------------------
+# Import classical and Pyqt5`s modules
+# -----------------------------------------------------------
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QGridLayout, QWidget,QLineEdit,
+)
+import sys
+# -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
 # Initiate labels from main window
@@ -6,22 +14,15 @@ import settings
 from functions.main_labels import Main_labels
 # Initiate buttons from main window
 from functions.main_buttons import Main_buttons
-# Initiate buttons from main window
-from functions.main_text_edit import Main_text_edit
 # Initiate bar-structure
 from GUI.bar import Bar
 # -----------------------------------------------------------
-# Import classical and Pyqt5`s modules
+# Import other modules
 # -----------------------------------------------------------
 import win32api
-import sys
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget,
-)
 
 # Class to describe structure main window
-class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
+class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons,):
 
     def __init__(self):
         super().__init__()
@@ -34,7 +35,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         self.create_main_button()
         self.create_button_start_pause()
         # Initiate main text edit
-        self.create_main_text_edit()
+        self.textEdit = QLineEdit()
         # Initiate grid
         self.main_grid()
         # Run GUI
@@ -95,6 +96,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # Wrong section
         # -----------------------------------------------------------
         index_check_word = 13
+        # Place for information about now word
         for row_check in self.list_wrong_check_word:
             grid.addWidget(row_check, index_check_word, 0)
             index_check_word += 1
@@ -110,36 +112,38 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
         # 16777220 is Enter.
         if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
+        # 16777222 is 0 in table number
         elif event.key() == 16777222:
             self.clicked_button_start_pause()
 
     # Functional button "Проверить"
     def clicked_main_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now,self.textEdit.text()))
-        self.wrong_enter_world(self.random_id_now, status_word, self.textEdit.text())
+        self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text())
         self.random_language_now = self.choice_ru_or_en_word()
         # -----------------------------------------------
         # section functional
         self.random_id_now = self.get_id_row_bd()
         # -----------------------------------------------
         self.label_set_text(self.random_id_now, self.random_language_now)
-
         # -----------------------------------------------
         self.textEdit.setFocus()
         self.textEdit.clear()
         # -----------------------------------------------
+        # if all word was checked
         try:
             self.get_first_id_count_life_3()[0]
         except:
             self.game_over()
 
-
+    # Button "Старт/Стоп"
     def clicked_button_start_pause(self):
-
+        # change language keyboards
         if self.random_language_now == "en":
             win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
         elif self.random_language_now == "ru":
             win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
+        # stop and start program
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1
             self.btn_start_pause.setText("Стоп")
@@ -151,11 +155,13 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons, Main_text_edit):
 
         self.textEdit.setFocus()
 
+    # if all word was checked
     def game_over(self):
         settings.PROGRAM_STATUS = False
         self.btn.setDisabled(1)
         self.btn_start_pause.setDisabled(1)
         settings.TIMER_INTERVAL = 0
+
 # It for run program
 if __name__ == '__main__':
     app = QApplication(sys.argv)
