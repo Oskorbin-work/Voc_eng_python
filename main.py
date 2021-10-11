@@ -19,7 +19,7 @@ from GUI.bar import Bar
 # -----------------------------------------------------------
 # Import other modules
 # -----------------------------------------------------------
-import win32api
+#import win32api
 
 # Class to describe structure main window
 class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons,):
@@ -140,9 +140,9 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons,):
     def clicked_button_start_pause(self):
         # change language keyboards
         if self.random_language_now == "en":
-            win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
+            pass #win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
         elif self.random_language_now == "ru":
-            win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
+            pass #win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
         # stop and start program
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1

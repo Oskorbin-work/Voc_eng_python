@@ -14,7 +14,8 @@ import settings
 # -----------------------------------------------------------
 # Import other modules
 # -----------------------------------------------------------
-import win32api
+if settings.PLATFORM == "Windows":
+    import win32api
 
 
 # Class to describe  main labels
@@ -60,7 +61,7 @@ class Main_labels(Work_with_bd):
 
     # describe font and size labels text
     def label_set_font_and_size(self):
-        size_label_font = 10
+        size_label_font = 15
         name_label_font = 'Arial'
         self.timer_learn. \
             setFont(QFont(name_label_font, size_label_font))
@@ -120,11 +121,25 @@ class Main_labels(Work_with_bd):
         self.word_now. \
             setText(self.text_labels[7] + self.list_now_word[lang_now])
         if language == "en":
-            win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
+            if settings.PLATFORM == "Windows":
+                win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
+            elif settings.PLATFORM == "Apple":
+                pass
+            elif settings.PLATFORM == "Linux":
+                pass
+            else:
+                pass
             self.transcription_word_now. \
                 setText(self.text_labels[8] + str(self.list_now_word[4]))
         elif language == "ru":
-            win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
+            if settings.PLATFORM == "Windows": # Programm run on WIndows
+                win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
+            elif settings.PLATFORM == "Apple":
+                pass
+            elif settings.PLATFORM == "Linux":
+                pass
+            else:
+                pass
             self.transcription_word_now. \
                 setText(self.text_labels[8] + " - ")
         self.chapter_word_now. \

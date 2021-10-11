@@ -18,7 +18,7 @@ class Main_buttons(Work_with_bd):
         self.btn = QPushButton('Проверить', self)
         self.btn.setStyleSheet("QPushButton"
                                "{"
-                               "background-color : lightblue;"
+                               "background-color : gray;"
                                "}"
                                "QPushButton::pressed"
                                "{"
@@ -31,7 +31,7 @@ class Main_buttons(Work_with_bd):
         self.btn_start_pause = QPushButton('Старт', self)
         self.btn_start_pause .setStyleSheet("QPushButton"
                                "{"
-                               "background-color : lightblue;"
+                               "background-color : gray;"
                                "}"
                                "QPushButton::pressed"
                                "{"
