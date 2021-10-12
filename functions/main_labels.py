@@ -16,6 +16,8 @@ import settings
 # -----------------------------------------------------------
 if settings.PLATFORM == "Windows":
     import win32api
+elif settings.PLATFORM == "Apple":
+    import os
 
 
 # Class to describe  main labels
@@ -124,7 +126,10 @@ class Main_labels(Work_with_bd):
             if settings.PLATFORM == "Windows":
                 win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
             elif settings.PLATFORM == "Apple":
-                pass
+                try:
+                    os.system("xkbswitch -se RussianWin")
+                except:
+                    pass
             elif settings.PLATFORM == "Linux":
                 pass
             else:
@@ -135,7 +140,11 @@ class Main_labels(Work_with_bd):
             if settings.PLATFORM == "Windows": # Programm run on WIndows
                 win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
             elif settings.PLATFORM == "Apple":
-                pass
+                try:
+                    os.system("xkbswitch -se ABC")
+
+                except:
+                    pass
             elif settings.PLATFORM == "Linux":
                 pass
             else:
