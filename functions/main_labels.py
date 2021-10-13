@@ -8,8 +8,8 @@ import random
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
-from database.work_with_bd import Work_with_bd
-from functions.main_buttons import Main_buttons
+from database.work_with_bd import WorkWithBd
+from functions.main_buttons import MainButtons
 import settings
 # -----------------------------------------------------------
 # Import other modules
@@ -18,10 +18,11 @@ if settings.PLATFORM == "Windows":
     import win32api
 elif settings.PLATFORM == "Apple":
     import os
+    from api.mac import Mac
 
 
 # Class to describe  main labels
-class Main_labels(Work_with_bd):
+class MainLabels(WorkWithBd):
     # create labels
     def name_labels(self):
         self.time = QtCore.QTime(0, 0, 0)
@@ -102,11 +103,11 @@ class Main_labels(Work_with_bd):
 
     # change word
     def label_set_text(self, random_id=1, language="ru"):
-        lang_now = Main_buttons.check_language_word(Main_buttons, language)
-        if random_id !=-1:
+        lang_now = MainButtons.check_language_word(MainButtons, language)
+        if random_id != -1:
             self.list_now_word = self.get_row(random_id)
         else:
-            self.list_now_word = ["","","","","","","","",""]
+            self.list_now_word = ["", "", "", "", "", "", "", "", ""]
         self.sum_words_learn. \
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
         self.false_words. \
@@ -126,28 +127,18 @@ class Main_labels(Work_with_bd):
             if settings.PLATFORM == "Windows":
                 win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
             elif settings.PLATFORM == "Apple":
-                try:
-                    os.system("xkbswitch -se RussianWin")
-                except:
-                    pass
+                Mac.change_language(language)
             elif settings.PLATFORM == "Linux":
-                pass
-            else:
                 pass
             self.transcription_word_now. \
                 setText(self.text_labels[8] + str(self.list_now_word[4]))
         elif language == "ru":
-            if settings.PLATFORM == "Windows": # Programm run on WIndows
+            # Program run on Windows
+            if settings.PLATFORM == "Windows":
                 win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
             elif settings.PLATFORM == "Apple":
-                try:
-                    os.system("xkbswitch -se ABC")
-
-                except:
-                    pass
+                Mac.change_language(language)
             elif settings.PLATFORM == "Linux":
-                pass
-            else:
                 pass
             self.transcription_word_now. \
                 setText(self.text_labels[8] + " - ")
@@ -157,7 +148,7 @@ class Main_labels(Work_with_bd):
             setText(self.text_labels[10])
 
     # check enter word
-    def wrong_enter_word(self, random_id_now, status_word = "True",text_check = ""):
+    def wrong_enter_word(self, random_id_now, status_word="True", text_check=""):
         list_now_word = self.get_row(random_id_now)
         # if enter word is false
         if not status_word:
@@ -194,7 +185,7 @@ class Main_labels(Work_with_bd):
             self.list_wrong_check_word[0].setText("Правильно")
             # add 1 life to now word
             if list_now_word[8] > 0:
-                self.edit_work_count_life(random_id_now,list_now_word[8]-1)
+                self.edit_work_count_life(random_id_now, list_now_word[8]-1)
 
     # Create timer
     def timer(self):
@@ -214,7 +205,7 @@ class Main_labels(Work_with_bd):
         self.add_work_count_life()
         self.order_main_table()
         self.random_id_now = self.get_id_row_bd()
-        self.random_language_now = Main_buttons.choice_ru_or_en_word(Main_buttons)
+        self.random_language_now = MainButtons.choice_ru_or_en_word(MainButtons)
         self.name_labels()
         self.label_set_font_and_size()
         self.label_set_text(self.random_id_now, self.random_language_now)

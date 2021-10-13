@@ -7,11 +7,11 @@ import random
 # Codes other files project
 # -----------------------------------------------------------
 import settings
-from database.work_with_bd import Work_with_bd
+from database.work_with_bd import WorkWithBd
 
 
 # Class to describe  main buttons
-class Main_buttons(Work_with_bd):
+class MainButtons(WorkWithBd):
 
     # def to create main_button
     def create_main_button(self):

@@ -1,9 +1,8 @@
 # -----------------------------------------------------------
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
-from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget,QLineEdit,
+    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,
 )
 import sys
 # -----------------------------------------------------------
@@ -11,18 +10,22 @@ import sys
 # -----------------------------------------------------------
 # Initiate labels from main window
 import settings
-from functions.main_labels import Main_labels
+from functions.main_labels import MainLabels
 # Initiate buttons from main window
-from functions.main_buttons import Main_buttons
+from functions.main_buttons import MainButtons
 # Initiate bar-structure
 from GUI.bar import Bar
 # -----------------------------------------------------------
 # Import other modules
 # -----------------------------------------------------------
-#import win32api
+if settings.PLATFORM == "Windows":
+    import win32api
+elif settings.PLATFORM == "Apple":
+    import os
+
 
 # Class to describe structure main window
-class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons,):
+class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def __init__(self):
         super().__init__()
@@ -30,7 +33,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons,):
         self.main_window_parameter()
         # Initiate bar menu
         self.statusbar = self.statusBar()
-        self.bar_category_fileMenu()  # Initiate Bar category fileMenu
+        self.bar_category_file_menu()  # Initiate Bar category fileMenu
         # Initiate main buttons
         self.create_main_button()
         self.create_button_start_pause()
@@ -118,7 +121,7 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons,):
 
     # Functional button "Проверить"
     def clicked_main_button(self):
-        status_word = (self.check_enter_word(self.random_id_now, self.random_language_now,self.textEdit.text()))
+        status_word = (self.check_enter_word(self.random_id_now, self.random_language_now, self.textEdit.text()))
         self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text())
         self.random_language_now = self.choice_ru_or_en_word()
         # -----------------------------------------------
@@ -165,5 +168,5 @@ class Main_windows(QMainWindow, Bar, Main_labels, Main_buttons,):
 # It for run program
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Main_windows()
+    ex = MainWindow()
     sys.exit(app.exec_())

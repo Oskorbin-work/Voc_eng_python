@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QLabel, QAction
 # -----------------------------------------------------------
 import settings
 
+
 #  In class "Bar" -- menuBar in main program
 class Bar:
     def __init__(self):  # Initiate menuBar
@@ -14,8 +15,8 @@ class Bar:
         self.menubar = self.menuBar()
 
     # create structure bar
-    def bar_category_fileMenu(self):
-        fileMenu = self.menubar.addMenu('File')
-        fileMenu.addAction(QAction('', self))
-        Work_with_bd = self.menubar.addMenu('Data Base')
-        Work_with_bd.addAction(QAction('', self))
+    def bar_category_file_menu(self):
+        file_menu = self.menubar.addMenu('File')
+        file_menu.addAction(QAction('', self))
+        work_with_bd = self.menubar.addMenu('Data Base')
+        work_with_bd.addAction(QAction('', self))

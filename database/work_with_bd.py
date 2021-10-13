@@ -15,7 +15,7 @@ from settings import ROOT_MAIN_DB
 
 
 # Class to work with bd
-class Work_with_bd:
+class WorkWithBd:
     # Sorting rows in the database
     def order_main_table(self):
         try:
@@ -42,7 +42,7 @@ class Work_with_bd:
             # Add ordering rows in main_table
             for i in range(len(all_row)):
                 string = f"'{i+1}', '" + "', '".join(all_row[i]) + "'"
-                cur.execute( f"INSERT INTO main_table VALUES ({string});")
+                cur.execute(f"INSERT INTO main_table VALUES ({string});")
             conn.commit()
             conn.close()
         except sqlite3.Error:
