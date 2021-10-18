@@ -6,7 +6,7 @@ import sqlite3
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
-from list_error import view_error_critical
+from functions.notifications import view_error_critical
 from settings import ROOT_MAIN_DB
 
 

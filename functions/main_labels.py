@@ -10,15 +10,12 @@ import random
 # -----------------------------------------------------------
 from database.work_with_bd import WorkWithBd
 from functions.main_buttons import MainButtons
+
+from functions.notifications import view_info_transcription
 import settings
 # -----------------------------------------------------------
 # Import other modules
 # -----------------------------------------------------------
-if settings.PLATFORM == "Windows":
-    import win32api
-elif settings.PLATFORM == "Apple":
-    import os
-    from api.mac import Mac
 
 
 # Class to describe  main labels
@@ -123,23 +120,11 @@ class MainLabels(WorkWithBd):
 
         self.word_now. \
             setText(self.text_labels[7] + self.list_now_word[lang_now])
+
         if language == "en":
-            if settings.PLATFORM == "Windows":
-                win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
-            elif settings.PLATFORM == "Apple":
-                Mac.change_language(language)
-            elif settings.PLATFORM == "Linux":
-                pass
             self.transcription_word_now. \
                 setText(self.text_labels[8] + str(self.list_now_word[4]))
         elif language == "ru":
-            # Program run on Windows
-            if settings.PLATFORM == "Windows":
-                win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
-            elif settings.PLATFORM == "Apple":
-                Mac.change_language(language)
-            elif settings.PLATFORM == "Linux":
-                pass
             self.transcription_word_now. \
                 setText(self.text_labels[8] + " - ")
         self.chapter_word_now. \
@@ -186,6 +171,9 @@ class MainLabels(WorkWithBd):
             # add 1 life to now word
             if list_now_word[8] > 0:
                 self.edit_work_count_life(random_id_now, list_now_word[8]-1)
+
+    def get_info_transcription(self,id_now):
+        view_info_transcription(WorkWithBd.get_row(WorkWithBd,id_now)[5])
 
     # Create timer
     def timer(self):

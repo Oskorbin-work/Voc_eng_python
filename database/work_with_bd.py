@@ -10,7 +10,7 @@ import settings
 from database.functions_for_bd import (
     request_bd_update, request_bd_select
 )
-from list_error import view_error_critical
+from functions.notifications import view_error_critical
 from settings import ROOT_MAIN_DB
 
 

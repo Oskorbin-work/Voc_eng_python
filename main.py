@@ -8,20 +8,16 @@ import sys
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
-# Initiate labels from main window
+# settings
 import settings
+# Initiate labels from main window
 from functions.main_labels import MainLabels
 # Initiate buttons from main window
 from functions.main_buttons import MainButtons
 # Initiate bar-structure
 from GUI.bar import Bar
-# -----------------------------------------------------------
-# Import other modules
-# -----------------------------------------------------------
-if settings.PLATFORM == "Windows":
-    import win32api
-elif settings.PLATFORM == "Apple":
-    import os
+# Notifications
+import functions.notifications as notifications
 
 
 # Class to describe structure main window
@@ -37,6 +33,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Initiate main buttons
         self.create_main_button()
         self.create_button_start_pause()
+        self.create_info_transcription()
         # Initiate main text edit
         self.textEdit = QLineEdit()
         # Initiate grid
@@ -56,6 +53,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.btn.clicked.connect(lambda: self.clicked_main_button())
         self.btn.setDisabled(1)
         self.btn_start_pause.clicked.connect(lambda: self.clicked_button_start_pause())
+        self.btn_info_transcription.clicked.connect(lambda: self.clicked_button_info_transcription())
         # create Grid
         grid = QGridLayout()
 
@@ -90,10 +88,14 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Chapter
         grid.addWidget(self.chapter_word_now, 11, 0)
 
+        # info_transcription
+        grid.addWidget(self.btn_info_transcription, 11, 1)
+
         # Field for word
         grid.addWidget(self.textEdit, 12, 0)
         # Buttons for check word
         grid.addWidget(self.btn, 12, 1)
+        # start/pause
         grid.addWidget(self.btn_start_pause, 13, 1)
         # -----------------------------------------------------------
         # Wrong section
@@ -113,11 +115,15 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working but it have bug
         # 16777220 is Enter.
+        print(event.key())
         if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
-        # 16777222 is 0 in table number
-        elif event.key() == 16777222:
+        # 16777222 in Shift
+        elif event.key() == 16777248:
             self.clicked_button_start_pause()
+        # 16777251 in Option
+        elif event.key() == 16777251:
+            self.clicked_button_info_transcription()
 
     # Functional button "Проверить"
     def clicked_main_button(self):
@@ -141,11 +147,6 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     # Button "Старт/Стоп"
     def clicked_button_start_pause(self):
-        # change language keyboards
-        if self.random_language_now == "en":
-            pass #win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_RUSSIAN}', 1)
-        elif self.random_language_now == "ru":
-            pass #win32api.LoadKeyboardLayout(f'{settings.KEYBOARD_ENGLISH}', 1)
         # stop and start program
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1
@@ -158,12 +159,17 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
         self.textEdit.setFocus()
 
+    def clicked_button_info_transcription(self):
+        self.get_info_transcription(self.random_id_now)
+        #notifications.view_info_transcription(self.random_id_now)
+
     # if all word was checked
     def game_over(self):
         settings.PROGRAM_STATUS = False
         self.btn.setDisabled(1)
         self.btn_start_pause.setDisabled(1)
         settings.TIMER_INTERVAL = 0
+
 
 # It for run program
 if __name__ == '__main__':

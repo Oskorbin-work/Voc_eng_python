@@ -8,6 +8,7 @@ import random
 # -----------------------------------------------------------
 import settings
 from database.work_with_bd import WorkWithBd
+from api.functions_for_all_systems import FuncForAllSystems
 
 
 # Class to describe  main buttons
@@ -39,9 +40,24 @@ class MainButtons(WorkWithBd):
                                "}"
                                )
 
+    def create_info_transcription(self):
+        self.btn_info_transcription = QPushButton('Дефиниция', self)
+        self.btn_info_transcription.setStyleSheet("QPushButton"
+                               "{"
+                               "background-color : gray;"
+                               "}"
+                               "QPushButton::pressed"
+                               "{"
+                               "background-color : gray;"
+                               "}"
+                               )
+
     # When a word is selected for checking, then you need to select a language for it
     def choice_ru_or_en_word(self):
-        return random.choice(settings.LANGUAGE)
+        language = random.choice(settings.LANGUAGE)
+        # change language
+        FuncForAllSystems.change_language(FuncForAllSystems, language)
+        return language
 
     # chek language now word
     def check_language_word(self, language, reverse="reverse_off"):
