@@ -8,6 +8,7 @@ import sys
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
+from database.old_data_to_database import test
 # settings
 import settings
 # Initiate labels from main window
@@ -25,6 +26,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def __init__(self):
         super().__init__()
+        test()
         # Set main setting "view window"
         self.main_window_parameter()
         # Initiate bar menu

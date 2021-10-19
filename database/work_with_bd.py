@@ -8,7 +8,7 @@ import sqlite3
 # -----------------------------------------------------------
 import settings
 from database.functions_for_bd import (
-    request_bd_update, request_bd_select
+    request_bd_update, request_bd_select, request_bd_insert
 )
 from functions.notifications import view_error_critical
 from settings import ROOT_MAIN_DB
@@ -97,3 +97,15 @@ class WorkWithBd:
     @request_bd_select
     def get_count_change_world(self):
         return "select COUNT(*) from Main_table where work_count_life =-1"
+
+    # insert row  to database
+    @request_bd_insert
+    def insert_row(self,list):
+
+        return "INSERT INTO Main_table (english_word, russian_word, parts_of_speech," \
+               " transcription, definition, count_life, " \
+               "other_information, work_count_life)" \
+               f"VALUES ('{list[0]}', '{list[6]}', '{list[1]}'," \
+               f" '{list[2]}', '{list[4]}', '{ int(list[5])}'," \
+               f" '{list[3]}', null);"
+
