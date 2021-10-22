@@ -18,7 +18,6 @@ from functions.main_buttons import MainButtons
 # Initiate bar-structure
 from GUI.bar import Bar
 # Notifications
-import functions.notifications as notifications
 
 
 # Class to describe structure main window
@@ -26,7 +25,6 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def __init__(self):
         super().__init__()
-        test()
         # Set main setting "view window"
         self.main_window_parameter()
         # Initiate bar menu
@@ -117,11 +115,10 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working but it have bug
         # 16777220 is Enter.
-        print(event.key())
         if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
         # 16777222 in Shift
-        elif event.key() == 16777248:
+        elif event.key() == 16777249:
             self.clicked_button_start_pause()
         # 16777251 in Option
         elif event.key() == 16777251:
@@ -134,7 +131,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.random_language_now = self.choice_ru_or_en_word()
         # -----------------------------------------------
         # section functional
-        self.random_id_now = self.get_id_row_bd()
+        self.check_life_word()
         # -----------------------------------------------
         self.label_set_text(self.random_id_now, self.random_language_now)
         # -----------------------------------------------

@@ -4,22 +4,20 @@
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QLabel
 from PyQt5 import QtCore
-import random
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
-from database.work_with_bd import WorkWithBd
+from database.work_data_bd import WorkDataBd
 from functions.main_buttons import MainButtons
 
-from functions.notifications import view_info_transcription
 import settings
 # -----------------------------------------------------------
 # Import other modules
 # -----------------------------------------------------------
 
-
 # Class to describe  main labels
-class MainLabels(WorkWithBd):
+class MainLabels(WorkDataBd):
+
     # create labels
     def name_labels(self):
         self.time = QtCore.QTime(0, 0, 0)
@@ -89,14 +87,6 @@ class MainLabels(WorkWithBd):
             setFont(QFont(name_label_font, size_label_font))
         for row_check in self.list_wrong_check_word:
             row_check.setFont(QFont(name_label_font, size_label_font))
-
-    # def for get random row
-    def get_id_row_bd(self):
-        try:
-            return random.randint(self.get_first_id_count_life_3()[0], self.get_count_all_word()[0])
-        except:
-            settings.PROGRAM_STATUS = False
-            return -1
 
     # change word
     def label_set_text(self, random_id=1, language="ru"):
@@ -172,8 +162,7 @@ class MainLabels(WorkWithBd):
             if list_now_word[8] > 0:
                 self.edit_work_count_life(random_id_now, list_now_word[8]-1)
 
-    def get_info_transcription(self,id_now):
-        view_info_transcription(WorkWithBd.get_row(WorkWithBd,id_now)[5])
+
 
     # Create timer
     def timer(self):
@@ -188,11 +177,12 @@ class MainLabels(WorkWithBd):
         self.time = self.time.addSecs(settings.TIMER_INTERVAL)
         self.timer_learn.setText(self.time.toString("Время: hh:mm:ss"))
 
+
     # Main label def
     def main_label_def(self):
         self.add_work_count_life()
         self.order_main_table()
-        self.random_id_now = self.get_id_row_bd()
+        self.check_life_word()
         self.random_language_now = MainButtons.choice_ru_or_en_word(MainButtons)
         self.name_labels()
         self.label_set_font_and_size()

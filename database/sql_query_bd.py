@@ -41,6 +41,8 @@ class WorkWithBd:
             cur.execute(f"DELETE FROM main_table;")
             # Add ordering rows in main_table
             for i in range(len(all_row)):
+                # '1', 'Abandon', 'Покидать', 'verb', 'əˈbændə', 'to leave someone or something somewhere,
+                # sometimes not returning to get them', '-1', 'LEAVE', '-1'
                 string = f"'{i+1}', '" + "', '".join(all_row[i]) + "'"
                 cur.execute(f"INSERT INTO main_table VALUES ({string});")
             conn.commit()
@@ -97,6 +99,12 @@ class WorkWithBd:
     @request_bd_select
     def get_count_change_world(self):
         return "select COUNT(*) from Main_table where work_count_life =-1"
+
+    # get first id word where default count life == 3
+    @request_bd_select
+    def get_work_count_life(self, now_id):
+        return f"select work_count_life from Main_table where id_main = {now_id}"
+
 
     # insert row  to database
     @request_bd_insert

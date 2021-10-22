@@ -7,7 +7,7 @@ import random
 # Codes other files project
 # -----------------------------------------------------------
 import settings
-from database.work_with_bd import WorkWithBd
+from database.sql_query_bd import WorkWithBd
 from api.functions_for_all_systems import FuncForAllSystems
 
 
