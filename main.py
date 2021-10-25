@@ -25,6 +25,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def __init__(self):
         super().__init__()
+        #test()
         # Set main setting "view window"
         self.main_window_parameter()
         # Initiate bar menu
@@ -62,31 +63,32 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Information about words
         # -----------------------------------------------------------
         # timer from start
-        grid.addWidget(self.timer_learn, 1, 1)
+        grid.addWidget(self.information_labels["timer learn"], 1, 1)
         # count words are for learning
-        grid.addWidget(self.sum_words_learn, 2, 0)
+        grid.addWidget(self.information_labels["sum words learn"], 2, 0)
         # count words to without verification
-        grid.addWidget(self.false_words, 3, 0)
+        grid.addWidget(self.information_labels["false words"], 3, 0)
         # count words to with verification
-        grid.addWidget(self.true_words, 4, 0)
+        grid.addWidget(self.information_labels["true words"], 4, 0)
         # count words that can change
-        grid.addWidget(self.change_words_learn, 5, 0)
-        grid.addWidget(self.line_between_bd_and_word, 6, 0)
+        grid.addWidget(self.information_labels["change words learn"], 5, 0)
+        # Line
+        grid.addWidget(self.information_labels["line between bd and word"], 6, 0)
         # -----------------------------------------------------------
         # Word that is checking
         # -----------------------------------------------------------
 
         # Word is checking.
-        grid.addWidget(self.word_now, 7, 0)
+        grid.addWidget(self.information_labels["word now"], 7, 0)
         # count words are for learning
-        grid.addWidget(self.count_word_now, 8, 0)
+        grid.addWidget(self.information_labels["count word now"], 8, 0)
 
         # Part of speech
-        grid.addWidget(self.parts_of_speech_word_now, 9, 0)
+        grid.addWidget(self.information_labels["parts of speech word now"], 9, 0)
         # Transcription
-        grid.addWidget(self.transcription_word_now, 10, 0)
+        grid.addWidget(self.information_labels["transcription word now"], 10, 0)
         # Chapter
-        grid.addWidget(self.chapter_word_now, 11, 0)
+        grid.addWidget(self.information_labels["chapter word now"], 11, 0)
 
         # info_transcription
         grid.addWidget(self.btn_info_transcription, 11, 1)
@@ -102,9 +104,11 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # -----------------------------------------------------------
         index_check_word = 13
         # Place for information about now word
-        for row_check in self.list_wrong_check_word:
-            grid.addWidget(row_check, index_check_word, 0)
-            index_check_word += 1
+        grid.addWidget(self.information_labels["status word"], 13, 0)
+        grid.addWidget(self.information_labels["wrong one"], 14, 0)
+        grid.addWidget(self.information_labels["right one"], 15, 0)
+        grid.addWidget(self.information_labels["transcription word previous"], 16, 0)
+        # -----------------------------------------------------------
 
         # This is widget!
         widget = QWidget()
@@ -149,7 +153,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # stop and start program
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1
-            self.btn_start_pause.setText("Стоп")
+            self.btn_start_pause.setText("Пауза")
             self.btn.setEnabled(1)
         else:
             self.btn.setDisabled(1)

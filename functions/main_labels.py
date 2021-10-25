@@ -38,55 +38,37 @@ class MainLabels(WorkDataBd):
             # id -- 12. Entered word
             "Неправильный вариант: ",
             # id -- 13. True translate
-            "Ответ: ",
+            "Правильный вариант: ",
             # id -- 14. Transcription
             "Транскрипция: ",
-
         ]
-        self.timer_learn = QLabel()
+        self.information_labels = {
+            "timer learn": QLabel(),
+            "sum words learn": QLabel(),
+            "false words": QLabel(),
+            "true words": QLabel(),
+            "change words learn": QLabel(),
+            "count word now": QLabel(),
+            "parts of speech word now": QLabel(),
+            "word now": QLabel(),
+            "transcription word now": QLabel(),
+            "chapter word now": QLabel(),
+            "line between bd and word": QLabel(),
+            # above text edit
+            "status word": QLabel(),
+            "wrong one": QLabel(),
+            "right one": QLabel(),
+            "transcription word previous": QLabel(),
+
+        }
         self.timer()
-        self.sum_words_learn = QLabel()
-        self.false_words = QLabel()
-        self.true_words = QLabel()
-        self.change_words_learn = QLabel()
-        self.count_word_now = QLabel()
-        self.parts_of_speech_word_now = QLabel()
-        self.word_now = QLabel()
-        self.transcription_word_now = QLabel()
-        self.chapter_word_now = QLabel()
-        self.line_between_bd_and_word = QLabel()
-        self.list_wrong_check_word = [QLabel(), QLabel(), QLabel(), QLabel()]
 
     # describe font and size labels text
     def label_set_font_and_size(self):
         size_label_font = 15
         name_label_font = 'Arial'
-        self.timer_learn. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.sum_words_learn. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.false_words. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.true_words. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.change_words_learn. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.count_word_now. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.parts_of_speech_word_now. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.word_now. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.transcription_word_now. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.chapter_word_now. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.chapter_word_now. \
-            setFont(QFont(name_label_font, size_label_font))
-        self.line_between_bd_and_word. \
-            setFont(QFont(name_label_font, size_label_font))
-        for row_check in self.list_wrong_check_word:
-            row_check.setFont(QFont(name_label_font, size_label_font))
+        for element in self.information_labels:
+            self.information_labels[element].setFont(QFont(name_label_font, size_label_font))
 
     # change word
     def label_set_text(self, random_id=1, language="ru"):
@@ -95,31 +77,30 @@ class MainLabels(WorkDataBd):
             self.list_now_word = self.get_row(random_id)
         else:
             self.list_now_word = ["", "", "", "", "", "", "", "", ""]
-        self.sum_words_learn. \
+        self.information_labels["sum words learn"]. \
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
-        self.false_words. \
+        self.information_labels["false words"]. \
             setText(self.text_labels[2] + str(self.get_count_false_world()[0]))
-        self.true_words. \
+        self.information_labels["true words"]. \
             setText(self.text_labels[3] + str(self.get_count_true_world()[0]))
-        self.change_words_learn. \
+        self.information_labels["change words learn"]. \
             setText(self.text_labels[4] + str(self.get_count_change_world()[0]))
-        self.count_word_now. \
+        self.information_labels["count word now"]. \
             setText(self.text_labels[5] + str(self.list_now_word[8]))
-        self.parts_of_speech_word_now. \
+        self.information_labels["parts of speech word now"]. \
             setText(self.text_labels[6] + self.list_now_word[3])
 
-        self.word_now. \
+        self.information_labels["word now"]. \
             setText(self.text_labels[7] + self.list_now_word[lang_now])
-
         if language == "en":
-            self.transcription_word_now. \
+            self.information_labels["transcription word now"]. \
                 setText(self.text_labels[8] + str(self.list_now_word[4]))
         elif language == "ru":
-            self.transcription_word_now. \
+            self.information_labels["transcription word now"]. \
                 setText(self.text_labels[8] + " - ")
-        self.chapter_word_now. \
+        self.information_labels["chapter word now"]. \
             setText(self.text_labels[9] + self.list_now_word[7])
-        self.line_between_bd_and_word. \
+        self.information_labels["line between bd and word"]. \
             setText(self.text_labels[10])
 
     # check enter word
@@ -131,17 +112,17 @@ class MainLabels(WorkDataBd):
             # Output information about true translate now word
             # -----------------------------------------------------------
             index_check_word = 11
-            self.list_wrong_check_word[0].setText(
+            self.information_labels["status word"].setText(
                 f"{self.text_labels[index_check_word]}")
-            self.list_wrong_check_word[1].setText(
+            self.information_labels["wrong one"].setText(
                 f"{self.text_labels[index_check_word+1]}"
                 f" {text_check[0:1].upper()}{text_check[1:].lower()}")
-            self.list_wrong_check_word[2].setText(
+            self.information_labels["right one"].setText(
                 f"{self.text_labels[index_check_word+2]}"
                 f" {list_now_word[1]}"
                 f" ="
                 f" {list_now_word[2]}")
-            self.list_wrong_check_word[3].setText(
+            self.information_labels["transcription word previous"].setText(
                 f"{self.text_labels[index_check_word + 3]}"
                 f" [ {list_now_word[4]} ]")
             # -----------------------------------------------------------
@@ -151,18 +132,17 @@ class MainLabels(WorkDataBd):
 
         # if enter word is true
         else:
-            index_check_word = 11
-            # clear information about last word
-            for row_check in self.list_wrong_check_word:
-                row_check.setText("")
-                index_check_word += 1
             # output information that translate now word is true
-            self.list_wrong_check_word[0].setText("Правильно")
+            self.information_labels["status word"].setText("Правильно")
+            # -----------------------------------------------------------
+            # clear information about last word
+            self.information_labels["transcription word previous"].setText("")
+            self.information_labels["wrong one"].setText("")
+            self.information_labels["right one"].setText("")
+            # -----------------------------------------------------------
             # add 1 life to now word
             if list_now_word[8] > 0:
                 self.edit_work_count_life(random_id_now, list_now_word[8]-1)
-
-
 
     # Create timer
     def timer(self):
@@ -175,7 +155,7 @@ class MainLabels(WorkDataBd):
     # Change time to timer
     def timer_text(self):
         self.time = self.time.addSecs(settings.TIMER_INTERVAL)
-        self.timer_learn.setText(self.time.toString("Время: hh:mm:ss"))
+        self.information_labels["timer learn"].setText(self.time.toString("Время: hh:mm:ss"))
 
 
     # Main label def
