@@ -58,56 +58,87 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # create Grid
         grid = QGridLayout()
 
+        grid_map = (
+                # sum words learn                           #timer learn -- 0
+                ((0, 0),                                    (0, 1),),
+                # count words to without verification
+                ((1, 0),                                    (1, 1),),
+                # count words to with verification
+                ((2, 0),                                    (2, 1),),
+                # sum words learn   #timer learn
+                ((3, 0), (3, 1),),
+                # sum words learn   #timer learn
+                ((4, 0), (4, 1),),
+                # sum words learn   #timer learn
+                ((5, 0), (5, 1),),
+                # sum words learn   #timer learn
+                ((6, 0), (6, 1),),
+                # sum words learn   #timer learn
+                ((7, 0), (7, 1),),
+                # sum words learn   #timer learn
+                ((8, 0), (8, 1),),
+                # sum words learn   #timer learn
+                ((9, 0), (9, 1),),
+                # sum words learn   #timer learn
+                ((10, 0), (10, 1),),
+                # sum words learn   #timer learn
+                ((11, 0), (11, 1),),
+                # sum words learn   #timer learn
+                ((12, 0), (12, 1),),
+                # sum words learn   #timer learn
+                ((13, 0), (13, 1),),
+                # sum words learn   #timer learn
+                ((14, 0), (14, 1),),
+        )
         # -----------------------------------------------------------
         # add main labels
         # Information about words
         # -----------------------------------------------------------
-        # timer from start
-        grid.addWidget(self.information_labels["timer learn"], 1, 1)
         # count words are for learning
-        grid.addWidget(self.information_labels["sum words learn"], 2, 0)
+        grid.addWidget(self.information_labels["sum words learn"], grid_map[0][0][0], grid_map[0][0][1])
+        # timer from start
+        grid.addWidget(self.information_labels["timer learn"], grid_map[0][1][0], grid_map[0][1][1])
         # count words to without verification
-        grid.addWidget(self.information_labels["false words"], 3, 0)
+        grid.addWidget(self.information_labels["false words"], grid_map[1][0][0], grid_map[1][0][1])
         # count words to with verification
-        grid.addWidget(self.information_labels["true words"], 4, 0)
+        grid.addWidget(self.information_labels["true words"], grid_map[2][0][0], grid_map[2][0][1])
         # count words that can change
-        grid.addWidget(self.information_labels["change words learn"], 5, 0)
+        grid.addWidget(self.information_labels["change words learn"], 3, 0)
         # Line
-        grid.addWidget(self.information_labels["line between bd and word"], 6, 0)
+        grid.addWidget(self.information_labels["line between bd and word"], 4, 0)
         # -----------------------------------------------------------
         # Word that is checking
         # -----------------------------------------------------------
 
         # Word is checking.
-        grid.addWidget(self.information_labels["word now"], 7, 0)
+        grid.addWidget(self.information_labels["word now"], 5, 0)
         # count words are for learning
-        grid.addWidget(self.information_labels["count word now"], 8, 0)
+        grid.addWidget(self.information_labels["count word now"], 6, 0)
 
         # Part of speech
-        grid.addWidget(self.information_labels["parts of speech word now"], 9, 0)
+        grid.addWidget(self.information_labels["parts of speech word now"], 7, 0)
         # Transcription
-        grid.addWidget(self.information_labels["transcription word now"], 10, 0)
+        grid.addWidget(self.information_labels["transcription word now"], 8, 0)
         # Chapter
-        grid.addWidget(self.information_labels["chapter word now"], 11, 0)
+        grid.addWidget(self.information_labels["chapter word now"], 9, 0)
 
         # info_transcription
-        grid.addWidget(self.btn_info_transcription, 11, 1)
+        grid.addWidget(self.btn_info_transcription, 9, 1)
 
         # Field for word
-        grid.addWidget(self.textEdit, 12, 0)
+        grid.addWidget(self.textEdit, 10, 0)
         # Buttons for check word
-        grid.addWidget(self.btn, 12, 1)
+        grid.addWidget(self.btn, 10, 1)
         # start/pause
-        grid.addWidget(self.btn_start_pause, 13, 1)
+        grid.addWidget(self.btn_start_pause, 11, 1)
         # -----------------------------------------------------------
         # Wrong section
         # -----------------------------------------------------------
-        index_check_word = 13
         # Place for information about now word
-        grid.addWidget(self.information_labels["status word"], 13, 0)
-        grid.addWidget(self.information_labels["wrong one"], 14, 0)
-        grid.addWidget(self.information_labels["right one"], 15, 0)
-        grid.addWidget(self.information_labels["transcription word previous"], 16, 0)
+        grid.addWidget(self.information_labels["status word"], 11, 0)
+        grid.addWidget(self.information_labels["wrong one"], 12, 0)
+        grid.addWidget(self.information_labels["right one"], 13, 0)
+        grid.addWidget(self.information_labels["transcription word previous"], 14, 0)
         # -----------------------------------------------------------
 
         # This is widget!

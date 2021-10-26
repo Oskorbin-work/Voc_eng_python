@@ -30,7 +30,7 @@ class WorkDataBd(WorkWithBd):
         # if all words have been passed
         if self.get_count_false_world()[0] == 0:
             view_info_transcription("Вы прошли все слова!")
-            self.random_id_now = self.get_first_id_count_life_3()[0]
+            settings.PROGRAM_STATUS = False
         else:
             # get random word
             self.random_id_now = self.get_id_row_bd()
