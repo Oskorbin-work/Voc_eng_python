@@ -2,7 +2,7 @@
 from database.sql_query_bd import WorkWithBd
 
 
-def test():
+def old_data():
 
     Lines = open('database/old_program/List of words.txt', 'r')
 
