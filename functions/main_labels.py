@@ -15,6 +15,7 @@ import settings
 # Import other modules
 # -----------------------------------------------------------
 
+
 # Class to describe  main labels
 class MainLabels(WorkDataBd):
 
@@ -24,8 +25,8 @@ class MainLabels(WorkDataBd):
         self.text_labels = [
             'Время: 00:00:00',
             'Всего слов: ',
-            'Непроверенные слова: ',
-            'Проверенные слова: ',
+            'Слов с более 1 жизнью: ',
+            'Слов с 0 жизнями: ',
             'Старые слова: ',
             'Количество очков слова: ',
             'Часть слова: ',
@@ -41,11 +42,17 @@ class MainLabels(WorkDataBd):
             "Правильный вариант: ",
             # id -- 14. Transcription
             "Транскрипция: ",
+            # id -- 15. Words where life = 3
+            "Слов с 3 жизнями: ",
+            # id -- 16. Words where life = 2
+            "Слов с 2 жизнями: ",
+            # id -- 17. Words where life = 1
+            "Слов с 1 жизнями: ",
         ]
         self.information_labels = {
             "timer learn": QLabel(),
             "sum words learn": QLabel(),
-            "false words": QLabel(),
+            "words with more 3": QLabel(),
             "true words": QLabel(),
             "change words learn": QLabel(),
             "count word now": QLabel(),
@@ -59,6 +66,9 @@ class MainLabels(WorkDataBd):
             "wrong one": QLabel(),
             "right one": QLabel(),
             "transcription word previous": QLabel(),
+            "words with 3": QLabel(),
+            "words with 2": QLabel(),
+            "words with 1": QLabel(),
 
         }
         self.timer()
@@ -79,10 +89,10 @@ class MainLabels(WorkDataBd):
             self.list_now_word = ["", "", "", "", "", "", "", "", ""]
         self.information_labels["sum words learn"]. \
             setText(self.text_labels[1] + str(self.get_count_all_word()[0]))
-        self.information_labels["false words"]. \
+        self.information_labels["words with more 3"]. \
             setText(self.text_labels[2] + str(self.get_count_false_world()[0]))
         self.information_labels["true words"]. \
-            setText(self.text_labels[3] + str(self.get_count_true_world()[0]))
+            setText(self.text_labels[3] + str(self.get_count_world(0)[0]))
         self.information_labels["change words learn"]. \
             setText(self.text_labels[4] + str(self.get_count_change_world()[0]))
         self.information_labels["count word now"]. \
@@ -102,6 +112,12 @@ class MainLabels(WorkDataBd):
             setText(self.text_labels[9] + self.list_now_word[7])
         self.information_labels["line between bd and word"]. \
             setText(self.text_labels[10])
+        self.information_labels["words with 3"]. \
+            setText(self.text_labels[15] + str(self.get_count_world(3)[0]))
+        self.information_labels["words with 2"]. \
+            setText(self.text_labels[16] + str(self.get_count_world(2)[0]))
+        self.information_labels["words with 1"]. \
+            setText(self.text_labels[17] + str(self.get_count_world(1)[0]))
 
     # check enter word
     def wrong_enter_word(self, random_id_now, status_word="True", text_check=""):

@@ -59,13 +59,13 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         grid = QGridLayout()
 
         grid_map = (
-                # sum words learn                           #timer learn -- 0
+                # timer learn -- 0                          # Words where life => 1
                 ((0, 0),                                    (0, 1),),
-                # count words to without verification
+                # sum words learn                           # Words where life = 3
                 ((1, 0),                                    (1, 1),),
-                # count words to with verification
+                # count words to with verification          # Words where life = 2
                 ((2, 0),                                    (2, 1),),
-                # count words that can change
+                # count words that can change               # Words where life = 1
                 ((3, 0),                                    (3, 1),),
                 #  Line
                 ((4, 0),                                    (4, 1),),
@@ -94,16 +94,22 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # add main labels
         # Information about words
         # -----------------------------------------------------------
-        # Count words are for learning
-        grid.addWidget(self.information_labels["sum words learn"], grid_map[0][0][0], grid_map[0][0][1])
         # Timer from start
-        grid.addWidget(self.information_labels["timer learn"], grid_map[0][1][0], grid_map[0][1][1])
-        # Count words to without verification
-        grid.addWidget(self.information_labels["false words"], grid_map[1][0][0], grid_map[1][0][1])
+        grid.addWidget(self.information_labels["timer learn"], grid_map[0][0][0], grid_map[0][0][1])
+        # Words where life => 1
+        grid.addWidget(self.information_labels["words with more 3"], grid_map[0][1][0], grid_map[0][1][1])
+        # Count words are for learning
+        grid.addWidget(self.information_labels["sum words learn"], grid_map[1][0][0], grid_map[0][0][1])
+        # Words where life = 3
+        grid.addWidget(self.information_labels["words with 3"], grid_map[1][1][0], grid_map[1][1][1])
         # Count words to with verification
         grid.addWidget(self.information_labels["true words"], grid_map[2][0][0], grid_map[2][0][1])
+        # Words where life = 2
+        grid.addWidget(self.information_labels["words with 2"], grid_map[2][1][0], grid_map[2][1][1])
         # Count words that can change
         grid.addWidget(self.information_labels["change words learn"], grid_map[3][0][0], grid_map[3][0][1])
+        # Words where life = 1
+        grid.addWidget(self.information_labels["words with 1"], grid_map[3][1][0], grid_map[3][1][1])
         # Line
         grid.addWidget(self.information_labels["line between bd and word"], grid_map[4][0][0], grid_map[4][0][1])
         # -----------------------------------------------------------

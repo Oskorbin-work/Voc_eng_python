@@ -82,8 +82,8 @@ class WorkWithBd:
 
     # get count row " Проверенные" from database
     @request_bd_select
-    def get_count_true_world(self):
-        return "select COUNT(*) from Main_table where work_count_life =0"
+    def get_count_world(self, count):
+        return f"select COUNT(*) from Main_table where work_count_life ={count}"
 
     # get count row " Непроверенные" from database
     @request_bd_select
