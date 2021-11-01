@@ -13,6 +13,7 @@ import settings
 # Work with Data Bd
 class WorkDataBd(WorkWithBd):
 
+
     # def for get random row
     def get_id_row_bd(self):
         try:
@@ -36,3 +37,4 @@ class WorkDataBd(WorkWithBd):
             self.random_id_now = self.get_id_row_bd()
             if self.get_work_count_life(self.random_id_now)[0] == 0:
                 self.check_life_word()
+

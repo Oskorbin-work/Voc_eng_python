@@ -7,9 +7,10 @@ from sys import platform
 # Codes other files project
 # -----------------------------------------------------------
 
-# setting address
+# Setting address
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) + '/'
 ROOT_MAIN_DB = ROOT_DIR + "database" + '/' + 'data_word.sqlite'
+NAME_ACTIVE_TABLE = "Main_table"
 
 # Setting language
 LANGUAGE = ("ru", "en")

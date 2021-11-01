@@ -40,6 +40,7 @@ def request_bd_select(func):
         return value
     return wrapper
 
+
 # Decorator for insert query the database
 def request_bd_insert(func):
     def wrapper(*args, **kwargs):

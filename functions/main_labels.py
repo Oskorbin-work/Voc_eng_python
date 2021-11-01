@@ -28,7 +28,7 @@ class MainLabels(WorkDataBd):
             'Осталось слов проверить: ',
             'Слов с 0 жизнями: ',
             'Непроверяемые слова: ',
-            'Количество очков слова: ',
+            'Количество жизней слова: ',
             'Часть слова: ',
             'Перевод слова: ',
             'Транскрипция: ',
@@ -148,6 +148,18 @@ class MainLabels(WorkDataBd):
             if list_now_word[8] < 3:
                 self.edit_work_count_life(random_id_now, list_now_word[8] + 1)
 
+            # if user wrong then word can`t got point for "count_true_attempt"
+            # and "count_true_attempt" = 0
+            if self.get_status_word(random_id_now)[0] == "is_activate":
+                self.edit_status_word(random_id_now, "broken_activate")
+                self.edit_count_true_attempt(random_id_now, 0)
+
+            # if word get status "temp_activate" then
+            # it got status "is_activate"
+            if self.get_status_word(random_id_now)[0] == "temp_activate":
+                self.edit_status_word(random_id_now, "is_activate")
+                self.edit_count_life(random_id_now, 3)
+
         # if enter word is true
         else:
             # output information that translate now word is true
@@ -162,6 +174,20 @@ class MainLabels(WorkDataBd):
             if list_now_word[8] > 0:
                 self.edit_work_count_life(random_id_now, list_now_word[8]-1)
 
+            if list_now_word[8] == 1:
+
+                if self.get_status_word(random_id_now)[0] == "is_activate":
+                    self.edit_count_true_attempt(random_id_now, 1)
+
+                    if self.get_count_true_attempt(random_id_now)[0] == 3:
+                        self.edit_count_true_attempt(random_id_now, 0)
+                        self.edit_count_life(random_id_now, -1)
+                        self.edit_status_word(random_id_now, "not_activate")
+
+                elif self.get_status_word(random_id_now)[0] == "broken_activate":
+                    self.edit_status_word(random_id_now, "is_activate")
+
+
     # Create timer
     def timer(self):
         self.timer_learn_1 = QtCore.QTimer(self)
@@ -175,10 +201,9 @@ class MainLabels(WorkDataBd):
         self.time = self.time.addSecs(settings.TIMER_INTERVAL)
         self.information_labels["timer learn"].setText(self.time.toString("Время: hh:mm:ss"))
 
-
     # Main label def
     def main_label_def(self):
-        self.add_work_count_life()
+        self.start_set_up()
         self.order_main_table()
         self.check_life_word()
         self.random_language_now = MainButtons.choice_ru_or_en_word(MainButtons)

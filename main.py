@@ -79,7 +79,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((8, 0),                                    (8, 1),),
                 # Field for word                            # Buttons for check word
                 ((9, 0),                                    (9, 1),),
-                # Place for enter world                     # Place for true answer
+                # Place for true answer                     # Place for enter answer
                 ((10, 0),                                   (10, 1),),
                 # Place for transcription
                 ((11, 0),                                   (11, 1),),
@@ -151,10 +151,10 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # -----------------------------------------------------------
 
         # Line 10
-        # Place for enter world
-        grid.addWidget(self.information_labels["wrong one"], grid_map[10][0][0], grid_map[10][0][1])
         # Place for true answer
-        grid.addWidget(self.information_labels["right one"], grid_map[10][1][0], grid_map[10][1][1])
+        grid.addWidget(self.information_labels["right one"], grid_map[10][0][0], grid_map[10][0][1])
+        # Place for enter answer
+        grid.addWidget(self.information_labels["wrong one"], grid_map[10][1][0], grid_map[10][1][1])
 
         # Line 11
         # Place for transcription
