@@ -16,7 +16,7 @@ from functions.main_labels import MainLabels
 # Initiate buttons from main window
 from functions.main_buttons import MainButtons
 # Initiate bar-structure
-from GUI.bar import Bar
+from functions.bar import Bar
 # Notifications
 
 
@@ -44,7 +44,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     # place for main setting "view window"
     def main_window_parameter(self):
-        self.setMinimumWidth(510)
+        self.setMinimumWidth(550)
         self.setWindowTitle("Vocabulary_English")
 
     # place to main setting "view window"

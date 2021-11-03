@@ -1,6 +1,5 @@
 from pynput import keyboard
-
-from pandas.io.clipboard import clipboard_get
+from clipboard import clipboard
 
 def on_press(key):
     try:
@@ -13,9 +12,7 @@ def on_release(key):
         # Stop listener
         return False
     if key == keyboard.Key.cmd:
-        text = clipboard_get()
-        if text != '':
-            print(text)
+        clipboard()
 
 # Collect events until released
 with keyboard.Listener(

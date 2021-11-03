@@ -146,12 +146,11 @@ class MainLabels(WorkDataBd):
             # -----------------------------------------------------------
             # add 1 life to now word
             if list_now_word[8] < 3:
-                self.edit_work_count_life(random_id_now, list_now_word[8] + 1)
+                self.edit_work_count_life(random_id_now, 3)
 
             # if user wrong then word can`t got point for "count_true_attempt"
             # and "count_true_attempt" = 0
             if self.get_status_word(random_id_now)[0] == "is_activate":
-                self.edit_status_word(random_id_now, "broken_activate")
                 self.edit_count_true_attempt(random_id_now, 0)
 
             # if word get status "temp_activate" then
@@ -175,7 +174,6 @@ class MainLabels(WorkDataBd):
                 self.edit_work_count_life(random_id_now, list_now_word[8]-1)
 
             if list_now_word[8] == 1:
-
                 if self.get_status_word(random_id_now)[0] == "is_activate":
                     self.edit_count_true_attempt(random_id_now, 1)
 
@@ -183,9 +181,6 @@ class MainLabels(WorkDataBd):
                         self.edit_count_true_attempt(random_id_now, 0)
                         self.edit_count_life(random_id_now, -1)
                         self.edit_status_word(random_id_now, "not_activate")
-
-                elif self.get_status_word(random_id_now)[0] == "broken_activate":
-                    self.edit_status_word(random_id_now, "is_activate")
 
 
     # Create timer

@@ -7,5 +7,5 @@
             ~/mac_resourse/xkbswitch-macosx-master/README.md
 
 ## Preview
-![alt text](https://github.com/Oskorbin99/Voc_eng_python/blob/main/resourse_for_READMI/preview.png
+![alt text](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/preview.png
 )
