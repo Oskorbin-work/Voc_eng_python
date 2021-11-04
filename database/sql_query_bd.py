@@ -7,7 +7,7 @@ import sqlite3
 # Codes other files project
 # -----------------------------------------------------------
 from database.functions_for_bd import (
-    request_bd_update, request_bd_select, request_bd_insert
+    request_bd_update, request_bd_select, request_bd_insert, request_bd_select_all
 )
 from functions.notifications import view_error_critical
 from settings import (
@@ -17,6 +17,12 @@ from settings import (
 
 # Class to work with bd
 class WorkWithBd:
+
+    # get status_word
+    @request_bd_select_all
+    def get_english_word(self):
+        return f'select english_word from {NAME_ACTIVE_TABLE}'
+
     # Sorting rows in the database
     def order_main_table(self):
         try:
@@ -138,6 +144,7 @@ class WorkWithBd:
     @request_bd_select
     def get_status_word(self, random_id):
         return f'select status_word from {NAME_ACTIVE_TABLE} where id_main = {random_id};'
+
 
     # get count_true_attempt
     @request_bd_select

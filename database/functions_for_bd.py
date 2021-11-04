@@ -54,3 +54,18 @@ def request_bd_insert(func):
             view_error_critical("Not working sql:", func(*args, **kwargs))
         return 0  # The comparison
     return wrapper
+
+# Decorator for select query the database
+def request_bd_select_all(func):
+    def wrapper(*args, **kwargs):
+        try:
+            conn = sqlite3.connect(ROOT_MAIN_DB)
+            cur = conn.cursor()
+            cur.execute(func(*args, **kwargs))
+            value = (cur.fetchall())
+            conn.close()
+        except sqlite3.Error:
+            view_error_critical("Not working sql:", func(*args, **kwargs))
+            value = "Error"
+        return value
+    return wrapper

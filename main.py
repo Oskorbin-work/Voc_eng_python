@@ -170,13 +170,13 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working but it have bug
         # 16777220 is Enter.
-        if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
+        if event.key() == 16777220 and settings.TIMER_INTERVAL != 0 and settings.PROGRAM_STATUS == "True":
             self.clicked_main_button()
         # 16777222 in Shift
         elif event.key() == 16777249:
             self.clicked_button_start_pause()
         # 16777251 in Option
-        elif event.key() == 16777251:
+        elif event.key() == 16777251 and settings.PROGRAM_STATUS == "True":
             self.clicked_button_info_transcription()
 
     # Functional button "Проверить"
