@@ -19,6 +19,7 @@ class MainButtons(WorkWithBd):
         self.btn = QPushButton('Проверить', self)
         self.btn.setStyleSheet("QPushButton"
                                "{"
+                               "margin:0"
                                "background-color : gray;"
                                "}"
                                "QPushButton::pressed"
@@ -32,6 +33,7 @@ class MainButtons(WorkWithBd):
         self.btn_start_pause = QPushButton('Старт', self)
         self.btn_start_pause .setStyleSheet("QPushButton"
                                "{"
+                                "margin:0"
                                "background-color : gray;"
                                "}"
                                "QPushButton::pressed"
@@ -44,6 +46,21 @@ class MainButtons(WorkWithBd):
         self.btn_info_transcription = QPushButton('Дефиниция', self)
         self.btn_info_transcription.setStyleSheet("QPushButton"
                                "{"
+                                "margin:0"
+                               "background-color : gray;"
+                               "}"
+                               "QPushButton::pressed"
+                               "{"
+                               "background-color : gray;"
+                               "}"
+                               )
+
+    def create_transcription_button(self):
+        self.btn_transcription = QPushButton('Озвучка', self)
+        #self.btn_transcription.setFixedSize(40, 40)
+        self.btn_transcription.setStyleSheet("QPushButton"
+                                "{"
+                                "margin:0"
                                "background-color : gray;"
                                "}"
                                "QPushButton::pressed"

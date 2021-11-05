@@ -2,7 +2,7 @@
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,
+    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,QLabel, QPushButton,
 )
 import sys
 # -----------------------------------------------------------
@@ -35,6 +35,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.create_main_button()
         self.create_button_start_pause()
         self.create_info_transcription()
+        self.create_transcription_button()
         # Initiate main text edit
         self.textEdit = QLineEdit()
         # Initiate grid
@@ -57,6 +58,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.btn_info_transcription.clicked.connect(lambda: self.clicked_button_info_transcription())
         # create Grid
         grid = QGridLayout()
+        grid_test = QGridLayout()
 
         grid_map = (
                 # Timer from start                          # Words start program
@@ -83,6 +85,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((10, 0),                                   (10, 1),),
                 # Place for transcription
                 ((11, 0),                                   (11, 1),),
+                # Place for tests
+                ((12, 0), (12, 1),),
         )
         # -----------------------------------------------------------
         # add main labels
@@ -143,6 +147,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Line 9
         # Field for word
         grid.addWidget(self.textEdit, grid_map[9][0][0], grid_map[9][0][1])
+
         # Buttons for check word
         grid.addWidget(self.btn, grid_map[9][1][0], grid_map[9][1][1])
 
@@ -151,16 +156,30 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # -----------------------------------------------------------
 
         # Line 10
-        # Place for true answer
-        grid.addWidget(self.information_labels["right one"], grid_map[10][0][0], grid_map[10][0][1])
-        # Place for enter answer
-        grid.addWidget(self.information_labels["wrong one"], grid_map[10][1][0], grid_map[10][1][1])
+        # Place for transcription
+        grid.addWidget(self.information_labels["transcription word previous"], grid_map[10][0][0], grid_map[10][0][1])
+
+        grid.addWidget(self.btn_transcription, grid_map[10][1][0], grid_map[10][1][1])
+
 
         # Line 11
-        # Place for transcription
-        grid.addWidget(self.information_labels["transcription word previous"], grid_map[11][1][0], grid_map[11][1][1])
-        # -----------------------------------------------------------
+        # Place for enter answer
+        grid.addWidget(self.information_labels["right one"], grid_map[11][0][0], grid_map[11][0][1])
+        # Place for true answer
+        grid.addWidget(self.information_labels["wrong one"], grid_map[11][1][0], grid_map[11][1][1])
+             # -----------------------------------------------------------
 
+        # Line 12
+        # Place for tests
+        #tests_labels = {
+        #    "test 1": QLabel(),
+        #    "test 2": QPushButton('Проверить', self),
+        #}
+        #tests_labels["test 1"].setText("zrada 1")
+        #grid.addWidget(tests_labels["test 1"], grid_map[12][0][0], grid_map[12][0][1])
+        # Place for enter answer
+        #grid.addWidget(tests_labels["test 2"], grid_map[12][0][0], grid_map[12][0][1])
+        # -----------------------------------------------------------
         # This is widget!
         widget = QWidget()
         widget.setLayout(grid)
@@ -170,13 +189,13 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working but it have bug
         # 16777220 is Enter.
-        if event.key() == 16777220 and settings.TIMER_INTERVAL != 0 and settings.PROGRAM_STATUS == "True":
+        if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
         # 16777222 in Shift
         elif event.key() == 16777249:
             self.clicked_button_start_pause()
         # 16777251 in Option
-        elif event.key() == 16777251 and settings.PROGRAM_STATUS == "True":
+        elif event.key() == 16777251:
             self.clicked_button_info_transcription()
 
     # Functional button "Проверить"

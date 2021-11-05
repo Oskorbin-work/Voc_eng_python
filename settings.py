@@ -10,7 +10,8 @@ from sys import platform
 # Setting address
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) + '/'
 ROOT_MAIN_DB = ROOT_DIR + "database" + '/' + 'data_word.sqlite'
-NAME_ACTIVE_TABLE = "Main_table"
+NAME_ACTIVE_TABLE = "Test_table"
+#NAME_ACTIVE_TABLE = "Main_table"
 
 # Setting language
 LANGUAGE = ("ru", "en")

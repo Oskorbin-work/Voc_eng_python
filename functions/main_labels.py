@@ -2,7 +2,7 @@
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QLabel,QPushButton
 from PyQt5 import QtCore
 # -----------------------------------------------------------
 # Codes other files project

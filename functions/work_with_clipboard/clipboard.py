@@ -3,6 +3,10 @@ from pandas.io.clipboard import clipboard_get
 
 def check_file(text):
     data = set(line.strip() for line in open('new_words.txt', 'r'))
+
+    if not(text in data):
+        print(text + "\n")
+
     data.add(text)
     f = open('new_words.txt', 'w')
     for index, text_line in enumerate(sorted(data)):
@@ -14,11 +18,13 @@ def check_file(text):
     f.close()
 
 
-def copy_clipboard():
-    text = clipboard_get()[:1].capitalize() + clipboard_get()[1:].lower()
+def copy_clipboard(buffer):
+    text = buffer[:1].capitalize() + buffer[1:].lower()
     if text != "":
         check_file(text)
 
 
 def clipboard():
-    copy_clipboard()
+    buffer = clipboard_get()
+    if str(type(buffer)) == "<class 'objc.pyobjc_unicode'>":
+        copy_clipboard(buffer)

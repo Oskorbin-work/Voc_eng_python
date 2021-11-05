@@ -1,11 +1,18 @@
-Import pyttsx3
-Import pyttsx3
-engine = pyttsx3.init()
-engine.say("i will speak this text")
-engine.runandwait()
-Index
-Open
-Pyttsx3
-engine = pyttsx3.init()
-engine.runandwait()
-engine.say("i will speak this text")
+Class
+Cupboard
+Glad
+Knickerbockers
+Let
+Maroon
+Paraded
+Poor
+Punishment
+Sick
+Sticks
+Straw
+Stuff
+Tailcoats
+Tiny
+Took
+Tripping
+Upstairs
