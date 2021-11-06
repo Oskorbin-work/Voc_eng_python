@@ -17,8 +17,10 @@ from functions.main_labels import MainLabels
 from functions.main_buttons import MainButtons
 # Initiate bar-structure
 from functions.bar import Bar
-# Notifications
-
+# Voice
+from functions.voice.voice import voice
+#notifications
+from functions.notifications import view_help
 
 # Class to describe structure main window
 class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
@@ -28,9 +30,13 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         #old_data()
         # Set main setting "view window"
         self.main_window_parameter()
+
+        # ------------------------------
         # Initiate bar menu
-        self.statusbar = self.statusBar()
-        self.bar_category_file_menu()  # Initiate Bar category fileMenu
+        # is not use
+        # self.bar_category_file_menu()  # Initiate Bar category fileMenu
+        # ------------------------------
+
         # Initiate main buttons
         self.create_main_button()
         self.create_button_start_pause()
@@ -52,14 +58,10 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def main_grid(self):
         # realise main labels
         self.main_label_def()
-        self.btn.clicked.connect(lambda: self.clicked_main_button())
-        self.btn.setDisabled(1)
-        self.btn_start_pause.clicked.connect(lambda: self.clicked_button_start_pause())
-        self.btn_info_transcription.clicked.connect(lambda: self.clicked_button_info_transcription())
         # create Grid
         grid = QGridLayout()
         grid_test = QGridLayout()
-
+        self.button_connect()
         grid_map = (
                 # Timer from start                          # Words start program
                 ((0, 0),                                    (0, 1),),
@@ -81,12 +83,12 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((8, 0),                                    (8, 1),),
                 # Field for word                            # Buttons for check word
                 ((9, 0),                                    (9, 1),),
-                # Place for true answer                     # Place for enter answer
+                # Place for transcription                   # Button for voice transcription
                 ((10, 0),                                   (10, 1),),
-                # Place for transcription
+                # Place for true answer                     # Place for enter answer
                 ((11, 0),                                   (11, 1),),
-                # Place for tests
-                ((12, 0), (12, 1),),
+                # Place for tests                           # Place for tests
+                ((12, 0),                                   (12, 1),),
         )
         # -----------------------------------------------------------
         # add main labels
@@ -158,17 +160,15 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Line 10
         # Place for transcription
         grid.addWidget(self.information_labels["transcription word previous"], grid_map[10][0][0], grid_map[10][0][1])
-
-        grid.addWidget(self.btn_transcription, grid_map[10][1][0], grid_map[10][1][1])
-
+        # Buttons for voice word
+        grid.addWidget(self.btn_voice_transcription, grid_map[10][1][0], grid_map[10][1][1])
 
         # Line 11
         # Place for enter answer
         grid.addWidget(self.information_labels["right one"], grid_map[11][0][0], grid_map[11][0][1])
         # Place for true answer
         grid.addWidget(self.information_labels["wrong one"], grid_map[11][1][0], grid_map[11][1][1])
-             # -----------------------------------------------------------
-
+        # -----------------------------------------------------------
         # Line 12
         # Place for tests
         #tests_labels = {
@@ -185,29 +185,46 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         widget.setLayout(grid)
         self.setCentralWidget(widget)
 
+    # Place for connect buttons!
+    def button_connect(self):
+        self.btn.setDisabled(1)
+        self.btn_voice_transcription.setDisabled(1)
+        self.btn.clicked.connect(lambda: self.clicked_main_button())
+        self.btn_start_pause.clicked.connect(lambda: self.clicked_button_start_pause())
+        self.btn_info_transcription.clicked.connect(lambda: self.clicked_button_info_transcription())
+        self.btn_voice_transcription.clicked.connect(lambda: self.clicked_button_voice_transcription())
+
     # This is GOD def keyboards!
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working but it have bug
         # 16777220 is Enter.
         if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
-        # 16777222 in Shift
-        elif event.key() == 16777249:
+        # 16777222 is F2
+        elif event.key() == 16777265:
             self.clicked_button_start_pause()
-        # 16777251 in Option
+        # 16777251 is Option
         elif event.key() == 16777251:
             self.clicked_button_info_transcription()
+        # 16777248 is Command
+        elif event.key() == 16777249:
+            self.clicked_button_voice_transcription()
+        # 16777264 is F1
+        elif event.key() == 16777264:
+            view_help()
 
     # Functional button "Проверить"
     def clicked_main_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now, self.textEdit.text()))
         self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text())
         self.random_language_now = self.choice_ru_or_en_word()
+        self.language_control()
         # -----------------------------------------------
         # section functional
         self.check_life_word()
         # -----------------------------------------------
         self.label_set_text(self.random_id_now, self.random_language_now)
+        self.clicked_button_voice_transcription()
         # -----------------------------------------------
         self.textEdit.setFocus()
         self.textEdit.clear()
@@ -220,6 +237,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     # Button "Старт/Стоп"
     def clicked_button_start_pause(self):
+        self.language_control()
         # stop and start program
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1
@@ -232,9 +250,22 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
         self.textEdit.setFocus()
 
+    # view info_transcription
     def clicked_button_info_transcription(self):
         self.get_info_transcription(self.random_id_now)
         #notifications.view_info_transcription(self.random_id_now)
+
+    # voice word
+    def clicked_button_voice_transcription(self):
+        if self.random_language_now == "en":
+            voice(self.get_english_word(self.random_id_now))
+
+    # Place for funk language
+    def language_control(self):
+        if self.random_language_now == "ru":
+            self.btn_voice_transcription.setDisabled(1)
+        else:
+            self.btn_voice_transcription.setEnabled(1)
 
     # if all word was checked
     def game_over(self):

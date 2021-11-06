@@ -18,11 +18,6 @@ from settings import (
 # Class to work with bd
 class WorkWithBd:
 
-    # get status_word
-    @request_bd_select_all
-    def get_english_word(self):
-        return f'select english_word from {NAME_ACTIVE_TABLE}'
-
     # Sorting rows in the database
     def order_main_table(self):
         try:
@@ -140,6 +135,11 @@ class WorkWithBd:
     def get_work_count_life(self, now_id):
         return f"select work_count_life from {NAME_ACTIVE_TABLE} where id_main = {now_id}"
 
+    # get first id word where default count life == 3
+    @request_bd_select
+    def get_english_word(self, now_id):
+        return f"select english_word from {NAME_ACTIVE_TABLE} where id_main = {now_id}"
+
     # get status_word
     @request_bd_select
     def get_status_word(self, random_id):
@@ -150,6 +150,11 @@ class WorkWithBd:
     @request_bd_select
     def get_count_true_attempt(self, random_id):
         return f'select count_true_attempt from {NAME_ACTIVE_TABLE} where id_main = {random_id};'
+
+    # get status_word
+    @request_bd_select_all
+    def get_english_word(self, random_id):
+        return f'select english_word from {NAME_ACTIVE_TABLE} where id_main = {random_id};'
 
     # insert row  to database
     @request_bd_insert

@@ -13,8 +13,12 @@ class Bar:
     def __init__(self):  # Initiate menuBar
         self.wcLabel = QLabel('Error')
         self.menubar = self.menuBar()
+        self.statusbar = self.statusBar()
+
+        self.statusbar.showMessage("F1 - вызов помощи")
 
     # create structure bar
+    # is not use
     def bar_category_file_menu(self):
         file_menu = self.menubar.addMenu('File')
         file_menu.addAction(QAction('', self))

@@ -56,9 +56,9 @@ class MainButtons(WorkWithBd):
                                )
 
     def create_transcription_button(self):
-        self.btn_transcription = QPushButton('Озвучка', self)
+        self.btn_voice_transcription = QPushButton('Озвучка', self)
         #self.btn_transcription.setFixedSize(40, 40)
-        self.btn_transcription.setStyleSheet("QPushButton"
+        self.btn_voice_transcription.setStyleSheet("QPushButton"
                                 "{"
                                 "margin:0"
                                "background-color : gray;"
@@ -67,7 +67,7 @@ class MainButtons(WorkWithBd):
                                "{"
                                "background-color : gray;"
                                "}"
-                               )
+                                                   )
 
     # When a word is selected for checking, then you need to select a language for it
     def choice_ru_or_en_word(self):
