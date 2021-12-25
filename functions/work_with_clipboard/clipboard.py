@@ -7,9 +7,11 @@ def check_file(text):
     if not(text in data):
         print(text + "\n")
 
-    data.add(text)
+    text_chek = "+"+text
+    if not(text_chek in data):
+        data.add(text)
     f = open('new_words.txt', 'w')
-    for index, text_line in enumerate(sorted(data)):
+    for index, text_line in enumerate(sorted(data, key=lambda x: (not x[0].isalpha(), x))):
         if index == len(data)-1:
             f.write(str(text_line))
         else:

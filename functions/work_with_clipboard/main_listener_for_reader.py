@@ -7,12 +7,14 @@ def on_press(key):
     except AttributeError:
         pass
 
+
 def on_release(key):
     if key == keyboard.Key.esc:
         # Stop listener
         return False
     if key == keyboard.Key.cmd:
         clipboard()
+
 
 # Collect events until released
 with keyboard.Listener(

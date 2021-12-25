@@ -78,8 +78,8 @@ class MainLabels(WorkDataBd):
 
     # describe font and size labels text
     def label_set_font_and_size(self):
-        size_label_font = 15
-        name_label_font = 'Arial'
+        size_label_font = 14
+        name_label_font = 'JetBrains Mono'
         for element in self.information_labels:
             self.information_labels[element].setFont(QFont(name_label_font, size_label_font))
 

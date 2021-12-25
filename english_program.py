@@ -224,7 +224,6 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.check_life_word()
         # -----------------------------------------------
         self.label_set_text(self.random_id_now, self.random_language_now)
-        self.clicked_button_voice_transcription()
         # -----------------------------------------------
         self.textEdit.setFocus()
         self.textEdit.clear()
