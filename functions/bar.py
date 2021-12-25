@@ -1,12 +1,11 @@
 # -----------------------------------------------------------
 # PyQt 5.Initiate structure Main window and GUI
 # -----------------------------------------------------------
-from PyQt5.QtWidgets import QLabel, QAction
+from PyQt5.QtWidgets import QLabel, QAction, QFrame
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
-import settings
-
+from elements.Vline import VLine
 
 #  In class "Bar" -- menuBar in main program
 class Bar:
@@ -14,10 +13,20 @@ class Bar:
         self.wcLabel = QLabel('Error')
         self.menubar = self.menuBar()
         self.statusbar = self.statusBar()
+        self.elements_status_bar = dict()
+        self.elements_for_status_bar()
+        self.status_bar_structure()
 
-        self.statusbar.showMessage("F1 - вызов помощи")
+    def elements_for_status_bar(self):
+        self.elements_status_bar['Help'] = QLabel("F1 - Допомога")
 
-    # create structure bar
+    # create structure statusbar
+    def status_bar_structure(self):
+        for i in self.elements_status_bar:
+            self.statusbar.addWidget(self.elements_status_bar[i])
+            self.statusbar.addWidget(VLine())
+
+    #create structure menubar
     # is not use
     def bar_category_file_menu(self):
         file_menu = self.menubar.addMenu('File')
