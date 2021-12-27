@@ -20,26 +20,29 @@ class Bar:
         self.status_bar_structure()
 
     def elements_for_status_bar(self):
-        self.elements_status_bar['Help'] = QLabel("F1 - Помощь")
-        self.elements_status_bar['Help_vline'] = VLine()
-        self.elements_status_bar['Last_word'] = QLabel("Осталось: 6")
-        self.elements_status_bar['0_hp'] = QLabel("\u2705 0")
-        self.elements_status_bar['1_hp_emoji'] = QLabel(emojize(':keycap_1:'))
-        self.elements_status_bar['1_hp_emoji'].setFont(QFont("Apple Color Emoji"))
-        self.elements_status_bar['1_hp_text'] = QLabel("1")
-        self.elements_status_bar['2_hp_emoji'] = QLabel(emojize(':keycap_2:'))
-        self.elements_status_bar['2_hp_emoji'].setFont(QFont("Apple Color Emoji"))
-        self.elements_status_bar['2_hp_text'] = QLabel("2")
-        self.elements_status_bar['3_hp_emoji'] = QLabel(emojize(':keycap_3:'))
-        self.elements_status_bar['3_hp_emoji'].setFont(QFont("Apple Color Emoji"))
-        self.elements_status_bar['3_hp_text'] = QLabel("3")
-        self.elements_status_bar['hp_vline'] = VLine()
+        self.elements_status_bar['Help'] = [QLabel("F1 - Помощь"), VLine()]
+        self.elements_status_bar['Last_word'] = [QLabel("Осталось:"), QLabel("6")]
+        self.elements_status_bar['0_hp'] = [QLabel("\u2705"), QLabel("0")]
+        self.elements_status_bar['1_hp'] = [QLabel(emojize(':keycap_1:')), QLabel("0")]
+        self.elements_status_bar['1_hp'][0].setFont(QFont("Apple Color Emoji"))
+        self.elements_status_bar['2_hp'] = [QLabel(emojize(':keycap_2:')), QLabel("0")]
+        self.elements_status_bar['2_hp'][0].setFont(QFont("Apple Color Emoji"))
+        self.elements_status_bar['3_hp'] = [QLabel(emojize(':keycap_3:')), QLabel("0")]
+        self.elements_status_bar['3_hp'][0].setFont(QFont("Apple Color Emoji"))
+        self.elements_status_bar['hp_vline'] = [VLine()]
 
     # create structure statusbar
     def status_bar_structure(self):
-        for i in self.elements_status_bar:
-            self.statusbar.addWidget(self.elements_status_bar[i])
+        for list_widgets in self.elements_status_bar:
+            for widget in self.elements_status_bar[list_widgets]:
+                self.statusbar.addWidget(widget)
 
+    def data_status_bar(self,*args):
+        self.elements_status_bar['Last_word'][1].setText(args[0])
+        self.elements_status_bar['0_hp'][1].setText(args[1])
+        self.elements_status_bar['1_hp'][1].setText(args[2])
+        self.elements_status_bar['2_hp'][1].setText(args[3])
+        self.elements_status_bar['3_hp'][1].setText(args[4])
     #create structure menubar
     # is not use
     def bar_category_file_menu(self):

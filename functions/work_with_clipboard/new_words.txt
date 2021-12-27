@@ -1,10 +1,13 @@
 Ambling
 Ambling up
+Apothecary
 Ashen
+Asleep
 Badly
 Bags
 Banged
 Banging
+Barrel
 Barrier
 Bath
 Bawling
@@ -27,6 +30,7 @@ Boomed
 Bouncing
 Bowed
 Bowl
+Brass
 Brass scales
 Braver
 Breath
@@ -43,6 +47,7 @@ Cannon
 Cauldron
 Cauldrons
 Ceiling
+Checked
 Cheerfully
 Chimney
 Chip
@@ -56,6 +61,7 @@ Clouted
 Clutched
 Coast
 Codswallop
+Collapsible
 Copper
 Corner
 Cornflakes
@@ -67,6 +73,7 @@ Crept
 Croaked
 Curiously
 Curl up
+Cushion
 Damn
 Damp
 Dare
@@ -85,8 +92,10 @@ Drafts
 Drag
 Dratted
 Dreading
+Dried
 Dully
 Dunno
+Dusty
 Dyeing
 Eagerly
 Emerald
@@ -98,7 +107,9 @@ Exploded
 Fabulous
 Faded
 Faint
+Fascinating
 Fat
+Feathers
 Ferociously
 Fidgeted
 Fierce
@@ -137,6 +148,7 @@ Grew up
 Grin
 Grounds
 Growled
+Gruffly
 Grunted
 Gulp
 Hags
@@ -145,6 +157,7 @@ Hanger
 Heed
 Held
 Held up
+Herbs
 Hinges
 Hit
 Howling
@@ -154,6 +167,7 @@ Hut
 Incredible
 Inform
 Insult
+Jars
 Jerked
 Juicy
 Kettle
@@ -165,6 +179,7 @@ Leading off
 Leapt
 Lend us
 Let
+Lined
 Liquid
 Lit
 Load of old tosh,
@@ -228,6 +243,7 @@ Roaring
 Rob
 Roll
 Rolled up
+Roots
 Rubber
 Rubbish
 Rumbling
@@ -264,12 +280,15 @@ Skidding
 Slamming
 Slid
 Sliding
+Slimy
 Sloped
 Smash
 Smelting
+Snarled
 Snatch
 Sneer
 Sneered
+Sneeze
 Sniffling
 Sniveled
 Snored
@@ -349,6 +368,7 @@ Warned
 Warty
 Waved
 Wax
+Weighing
 Weirdos
 Wet
 Whacked

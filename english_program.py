@@ -54,6 +54,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.setMinimumWidth(550)
         self.setWindowTitle("Vocabulary_English")
 
+
     # place to main setting "view window"
     def main_grid(self):
         # realise main labels
@@ -217,6 +218,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def clicked_main_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now, self.textEdit.text()))
         self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text())
+        self.data_status_bar("s")
         self.random_language_now = self.choice_ru_or_en_word()
         self.language_control()
         # -----------------------------------------------
@@ -240,6 +242,15 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # stop and start program
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1
+
+            self.data_status_bar(
+                                str(self.get_count_false_world()[0]),
+                                str(self.get_count_world(0)[0]),
+                                str(self.get_count_world(1)[0]),
+                                str(self.get_count_world(2)[0]),
+                                str(self.get_count_world(3)[0]),
+
+                                 )
             self.btn_start_pause.setText("Пауза")
             self.btn.setEnabled(1)
         else:
