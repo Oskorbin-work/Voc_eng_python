@@ -117,6 +117,11 @@ class WorkWithBd:
 
     # get count row " Непроверенные" from database
     @request_bd_select
+    def get_count_false_world_time(self):
+        return f"select COUNT(*) from {NAME_ACTIVE_TABLE} where work_count_life >0  and status_word ='is_activate'"
+
+    # get count row " Непроверенные" from database
+    @request_bd_select
     def get_count_false_world(self):
         return f"select COUNT(*) from {NAME_ACTIVE_TABLE} where work_count_life >0"
 

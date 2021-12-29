@@ -46,6 +46,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.textEdit = QLineEdit()
         # Initiate grid
         self.main_grid()
+
+        self.view_data_status_bar_static_words()
         # Run GUI
         self.show()
 
@@ -68,17 +70,17 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((0, 0),                                    (0, 1),),
                 # Count words are for learning              # Count words that can change
                 ((1, 0),                                    (1, 1),),
-                # None place
+                # Empty place                                # Empty place
                 ((2, 0),                                    (2, 1),),
-                # Word is checking                          # Words where life => 1
+                # Word is checking                          # Empty place
                 ((3, 0),                                    (3, 1),),
-                #  Count words are for learning             # Words where life = 3
+                #  Count words are for learning             # Empty place
                 ((4, 0),                                    (4, 1),),
-                # Part of speech                            # Words where life = 2
+                # Part of speech                            # Empty place
                 ((5, 0),                                    (5, 1),),
-                # Transcription                             # Words where life = 1
+                # Transcription                             # Empty place
                 ((6, 0),                                    (6, 1),),
-                # Chapter                                   # Words where life = 0
+                # Chapter                                   # Empty place
                 ((7, 0),                                    (7, 1),),
                 # Start/pause                               # info_transcription
                 ((8, 0),                                    (8, 1),),
@@ -114,32 +116,22 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Line 3
         # Word is checking
         grid.addWidget(self.information_labels["word now"], grid_map[3][0][0], grid_map[3][0][1])
-        # Words where life => 1
-        grid.addWidget(self.information_labels["words with more 1"], grid_map[3][1][0], grid_map[3][1][1])
 
         # Line 4
         # Count words are for learning
         grid.addWidget(self.information_labels["count word now"], grid_map[4][0][0], grid_map[4][0][1])
-        # Words where life = 3
-        grid.addWidget(self.information_labels["words with 3"], grid_map[4][1][0], grid_map[4][1][1])
 
         # Line 5
         # Part of speech
         grid.addWidget(self.information_labels["parts of speech word now"], grid_map[5][0][0], grid_map[5][0][1])
-        # Words where life = 2
-        grid.addWidget(self.information_labels["words with 2"], grid_map[5][1][0], grid_map[5][1][1])
 
         # Line 6
         # Transcription
         grid.addWidget(self.information_labels["transcription word now"], grid_map[6][0][0], grid_map[6][0][1])
-        # Words where life = 1
-        grid.addWidget(self.information_labels["words with 1"], grid_map[6][1][0], grid_map[6][1][1])
 
         # Line 7
         # Chapter
         grid.addWidget(self.information_labels["chapter word now"], grid_map[7][0][0], grid_map[7][0][1])
-        # Words where life = 0
-        grid.addWidget(self.information_labels["words with 0"], grid_map[7][1][0], grid_map[7][1][1])
 
         # Line 8
         # Start/pause
@@ -186,6 +178,21 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         widget.setLayout(grid)
         self.setCentralWidget(widget)
 
+    def view_data_status_bar_static_words(self):
+        self.data_status_bar_static_words(
+            str(self.get_count_false_world_time()[0]),
+            str(self.get_count_change_world()[0]),
+        )
+
+    def view_data_status_bar_hp(self):
+        self.data_status_bar_hp(
+            str(self.get_count_false_world()[0]),
+            str(self.get_count_world(0)[0]),
+            str(self.get_count_world(1)[0]),
+            str(self.get_count_world(2)[0]),
+            str(self.get_count_world(3)[0]),
+        )
+
     # Place for connect buttons!
     def button_connect(self):
         self.btn.setDisabled(1)
@@ -218,7 +225,6 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def clicked_main_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now, self.textEdit.text()))
         self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text())
-        self.data_status_bar("s")
         self.random_language_now = self.choice_ru_or_en_word()
         self.language_control()
         # -----------------------------------------------
@@ -230,6 +236,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.textEdit.setFocus()
         self.textEdit.clear()
         # -----------------------------------------------
+        # status_bar
+        self.view_data_status_bar_hp()
         # if all word was checked
         try:
             self.get_first_id_count_life_3()[0]
@@ -243,14 +251,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1
 
-            self.data_status_bar(
-                                str(self.get_count_false_world()[0]),
-                                str(self.get_count_world(0)[0]),
-                                str(self.get_count_world(1)[0]),
-                                str(self.get_count_world(2)[0]),
-                                str(self.get_count_world(3)[0]),
-
-                                 )
+            self.view_data_status_bar_hp()
             self.btn_start_pause.setText("Пауза")
             self.btn.setEnabled(1)
         else:

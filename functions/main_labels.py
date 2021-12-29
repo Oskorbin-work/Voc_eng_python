@@ -43,13 +43,7 @@ class MainLabels(WorkDataBd):
             "Правильный вариант:\n",
             # id -- 14. Transcription
             "Транскрипция: ",
-            # id -- 15. Words where life = 3
-            "Слов с 3 жизнями: ",
-            # id -- 16. Words where life = 2
-            "Слов с 2 жизнями: ",
-            # id -- 17. Words where life = 1
-            "Слов с 1 жизнью: ",
-            # id -- 18. Count words with 3 when program start run
+            # id -- 15. Count words with 3 when program start run
             "Проверяемые слова: " + str(self.get_count_false_world()[0]),
         ]
         self.information_labels = {
@@ -69,9 +63,6 @@ class MainLabels(WorkDataBd):
             "wrong one": QLabel(),
             "right one": QLabel(),
             "transcription word previous": QLabel(),
-            "words with 3": QLabel(),
-            "words with 2": QLabel(),
-            "words with 1": QLabel(),
             "words start program": QLabel(),
         }
         self.timer()
@@ -115,14 +106,8 @@ class MainLabels(WorkDataBd):
             setText(self.text_labels[9] + self.list_now_word[7])
         self.information_labels["none place"]. \
             setText(self.text_labels[10])
-        self.information_labels["words with 3"]. \
-            setText(self.text_labels[15] + str(self.get_count_world(3)[0]))
-        self.information_labels["words with 2"]. \
-            setText(self.text_labels[16] + str(self.get_count_world(2)[0]))
-        self.information_labels["words with 1"]. \
-            setText(self.text_labels[17] + str(self.get_count_world(1)[0]))
         self.information_labels["words start program"]. \
-            setText(self.text_labels[18])
+            setText(self.text_labels[15])
 
     # check enter word
     def wrong_enter_word(self, random_id_now, status_word="True", text_check=""):

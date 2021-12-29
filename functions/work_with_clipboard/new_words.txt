@@ -3,6 +3,7 @@ Ambling up
 Apothecary
 Ashen
 Asleep
+Awkwardly
 Badly
 Bags
 Banged
@@ -47,6 +48,7 @@ Cannon
 Cauldron
 Cauldrons
 Ceiling
+Charm
 Checked
 Cheerfully
 Chimney
@@ -109,6 +111,7 @@ Faded
 Faint
 Fascinating
 Fat
+Favored
 Feathers
 Ferociously
 Fidgeted
@@ -138,6 +141,7 @@ Glad
 Glancing
 Gleefully
 Glinting
+Gloom
 Gloomy
 Goodness
 Grab
@@ -154,6 +158,7 @@ Gulp
 Hags
 Handed
 Hanger
+Heartstring
 Heed
 Held
 Held up
@@ -164,6 +169,7 @@ Howling
 Hurtled
 Hurtling up
 Hut
+Inches
 Incredible
 Inform
 Insult
@@ -183,11 +189,14 @@ Lined
 Liquid
 Lit
 Load of old tosh,
+Mahogany
 Mane
+Maple
 Marble
 Maroon
 Meant
 Meanwhile
+Measure
 Miserable
 Miserably
 Moldy
@@ -215,6 +224,7 @@ Pewter
 Phials
 Pile
 Pipe
+Pliable
 Plowed
 Plunged
 Pocket
@@ -323,6 +333,7 @@ Surrounding
 Suspension
 Swapped
 Swig
+Swishy
 Swooped
 Swore
 Swung
@@ -381,6 +392,7 @@ Wicked
 Wide
 Wild
 Wildly
+Willow
 Windowsill
 Wiped
 Witch
