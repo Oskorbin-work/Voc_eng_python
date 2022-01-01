@@ -25,7 +25,10 @@ TIMER_INTERVAL = 1
 PROGRAM_STATUS = True
 
 # setting random for old words
-RANDOM_OLD_WORD = 0.02
+RANDOM_OLD_WORD = 0.03
+# setting max random for old words
+MAX_OLD_WORD = 10
+
 
 # os platform
 if platform == "linux" or platform == "linux2":

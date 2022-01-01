@@ -11,12 +11,16 @@ from database.functions_for_bd import (
 )
 from functions.notifications import view_error_critical
 from settings import (
-    ROOT_MAIN_DB, NAME_ACTIVE_TABLE, RANDOM_OLD_WORD
+    ROOT_MAIN_DB, NAME_ACTIVE_TABLE, RANDOM_OLD_WORD,MAX_OLD_WORD
 )
 
 
 # Class to work with bd
 class WorkWithBd:
+
+    def __init__(self):
+        self.count_temp_activate = int(self.get_temp_activate()[0])
+
 
     # Sorting rows in the database
     def order_main_table(self):
@@ -65,7 +69,8 @@ class WorkWithBd:
             if count_life == -1:
                 self.edit_status_word(i, "not_activate")
                 # if word is old then his life is "-1". It is mean what word was learned
-                if random.random() <= RANDOM_OLD_WORD:
+                if random.random() <= RANDOM_OLD_WORD and self.get_temp_activate()[0] <MAX_OLD_WORD:
+                    print(self.get_temp_activate()[0])
                     count_life = 1
                     self.edit_status_word(i, "temp_activate")
             if count_life == 3:
@@ -73,9 +78,20 @@ class WorkWithBd:
             # add count life.
             self.edit_work_count_life(i, str(count_life))
 
+    # all word with status "temp_activate" get
+    # status "is_activate" or "not_activate"(Depends on count life).
+    def clear_temp_activate(self):
+        count_row = self.get_count_all_word()[0]
+        for i in range(1, count_row+1):
+            count_life = self.get_row(i)[6]
+            if count_life == -1:
+                self.edit_status_word(i, "not_activate")
+            elif count_life == 3:
+                self.edit_status_word(i, "is_activate")
+
     # edit work_count_life.
-    # Uses for copy values from count_life in work_count_life
-    # Uses for update value work_count_life while user has doing wrong
+    # uses for copy values from count_life in work_count_life
+    # uses for update value work_count_life while user has doing wrong
     @request_bd_update
     def edit_work_count_life(self, id_row, count_life):
         return f'update {NAME_ACTIVE_TABLE} set work_count_life = {count_life} where id_main = {id_row};'
@@ -120,6 +136,10 @@ class WorkWithBd:
     def get_count_false_world_time(self):
         return f"select COUNT(*) from {NAME_ACTIVE_TABLE} where work_count_life >0  and status_word ='is_activate'"
 
+    # get count row "temp_activate" from database
+    @request_bd_select
+    def get_temp_activate(self):
+        return f"select COUNT(*) from {NAME_ACTIVE_TABLE} where status_word ='temp_activate'"
     # get count row " Непроверенные" from database
     @request_bd_select
     def get_count_false_world(self):

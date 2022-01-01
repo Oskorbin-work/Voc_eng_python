@@ -21,6 +21,8 @@ from functions.bar import Bar
 from functions.voice.voice import voice
 #notifications
 from functions.notifications import view_help
+#work with exit program
+from exit_file import Exit_program
 
 # Class to describe structure main window
 class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
@@ -290,4 +292,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = MainWindow()
-    sys.exit(app.exec_())
+    exit = Exit_program()
+    try:
+        sys.exit(app.exec_())
+    finally:
+        exit.bd_to_default_state()
