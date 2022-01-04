@@ -1,5 +1,6 @@
-Ambling
-Ambling up
++Amble
++Ambling
++Ambling up
 Apothecary
 Ashen
 Asleep
@@ -35,19 +36,23 @@ Brass
 Brass scales
 Braver
 Breath
+Brick
 Brooms
 Broomsticks
 Bullied
 Buried
-Burned
++Burned
++Burned
 Burnt
 Burst
 Cake
 Calmly
 Cannon
+Carpets
 Cauldron
 Cauldrons
 Ceiling
+Chair
 Charm
 Checked
 Cheerfully
@@ -73,6 +78,8 @@ Crammed
 Creak
 Crept
 Croaked
+Crowd
+Curious
 Curiously
 Curl up
 Cushion
@@ -94,6 +101,7 @@ Drafts
 Drag
 Dratted
 Dreading
+Dreadlocks
 Dried
 Dully
 Dunno
@@ -112,6 +120,7 @@ Faint
 Fascinating
 Fat
 Favored
+Feather
 Feathers
 Ferociously
 Fidgeted
@@ -169,12 +178,14 @@ Howling
 Hurtled
 Hurtling up
 Hut
+Improvement
 Inches
 Incredible
 Inform
 Insult
 Jars
 Jerked
+Jostled
 Juicy
 Kettle
 Knickerbockers
@@ -182,9 +193,11 @@ Knot
 Lake
 Leading
 Leading off
+Leaned
 Leapt
 Lend us
 Let
+Lift
 Lined
 Liquid
 Lit
@@ -197,6 +210,7 @@ Maroon
 Meant
 Meanwhile
 Measure
+Mice
 Miserable
 Miserably
 Moldy
@@ -204,8 +218,9 @@ Mounds
 Mugs
 Musty
 Mutter
-Nah
++Nah
 Nailed up
+Nastier
 Nightfall
 Obviously
 Of
@@ -233,10 +248,13 @@ Poke
 Poker
 Poor
 Porridge
+Potter
+Prefect
 Privately
 Promptly
 Pull
 Pulled out
+Punctures
 Punishment
 Quill
 Racing
@@ -245,21 +263,26 @@ Ragged
 Rags
 Rasping
 Rattling
-Reminded
-Reminds
++Remind
++Reminded
++Reminds
 Rifle
 Ripped
 Roaring
 Rob
+Robe
+Robes
 Roll
 Rolled up
 Roots
+Rose
 Rubber
 Rubbish
 Rumbling
 Sagged
 Sausage
 Sausages
+Scarlet
 Scribbled
 Scruffs
 Scuttled
@@ -267,6 +290,7 @@ Seal
 Seat
 Seaweed
 Seized
+Self.get_temp_activate()[0]
 Shabby
 Shack
 Shaggy
@@ -304,6 +328,7 @@ Sniveled
 Snored
 Snorted
 Softest
+Solid
 Splattered
 Spot
 Spray
@@ -316,8 +341,9 @@ Stamp out
 Stare
 Staring
 Steeply
-Steered
-Steering
++Steer
++Steered
++Steering
 Sticky
 Stood
 Straightened up
@@ -329,8 +355,10 @@ Stuffing
 Stung
 Such
 Sunk
+Surrounded
 Surrounding
 Suspension
+Swallowed
 Swapped
 Swig
 Swishy
@@ -338,7 +366,9 @@ Swooped
 Swore
 Swung
 Syllable
+Tail
 Take
+Talk rubbish
 Tangled
 Teabags
 Teapot
@@ -366,11 +396,11 @@ Upright
 Upside
 Upside down
 Upstairs
-Urgently
++Urgently
 Vanished
 Vault
-Vcvc
-Very
++Vcvc
++Very
 Waist
 Wand
 Warmth
@@ -388,6 +418,7 @@ Whelk
 Whenever
 Whistled
 Whizzing
+Whose
 Wicked
 Wide
 Wild

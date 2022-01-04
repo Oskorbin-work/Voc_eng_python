@@ -62,6 +62,7 @@ class WorkWithBd:
     def start_set_up(self):
         # Get count all word
         count_row = self.get_count_all_word()[0]
+        ls_temp_words = self.get_list_temp_activate()
         # Copy column count life in column work count life
         for i in range(1, count_row+1):
             count_life = self.get_row(i)[6]
@@ -69,14 +70,21 @@ class WorkWithBd:
             if count_life == -1:
                 self.edit_status_word(i, "not_activate")
                 # if word is old then his life is "-1". It is mean what word was learned
-                if random.random() <= RANDOM_OLD_WORD and self.get_temp_activate()[0] <MAX_OLD_WORD:
-                    print(self.get_temp_activate()[0])
+                if i in ls_temp_words:
                     count_life = 1
                     self.edit_status_word(i, "temp_activate")
             if count_life == 3:
                 self.edit_status_word(i, "is_activate")
             # add count life.
             self.edit_work_count_life(i, str(count_life))
+
+    # Forming a list of temporary words
+    def get_list_temp_activate(self):
+        count_words = int(self.get_count_world(-1)[0])
+        ls = list()
+        for i in range(0,MAX_OLD_WORD):
+            ls.append(random.randint(0,count_words))
+        return ls
 
     # all word with status "temp_activate" get
     # status "is_activate" or "not_activate"(Depends on count life).
