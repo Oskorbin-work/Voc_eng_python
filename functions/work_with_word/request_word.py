@@ -7,6 +7,8 @@ import os
 # VALUES (null, 'Screw up', 'Заваливать', 'phrasal verb', 'skruː ʌp',
 # 'to make a mistake, or to spoil something'
 # , 3, 'A2',3, 'is_activate', 1);
+from functions.work_with_clipboard.colour_console import bcolors
+from database.sql_query_bd import WorkWithBd
 
 
 class Word():
@@ -40,7 +42,6 @@ list_words = list()
 
 
 def enter_word():
-    #print("Enter word")
     enter_word = input().replace(" ","+")
     enter_word = enter_word.lower()
     #enter_word = "usa"
@@ -95,6 +96,7 @@ def get_definition(el):
             definition = definition + i
     return  definition.capitalize()
 
+
 def get_other_information(el):
     return str(el.span.contents[0])
 
@@ -123,7 +125,6 @@ def get_all(el, default_value='', type=''):
                     else:
                         return default_value
 
-
 def get_block_name(pos_body):
     default_value_name = pos_body.find("span", {"class": 'hw dhw'})
     default_value_pronoun = pos_body.find("span", {"class": 'pos dpos'}).getText()
@@ -147,6 +148,13 @@ def get_block_name(pos_body):
         list_words[-1].work_count_life.append(default_value_count_life)
         list_words[-1].status_word.append(default_value_status_word)
         list_words[-1].count_true_attempt.append(default_value_count_true_attempt)
+
+def check_word_in_bd(word):
+    list_en_word = list(t[0] for t in WorkWithBd.get_all_english_word(WorkWithBd))
+    if word in list_en_word:
+        return bcolors.WARNING+ "Слово уже есть в бд. Не добавляй." + bcolors.ENDC
+    else:
+        return bcolors.OKGREEN +"Это новое слово. Можно добавлять."+ bcolors.ENDC
 
 while True:
     print("Введите слово:")
@@ -225,6 +233,7 @@ while True:
         print(sql_request)
         sql_request = ""
 
+    print(check_word_in_bd(list_words[-1].en[-1]))
     list_words[-1].set(Word)
     print("Ссылка для проверки: " + link)
     del list_words[-1]

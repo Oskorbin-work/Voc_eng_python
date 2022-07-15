@@ -11,7 +11,7 @@ from database.functions_for_bd import (
 )
 from functions.notifications import view_error_critical
 from settings import (
-    ROOT_MAIN_DB, NAME_ACTIVE_TABLE, RANDOM_OLD_WORD,MAX_OLD_WORD
+    ROOT_MAIN_DB, NAME_ACTIVE_TABLE,MAX_OLD_WORD
 )
 
 
@@ -80,10 +80,17 @@ class WorkWithBd:
 
     # Forming a list of temporary words
     def get_list_temp_activate(self):
-        count_words = int(self.get_count_world(-1)[0])
+        count_words = int(self.get_count_words(-1)[0])
         ls = list()
-        for i in range(0,MAX_OLD_WORD):
-            ls.append(random.randint(0,count_words))
+
+        # if setting have error
+        count = count_words+1 if MAX_OLD_WORD > count_words else MAX_OLD_WORD
+
+        for i in range(0, count):
+            value = random.randint(0, count_words)
+            while value in ls:
+                value = random.randint(0, count_words)
+            ls.append(value)
         return ls
 
     # all word with status "temp_activate" get
@@ -134,10 +141,15 @@ class WorkWithBd:
     def get_count_all_word(self):
         return f"select COUNT(*) from {NAME_ACTIVE_TABLE}"
 
-    # get count row " Проверенные" from database
+    # get work count row  anyway hp from database
     @request_bd_select
-    def get_count_world(self, count):
+    def get_work_count_words(self, count):
         return f"select COUNT(*) from {NAME_ACTIVE_TABLE} where work_count_life ={count}"
+
+    # get work count row  anyway hp from database
+    @request_bd_select
+    def get_count_words(self, count):
+        return f"select COUNT(*) from {NAME_ACTIVE_TABLE} where count_life ={count}"
 
     # get count row " Непроверенные" from database
     @request_bd_select
@@ -189,6 +201,10 @@ class WorkWithBd:
     def get_english_word(self, random_id):
         return f'select english_word from {NAME_ACTIVE_TABLE} where id_main = {random_id};'
 
+    # get  all english word
+    @request_bd_select_all
+    def get_all_english_word(self):
+        return f"select english_word from {NAME_ACTIVE_TABLE}"
     # insert row  to database
     @request_bd_insert
     def insert_row(self, list):

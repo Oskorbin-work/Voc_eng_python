@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QLabel, QAction
 # -----------------------------------------------------------
 from elements.Vline import VLine
 from emoji import emojize
+
 #  In class "Bar" -- menuBar in main program
 class Bar:
     def __init__(self):  # Initiate menuBar

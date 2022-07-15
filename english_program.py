@@ -189,10 +189,10 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def view_data_status_bar_hp(self):
         self.data_status_bar_hp(
             str(self.get_count_false_world()[0]),
-            str(self.get_count_world(0)[0]),
-            str(self.get_count_world(1)[0]),
-            str(self.get_count_world(2)[0]),
-            str(self.get_count_world(3)[0]),
+            str(self.get_work_count_words(0)[0]),
+            str(self.get_work_count_words(1)[0]),
+            str(self.get_work_count_words(2)[0]),
+            str(self.get_work_count_words(3)[0]),
         )
 
     # Place for connect buttons!
