@@ -2,7 +2,7 @@
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QLabel,QPushButton
+from PyQt5.QtWidgets import QLabel, QPushButton
 from PyQt5 import QtCore
 # -----------------------------------------------------------
 # Codes other files project
@@ -30,7 +30,7 @@ class MainLabels(WorkDataBd):
             'Непроверяемые слова: ',
             'Количество жизней слова: ',
             'Часть слова: ',
-            'Перевод слова: ',
+            '', # Тут было перевод слова
             'Транскрипция: ',
             'Тема: ',
             # id -- 10. Reserve place
@@ -86,7 +86,7 @@ class MainLabels(WorkDataBd):
         self.information_labels["words with more 1"]. \
             setText(self.text_labels[2] + str(self.get_count_false_world()[0]))
         self.information_labels["words with 0"]. \
-            setText(self.text_labels[3] + str(self.get_count_world(0)[0]))
+            setText(self.text_labels[3] + str(self.get_work_count_words(0)[0]))
         self.information_labels["change words learn"]. \
             setText(self.text_labels[4] + str(self.get_count_change_world()[0]))
         self.information_labels["count word now"]. \

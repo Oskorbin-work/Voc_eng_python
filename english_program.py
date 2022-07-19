@@ -100,24 +100,16 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Information about words
         # -----------------------------------------------------------
         # Line 0
-        # Timer from start
-        grid.addWidget(self.information_labels["timer learn"], grid_map[0][0][0], grid_map[0][0][1])
-        # words start program
-        grid.addWidget(self.information_labels["words start program"], grid_map[0][1][0], grid_map[0][1][1])
-
+        # Word is checking
+        grid.addWidget(self.information_labels["word now"], grid_map[1][0][0], grid_map[1][0][1])
         # Line 1
-        # Count words are for learning
-        grid.addWidget(self.information_labels["sum words learn"], grid_map[1][0][0], grid_map[0][0][1])
-        # Count words that can change
-        grid.addWidget(self.information_labels["change words learn"], grid_map[1][1][0], grid_map[1][1][1])
 
         # Line 2
-        # None place
-        grid.addWidget(self.information_labels["none place"], grid_map[2][1][0], grid_map[2][1][1])
 
         # Line 3
-        # Word is checking
-        grid.addWidget(self.information_labels["word now"], grid_map[3][0][0], grid_map[3][0][1])
+
+        # Timer from start
+        grid.addWidget(self.information_labels["timer learn"], grid_map[3][1][0], grid_map[3][1][1])
 
         # Line 4
         # Count words are for learning
@@ -182,6 +174,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def view_data_status_bar_static_words(self):
         self.data_status_bar_static_words(
+            str(self.get_count_all_word()[0]),
             str(self.get_count_false_world_time()[0]),
             str(self.get_count_change_world()[0]),
         )
@@ -189,10 +182,10 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def view_data_status_bar_hp(self):
         self.data_status_bar_hp(
             str(self.get_count_false_world()[0]),
-            str(self.get_count_world(0)[0]),
-            str(self.get_count_world(1)[0]),
-            str(self.get_count_world(2)[0]),
-            str(self.get_count_world(3)[0]),
+            str(self.get_work_count_words(0)[0]),
+            str(self.get_work_count_words(1)[0]),
+            str(self.get_work_count_words(2)[0]),
+            str(self.get_work_count_words(3)[0]),
         )
 
     # Place for connect buttons!

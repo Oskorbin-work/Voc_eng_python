@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QLabel, QAction
 # -----------------------------------------------------------
 from elements.Vline import VLine
 from emoji import emojize
+
 #  In class "Bar" -- menuBar in main program
 class Bar:
     def __init__(self):  # Initiate menuBar
@@ -21,8 +22,9 @@ class Bar:
 
     def elements_for_status_bar(self):
         # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-        self.elements_status_bar['Help'] = [QLabel("F1 - Помощь"), VLine()]
+        self.elements_status_bar['Help'] = [QLabel("F1 Помощь"), VLine()]
         # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+        self.elements_status_bar['All_word'] = [QLabel(emojize(':books:')), QLabel("0")]
         self.elements_status_bar['Activity'] = [QLabel(emojize(':bullseye:')), QLabel("0")]
 
         self.elements_status_bar['Not_Activity'] = [QLabel(emojize(':military_medal:')), QLabel("0"), VLine()]
@@ -44,8 +46,9 @@ class Bar:
                 self.statusbar.addWidget(widget)
 
     def data_status_bar_static_words(self, *args):
-        self.elements_status_bar['Activity'][1].setText(args[0])
-        self.elements_status_bar['Not_Activity'][1].setText(args[1])
+        self.elements_status_bar['All_word'][1].setText(args[0])
+        self.elements_status_bar['Activity'][1].setText(args[1])
+        self.elements_status_bar['Not_Activity'][1].setText(args[2])
 
     def data_status_bar_hp(self, *args):
         self.elements_status_bar['Last_word'][1].setText(args[0])
