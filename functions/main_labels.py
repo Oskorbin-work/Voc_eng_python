@@ -12,8 +12,9 @@ from functions.main_buttons import MainButtons
 
 import settings
 # -----------------------------------------------------------
-# Import other modules
+# Import classes
 # -----------------------------------------------------------
+import another_windows.wrong_void_word.wrong_word_interface as WrondWindow
 
 
 # Class to describe  main labels
@@ -111,14 +112,23 @@ class MainLabels(WorkDataBd):
         self.information_labels["words start program"]. \
             setText(self.text_labels[15])
 
+    # functional where create wrong word window
+    def create_wrong_window(self):
+        self.w = None
+        if self.w is None:
+            self.w = WrondWindow.WrongWordInterface()
+        self.w.exec()
+
     # check enter word
     def wrong_enter_word(self, random_id_now, status_word="True", text_check=""):
         list_now_word = self.get_row(random_id_now)
         # if enter word is false
         if not status_word:
+            self.create_wrong_window()
             # -----------------------------------------------------------
             # Output information about true translate now word
             # -----------------------------------------------------------
+
             self.information_labels["wrong one"].setText(
                 f"{self.text_labels[12]}"
                 f" {text_check[0:1].upper()}{text_check[1:].lower()}")
@@ -168,7 +178,6 @@ class MainLabels(WorkDataBd):
                         self.edit_count_true_attempt(random_id_now, 0)
                         self.edit_count_life(random_id_now, -1)
                         self.edit_status_word(random_id_now, "not_activate")
-
 
     # Create timer
     def timer(self):
