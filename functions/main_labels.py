@@ -73,6 +73,8 @@ class MainLabels(WorkDataBd):
         name_label_font = 'JetBrains Mono'
         for element in self.information_labels:
             self.information_labels[element].setFont(QFont(name_label_font, size_label_font))
+        self.information_labels["timer learn"].setFont(QFont('JetBrains Mono',12))
+        self.information_labels["word now"].setFont(QFont('JetBrains Mono', 24))
 
     # change word
     def label_set_text(self, random_id=1, language="ru"):

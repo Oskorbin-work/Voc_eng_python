@@ -2,8 +2,9 @@
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,QLabel, QPushButton,
+    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,QLabel, QPushButton,QGroupBox,
 )
+from PyQt5.QtGui import QPalette, QColor
 import sys
 # -----------------------------------------------------------
 # Codes other files project
@@ -23,6 +24,7 @@ from functions.voice.voice import voice
 from functions.notifications import view_help
 #work with exit program
 from exit_file import Exit_program
+
 
 # Class to describe structure main window
 class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
@@ -65,7 +67,6 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.main_label_def()
         # create Grid
         grid = QGridLayout()
-        grid_test = QGridLayout()
         self.button_connect()
         grid_map = (
                 # Timer from start                          # Words start program
@@ -94,78 +95,72 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((11, 0),                                   (11, 1),),
                 # Place for tests                           # Place for tests
                 ((12, 0),                                   (12, 1),),
+                #                                           #
+                ((13, 0),                                   (13, 1),),
+                #                                           #
+                ((14, 0),                                   (14, 1),),
         )
         # -----------------------------------------------------------
         # add main labels
         # Information about words
         # -----------------------------------------------------------
         # Line 0
-        # Word is checking
-        grid.addWidget(self.information_labels["word now"], grid_map[1][0][0], grid_map[1][0][1])
-        # Line 1
-
-        # Line 2
-
-        # Line 3
-
         # Timer from start
-        grid.addWidget(self.information_labels["timer learn"], grid_map[3][1][0], grid_map[3][1][1])
+        grid.addWidget(self.information_labels["timer learn"], grid_map[0][1][0], grid_map[0][0][1])
+        # Line 1
+        # Word is checking
+        groupbox_word_now = QGroupBox()
+        groupbox_word_now.setStyleSheet(
+            "     background-color: lightgreen;"
+        )
+        #set color
+        grid.addWidget(groupbox_word_now, grid_map[1][0][0], grid_map[1][0][1])
+        grid.addWidget(self.information_labels["word now"], grid_map[1][0][0], grid_map[1][0][1])
+        # Line 2
+        # Field for word
 
-        # Line 4
+        grid.addWidget(self.textEdit, grid_map[2][0][0], grid_map[2][0][1])
+        # Line 3
         # Count words are for learning
-        grid.addWidget(self.information_labels["count word now"], grid_map[4][0][0], grid_map[4][0][1])
+        grid.addWidget(self.information_labels["count word now"], grid_map[3][0][0], grid_map[3][0][1])
+        # Line 4
+        # Part of speech
+        grid.addWidget(self.information_labels["parts of speech word now"], grid_map[4][0][0], grid_map[4][0][1])
 
         # Line 5
-        # Part of speech
-        grid.addWidget(self.information_labels["parts of speech word now"], grid_map[5][0][0], grid_map[5][0][1])
+        # Transcription
+        grid.addWidget(self.information_labels["transcription word now"], grid_map[5][0][0], grid_map[5][0][1])
 
         # Line 6
-        # Transcription
-        grid.addWidget(self.information_labels["transcription word now"], grid_map[6][0][0], grid_map[6][0][1])
+        # Chapter
+        grid.addWidget(self.information_labels["chapter word now"], grid_map[6][0][0], grid_map[6][0][1])
 
         # Line 7
-        # Chapter
-        grid.addWidget(self.information_labels["chapter word now"], grid_map[7][0][0], grid_map[7][0][1])
+        # Start/pause
+        grid.addWidget(self.btn_start_pause, grid_map[7][0][0], grid_map[7][0][1])
 
         # Line 8
-        # Start/pause
-        grid.addWidget(self.btn_start_pause, grid_map[8][1][0], grid_map[8][1][1])
         # info_transcription
         grid.addWidget(self.btn_info_transcription, grid_map[8][0][0], grid_map[8][0][1])
 
         # Line 9
-        # Field for word
-        grid.addWidget(self.textEdit, grid_map[9][0][0], grid_map[9][0][1])
 
         # Buttons for check word
-        grid.addWidget(self.btn, grid_map[9][1][0], grid_map[9][1][1])
-
-        # -----------------------------------------------------------
-        # Wrong section
-        # -----------------------------------------------------------
-
+        grid.addWidget(self.btn, grid_map[9][0][0], grid_map[9][0][1])
         # Line 10
-        # Place for transcription
-        grid.addWidget(self.information_labels["transcription word previous"], grid_map[10][0][0], grid_map[10][0][1])
         # Buttons for voice word
-        grid.addWidget(self.btn_voice_transcription, grid_map[10][1][0], grid_map[10][1][1])
+        grid.addWidget(self.btn_voice_transcription, grid_map[10][0][0], grid_map[10][0][1])
 
         # Line 11
-        # Place for enter answer
-        grid.addWidget(self.information_labels["right one"], grid_map[11][0][0], grid_map[11][0][1])
-        # Place for true answer
-        grid.addWidget(self.information_labels["wrong one"], grid_map[11][1][0], grid_map[11][1][1])
-        # -----------------------------------------------------------
+        # Place for transcription
+        grid.addWidget(self.information_labels["transcription word previous"], grid_map[11][0][0], grid_map[11][0][1])
         # Line 12
-        # Place for tests
-        #tests_labels = {
-        #    "test 1": QLabel(),
-        #    "test 2": QPushButton('Проверить', self),
-        #}
-        #tests_labels["test 1"].setText("zrada 1")
-        #grid.addWidget(tests_labels["test 1"], grid_map[12][0][0], grid_map[12][0][1])
         # Place for enter answer
-        #grid.addWidget(tests_labels["test 2"], grid_map[12][0][0], grid_map[12][0][1])
+        grid.addWidget(self.information_labels["right one"], grid_map[12][0][0], grid_map[12][0][1])
+
+        # Line 13
+        # Place for true answer
+        grid.addWidget(self.information_labels["wrong one"], grid_map[13][0][0], grid_map[13][0][1])
         # -----------------------------------------------------------
         # This is widget!
         widget = QWidget()
