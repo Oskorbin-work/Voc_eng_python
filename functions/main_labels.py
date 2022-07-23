@@ -113,34 +113,19 @@ class MainLabels(WorkDataBd):
             setText(self.text_labels[15])
 
     # functional where create wrong word window
-    def create_wrong_window(self):
+    def create_wrong_window(self,list_now_word,random_language_now,text_check):
         self.w = None
         if self.w is None:
-            self.w = WrondWindow.WrongWordInterface()
+            self.w = WrondWindow.WrongWordInterface(list_now_word,random_language_now,text_check)
         self.w.exec()
 
     # check enter word
-    def wrong_enter_word(self, random_id_now, status_word="True", text_check=""):
+    def wrong_enter_word(self, random_id_now, status_word="True", text_check="", random_language_now=""):
         list_now_word = self.get_row(random_id_now)
         # if enter word is false
         if not status_word:
-            self.create_wrong_window()
-            # -----------------------------------------------------------
-            # Output information about true translate now word
-            # -----------------------------------------------------------
+            self.create_wrong_window(list_now_word, random_language_now,text_check)
 
-            self.information_labels["wrong one"].setText(
-                f"{self.text_labels[12]}"
-                f" {text_check[0:1].upper()}{text_check[1:].lower()}")
-            self.information_labels["right one"].setText(
-                f"{self.text_labels[13]}"
-                f" {list_now_word[1]}"
-                f" ="
-                f" {list_now_word[2]}")
-            self.information_labels["transcription word previous"].setText(
-                f"{self.text_labels[14]}"
-                f" [ {list_now_word[4]} ]")
-            # -----------------------------------------------------------
             # add 1 life to now word
             if list_now_word[8] < 3:
                 self.edit_work_count_life(random_id_now, 3)

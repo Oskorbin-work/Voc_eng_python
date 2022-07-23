@@ -31,10 +31,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def __init__(self):
         super().__init__()
-        #old_data()
         # Set main setting "view window"
         self.main_window_parameter()
-
         # ------------------------------
         # Initiate bar menu
         # is not use
@@ -91,14 +89,6 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((9, 0),                                    (9, 1),),
                 # Place for transcription                   # Button for voice transcription
                 ((10, 0),                                   (10, 1),),
-                # Place for true answer                     # Place for enter answer
-                ((11, 0),                                   (11, 1),),
-                # Place for tests                           # Place for tests
-                ((12, 0),                                   (12, 1),),
-                #                                           #
-                ((13, 0),                                   (13, 1),),
-                #                                           #
-                ((14, 0),                                   (14, 1),),
         )
         # -----------------------------------------------------------
         # add main labels
@@ -118,8 +108,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         grid.addWidget(self.information_labels["word now"], grid_map[1][0][0], grid_map[1][0][1])
         # Line 2
         # Field for word
-
         grid.addWidget(self.textEdit, grid_map[2][0][0], grid_map[2][0][1])
+
         # Line 3
         # Count words are for learning
         grid.addWidget(self.information_labels["count word now"], grid_map[3][0][0], grid_map[3][0][1])
@@ -144,24 +134,12 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         grid.addWidget(self.btn_info_transcription, grid_map[8][0][0], grid_map[8][0][1])
 
         # Line 9
-
         # Buttons for check word
         grid.addWidget(self.btn, grid_map[9][0][0], grid_map[9][0][1])
         # Line 10
         # Buttons for voice word
         grid.addWidget(self.btn_voice_transcription, grid_map[10][0][0], grid_map[10][0][1])
-
-        # Line 11
-        # Place for transcription
-        grid.addWidget(self.information_labels["transcription word previous"], grid_map[11][0][0], grid_map[11][0][1])
-        # Line 12
-        # Place for enter answer
-        grid.addWidget(self.information_labels["right one"], grid_map[12][0][0], grid_map[12][0][1])
-
-        # Line 13
-        # Place for true answer
-        grid.addWidget(self.information_labels["wrong one"], grid_map[13][0][0], grid_map[13][0][1])
-        # -----------------------------------------------------------
+    # -----------------------------------------------------------
         # This is widget!
         widget = QWidget()
         widget.setLayout(grid)
@@ -196,7 +174,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working but it have bug
         # 16777220 is Enter.
-        if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
+        if event.key() == 16777220: #and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
         # 16777222 is F2
         elif event.key() == 16777265:
@@ -214,7 +192,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     # Functional button "Проверить"
     def clicked_main_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now, self.textEdit.text()))
-        self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text())
+        self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text(),self.random_language_now)
         self.random_language_now = self.choice_ru_or_en_word()
         self.language_control()
         # -----------------------------------------------
