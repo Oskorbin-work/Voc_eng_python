@@ -18,7 +18,6 @@ class _TTS:
 
 # voice text
 def voice(text):
-    text = text[0][0]
     # class for voice in Mac
     if settings.PLATFORM == "Apple":
         os.system("/usr/bin/say " + text)

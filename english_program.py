@@ -2,7 +2,7 @@
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,QLabel, QPushButton,QGroupBox,
+    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,QLabel,QGroupBox,
 )
 from PyQt5.QtGui import QPalette, QColor
 import sys
@@ -237,7 +237,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     # voice word
     def clicked_button_voice_transcription(self):
         if self.random_language_now == "en":
-            voice(self.get_english_word(self.random_id_now))
+            voice(self.get_english_word(self.random_id_now)[0][0])
 
     # Place for funk language
     def language_control(self):

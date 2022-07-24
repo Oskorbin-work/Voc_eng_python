@@ -3,7 +3,8 @@ from functions.voice.voice import voice
 from PyQt5.QtWidgets import QPushButton,QGridLayout,QDialog,QLabel
 
 
-class WrongWordInterface(QDialog,):
+
+class WrongWordInterface(QDialog):
     """
     This "window" is a QWidget. If it has no parent, it
     will appear as a free-floating window as we want.
@@ -45,7 +46,6 @@ class WrongWordInterface(QDialog,):
         self.close()
 
     def wrong_word_grid(self):
-        print(self.list_now_word)
         self.label_text_check = QLabel(
             "<b>"
             f"{self.default_name_label_text_check} "
@@ -59,6 +59,7 @@ class WrongWordInterface(QDialog,):
             f"{self.determine_status_lang_word(True)}"
             "' : "
             "</b>"
+            "<br>"
             f"{self.determine_status_lang_word(False)}"
             "<br>"
             "<b>"
@@ -68,7 +69,7 @@ class WrongWordInterface(QDialog,):
             f"{self.list_now_word[4]}"
             "<br>"
             "<b>"
-            f"{self.default_name_label_definition} "
+            f"{self.default_name_label_definition}"
             " : "
             "</b>"
             f"{self.list_now_word[5]}"
@@ -79,11 +80,14 @@ class WrongWordInterface(QDialog,):
             "</b>"
             f"{self.list_now_word[7]}"
                                        )
+        self.label_text_check.setWordWrap(True)
+        self.label_text_check.setStyleSheet(open('another_windows/styles/tables.css').read())
 
     def test(self):
-        return voice("Test")
+        text = self.list_now_word[1]
+        return voice(text)
 
     def wrong_interface_add_widgets(self):
         self.modalgrid.addWidget(self.label_text_check, 0, 0)
         self.modalgrid.addWidget(self.btn_unpack, 2, 0)
-        self.modalgrid.addWidget(self.btn_voice_wrong, 2, 1)
+        self.modalgrid.addWidget(self.btn_voice_wrong, 3, 0)
