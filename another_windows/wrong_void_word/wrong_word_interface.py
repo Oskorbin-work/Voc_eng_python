@@ -2,8 +2,11 @@
 import PyQt5
 
 from functions.voice.voice import voice
-from PyQt5.QtWidgets import QPushButton, QGridLayout, QDialog, QLabel, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QPushButton, QGridLayout, QDialog, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
+from elements.table_views import TableViews
+
+
 class WrongWordInterface(QDialog):
     """
     This "window" is a QWidget. If it has no parent, it
@@ -27,8 +30,8 @@ class WrongWordInterface(QDialog):
         self.main_window_parameter()
 
     def main_window_parameter(self):
-        self.setMinimumWidth(900)
-        self.setWindowTitle("Неправильный перевод!")
+        self.setMinimumWidth(800)
+        self.setWindowTitle("Информация по неправильному переводу")
 
     def default_name_label_wrong(self):
         self.default_name_label_text_check = "Ваш перевод"
@@ -104,14 +107,24 @@ class WrongWordInterface(QDialog):
             self.content_wrong_table.update(dict_add)
 
     def settings_wrong_table(self):
-        self.wrong_table = QTableWidget(self)
+        self.wrong_table = QTableWidget(2,5)
         self.wrong_table.setColumnCount(2)
         self.wrong_table.setRowCount(5)
         self.wrong_table.verticalHeader().setVisible(False)
         self.wrong_table.horizontalHeader().setVisible(False)
         self.wrong_table.horizontalHeader().setStretchLastSection(True)
         self.wrong_table.verticalHeader().setStretchLastSection(True)
-        self.wrong_table.setWordWrap(True)
+
+        #---------------------------------------------
+        self.test_table = TableViews(
+            column_count=2,
+            row_count=5,
+            vertical_header_set_visible=False,
+            horizontal_header_set_visible=False,
+            horizontal_header_set_stretch_last_section=True,
+            vertical_header_set_stretch_last_section=True,
+        )
+
 
     def generate_wrong_table(self):
         self.settings_wrong_table()
