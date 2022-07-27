@@ -87,35 +87,17 @@ class WrongWordInterface(QDialog):
         content_name_label_theme = self.list_now_word[7]
         return {f'{description_name_label_theme}': content_name_label_theme}
 
-    def description_all_row(self):
-        self.update_wrong_table(self.description_wrong_word())
-        self.update_wrong_table(self.description_true_word_and_translate())
-        self.update_wrong_table(self.description_part_of_a_word())
-        self.update_wrong_table(self.description_transcription())
-        self.update_wrong_table(self.description_definition())
-        self.update_wrong_table(self.description_theme_word())
+    def loop_description_all_row(self):
+        list_description_all_row = list()
+        list_description_all_row.append(self.description_wrong_word())
+        list_description_all_row.append(self.description_true_word_and_translate())
+        list_description_all_row.append(self.description_part_of_a_word())
+        list_description_all_row.append(self.description_transcription())
+        list_description_all_row.append(self.description_definition())
+        list_description_all_row.append(self.description_theme_word())
+        return list_description_all_row
 
-    # ----------------------------------
-    # table to view information about wrong table
-    # ----------------------------------
-
-    def check_content_empty(self,dict_add):
-        return ("".join(f"{v}" for k, v in dict_add.items())) == "-"
-
-    def update_wrong_table(self,dict_add):
-        if not self.check_content_empty(dict_add):
-            self.content_wrong_table.update(dict_add)
-
-    def settings_wrong_table(self):
-        self.wrong_table = QTableWidget(2,5)
-        self.wrong_table.setColumnCount(2)
-        self.wrong_table.setRowCount(5)
-        self.wrong_table.verticalHeader().setVisible(False)
-        self.wrong_table.horizontalHeader().setVisible(False)
-        self.wrong_table.horizontalHeader().setStretchLastSection(True)
-        self.wrong_table.verticalHeader().setStretchLastSection(True)
-
-        #---------------------------------------------
+    def generate_wrong_table(self):
         self.test_table = TableViews(
             column_count=2,
             row_count=5,
@@ -124,21 +106,9 @@ class WrongWordInterface(QDialog):
             horizontal_header_set_stretch_last_section=True,
             vertical_header_set_stretch_last_section=True,
         )
-
-
-    def generate_wrong_table(self):
-        self.settings_wrong_table()
-        self.description_all_row()
-        num = 0
-        for j, k in self.content_wrong_table.items():
-            description_column = QTableWidgetItem(j)
-            description_column.setFlags(Qt.ItemIsEnabled)
-            self.wrong_table.setItem(num, 0, description_column)
-            content_column = QTableWidgetItem(k)
-            content_column.setFlags(Qt.ItemIsEnabled)
-            self.wrong_table.setItem(num, 1, content_column)
-            num += 1
-        self.wrong_table.resizeColumnsToContents()
+        self.test_table.add_items_to_dict_table(self.loop_description_all_row())
+        self.test_table.add_items_from_dict_to_table()
+        self.test_table.table_form.resizeColumnsToContents()
     # ----------------------------------
 
     def text_to_voice(self):
@@ -146,6 +116,6 @@ class WrongWordInterface(QDialog):
         return voice(text)
 
     def wrong_interface_add_widgets(self):
-        self.modalgrid.addWidget(self.wrong_table, 1, 0)
+        self.modalgrid.addWidget(self.test_table.table_form, 1, 0)
         self.modalgrid.addWidget(self.btn_unpack, 2, 0)
         self.modalgrid.addWidget(self.btn_voice_wrong, 3, 0)

@@ -3,10 +3,6 @@ from bs4 import BeautifulSoup
 import re
 from tabulate import tabulate
 import eng_to_ipa
-import os
-# VALUES (null, 'Screw up', 'Заваливать', 'phrasal verb', 'skruː ʌp',
-# 'to make a mistake, or to spoil something'
-# , 3, 'A2',3, 'is_activate', 1);
 from functions.work_with_clipboard.colour_console import bcolors
 from database.sql_query_bd import WorkWithBd
 
