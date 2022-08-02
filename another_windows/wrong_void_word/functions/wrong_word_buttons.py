@@ -1,6 +1,10 @@
+# -----------------------------------------------------------
+# Import classical and Pyqt5`s modules
+# -----------------------------------------------------------
 from PyQt5.QtWidgets import QPushButton
 
 
+# Button for wrong windows
 class WrongWordButtons:
     def start_create_wrong_word_button(self):
         self.name_label_buttons()

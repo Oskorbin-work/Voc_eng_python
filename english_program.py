@@ -2,14 +2,12 @@
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,QLabel,QGroupBox,
+    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,QGroupBox,
 )
-from PyQt5.QtGui import QPalette, QColor
 import sys
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
-from database.old_data_to_database import old_data
 # settings
 import settings
 # Initiate labels from main window

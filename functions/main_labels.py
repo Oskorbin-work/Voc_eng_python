@@ -113,10 +113,10 @@ class MainLabels(WorkDataBd):
             setText(self.text_labels[15])
 
     # functional where create wrong word window
-    def create_wrong_window(self,list_now_word,random_language_now,text_check):
+    def create_wrong_window(self,list_wrong_word,random_language_now,text_check):
         self.w = None
         if self.w is None:
-            self.w = WrondWindow.WrongWordInterface(list_now_word,random_language_now,text_check)
+            self.w = WrondWindow.WrongWordInterface(list_wrong_word,random_language_now,text_check)
         self.w.exec()
 
     # check enter word
