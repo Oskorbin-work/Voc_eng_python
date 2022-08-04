@@ -15,6 +15,10 @@ import settings
 # Import classes
 # -----------------------------------------------------------
 import another_windows.wrong_void_word.wrong_word_interface as WrondWindow
+# -----------------------------------------------------------
+# Import other modules
+# -----------------------------------------------------------
+from emoji import emojize
 
 
 # Class to describe  main labels
@@ -29,13 +33,13 @@ class MainLabels(WorkDataBd):
             'Осталось слов проверить: ',
             'Слов с 0 жизнями: ',
             'Непроверяемые слова: ',
-            'Количество жизней слова: ',
-            'Часть слова: ',
+            emojize(':purple_heart:', variant="emoji_type"),
+            '',
             '', # Тут было перевод слова Test
-            'Транскрипция: ',
-            'Тема: ',
+            '',
+            'Подсказки: ',
             # id -- 10. Reserve place
-            "",
+            emojize(':black_heart:', variant="emoji_type"),
             # id -- 11. Reserve place
             "",
             # id -- 12. Entered word
@@ -43,7 +47,7 @@ class MainLabels(WorkDataBd):
             # id -- 13. True translate
             "Правильный вариант:\n",
             # id -- 14. Transcription
-            "Транскрипция: ",
+            "",
             # id -- 15. Count words with 3 when program start run
             "Проверяемые слова: " + str(self.get_count_false_world()[0]),
         ]
@@ -58,7 +62,7 @@ class MainLabels(WorkDataBd):
             "word now": QLabel(),
             "transcription word now": QLabel(),
             "chapter word now": QLabel(),
-            "none place": QLabel(),
+            "count true attempt": QLabel(),
             # above text edit
             "status word": QLabel(),
             "wrong one": QLabel(),
@@ -74,8 +78,11 @@ class MainLabels(WorkDataBd):
         name_label_font = 'JetBrains Mono'
         for element in self.information_labels:
             self.information_labels[element].setFont(QFont(name_label_font, size_label_font))
-        self.information_labels["timer learn"].setFont(QFont('JetBrains Mono',12))
+        self.information_labels["timer learn"].setFont(QFont('JetBrains Mono', 13))
         self.information_labels["word now"].setFont(QFont('JetBrains Mono', 24))
+        self.information_labels["parts of speech word now"].setFont(QFont('JetBrains Mono', 13))
+        self.information_labels["transcription word now"].setFont(QFont('JetBrains Mono', 13))
+        self.information_labels["count true attempt"].setAlignment(QtCore.Qt.AlignLeft)
 
     # change word
     def label_set_text(self, random_id=1, language="ru"):
@@ -92,28 +99,34 @@ class MainLabels(WorkDataBd):
             setText(self.text_labels[3] + str(self.get_work_count_words(0)[0]))
         self.information_labels["change words learn"]. \
             setText(self.text_labels[4] + str(self.get_count_change_world()[0]))
+        self.information_labels["count true attempt"]. \
+            setText(self.text_labels[10] + str(self.list_now_word[10]))
         self.information_labels["count word now"]. \
-            setText(self.text_labels[5] + str(self.list_now_word[8]))
+            setText(self.text_labels[5] + str(self.list_now_word[8]) +
+        " "+
+                    self.information_labels["count true attempt"].text())
         self.information_labels["parts of speech word now"]. \
             setText(self.text_labels[6] + self.list_now_word[3])
 
         self.information_labels["word now"]. \
             setText(self.text_labels[7] + self.list_now_word[lang_now])
         if language == "en":
+            self.information_labels["word now"].setText(
+                self.information_labels["word now"].text()
+            )
             self.information_labels["transcription word now"]. \
-                setText(self.text_labels[8] + str(self.list_now_word[4]))
+                setText(f"[{str(self.list_now_word[4])}]" )
         elif language == "ru":
             self.information_labels["transcription word now"]. \
-                setText(self.text_labels[8] + " - ")
+                setText("")
         self.information_labels["chapter word now"]. \
             setText(self.text_labels[9] + self.list_now_word[7])
-        self.information_labels["none place"]. \
-            setText(self.text_labels[10])
+
         self.information_labels["words start program"]. \
             setText(self.text_labels[15])
 
     # functional where create wrong word window
-    def create_wrong_window(self,list_wrong_word,random_language_now,text_check):
+    def create_wrong_window(self, list_wrong_word, random_language_now, text_check):
         self.w = None
         if self.w is None:
             self.w = WrondWindow.WrongWordInterface(list_wrong_word,random_language_now,text_check)
@@ -176,6 +189,7 @@ class MainLabels(WorkDataBd):
     def timer_text(self):
         self.time = self.time.addSecs(settings.TIMER_INTERVAL)
         self.information_labels["timer learn"].setText(self.time.toString("Время: hh:mm:ss"))
+        self.information_labels["timer learn"].setAlignment(QtCore.Qt.AlignRight)
 
     # Main label def
     def main_label_def(self):

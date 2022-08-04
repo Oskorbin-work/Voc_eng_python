@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# PyQt 5.Initiate structure Main window and GUI
+# Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QLabel, QAction
@@ -7,7 +7,11 @@ from PyQt5.QtWidgets import QLabel, QAction
 # Codes other files project
 # -----------------------------------------------------------
 from elements.Vline import VLine
+# -----------------------------------------------------------
+# Import other modules
+# -----------------------------------------------------------
 from emoji import emojize
+
 
 #  In class "Bar" -- menuBar in main program
 class Bar:

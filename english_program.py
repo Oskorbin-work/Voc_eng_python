@@ -64,6 +64,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # create Grid
         grid = QGridLayout()
         self.button_connect()
+        self.grid_for_word_now()
+        self.grid_for_information_word()
         grid_map = (
                 # Timer from start                          # Words start program
                 ((0, 0),                                    (0, 1),),
@@ -81,12 +83,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((6, 0),                                    (6, 1),),
                 # Chapter                                   # Empty place
                 ((7, 0),                                    (7, 1),),
-                # Start/pause                               # info_transcription
+                # Chapter                                   # Empty place
                 ((8, 0),                                    (8, 1),),
-                # Field for word                            # Buttons for check word
-                ((9, 0),                                    (9, 1),),
-                # Place for transcription                   # Button for voice transcription
-                ((10, 0),                                   (10, 1),),
         )
         # -----------------------------------------------------------
         # add main labels
@@ -94,54 +92,57 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # -----------------------------------------------------------
         # Line 0
         # Timer from start
-        grid.addWidget(self.information_labels["timer learn"], grid_map[0][1][0], grid_map[0][0][1])
+        #grid.addWidget(self.information_labels["timer learn"], grid_map[0][1][0], grid_map[0][0][1])
+        grid.addLayout(self.grid_information_word, grid_map[0][0][0], grid_map[0][0][1])
+
         # Line 1
         # Word is checking
         groupbox_word_now = QGroupBox()
-        groupbox_word_now.setStyleSheet(
-            "     background-color: lightgreen;"
-        )
+        groupbox_word_now.setStyleSheet("background-color: lightgreen;")
         #set color
         grid.addWidget(groupbox_word_now, grid_map[1][0][0], grid_map[1][0][1])
-        grid.addWidget(self.information_labels["word now"], grid_map[1][0][0], grid_map[1][0][1])
+        grid.addLayout(self.grid_word_now, grid_map[1][0][0], grid_map[1][0][1])
+
         # Line 2
-        # Field for word
-        grid.addWidget(self.textEdit, grid_map[2][0][0], grid_map[2][0][1])
+        grid.addWidget(self.information_labels["chapter word now"], grid_map[2][0][0], grid_map[2][0][1])
 
         # Line 3
-        # Count words are for learning
-        grid.addWidget(self.information_labels["count word now"], grid_map[3][0][0], grid_map[3][0][1])
+        grid.addWidget(self.textEdit, grid_map[3][0][0], grid_map[3][0][1])
+
         # Line 4
-        # Part of speech
-        grid.addWidget(self.information_labels["parts of speech word now"], grid_map[4][0][0], grid_map[4][0][1])
 
         # Line 5
-        # Transcription
-        grid.addWidget(self.information_labels["transcription word now"], grid_map[5][0][0], grid_map[5][0][1])
+        # info_transcription
+        grid.addWidget(self.btn_start_pause, grid_map[5][0][0], grid_map[5][0][1])
 
         # Line 6
-        # Chapter
-        grid.addWidget(self.information_labels["chapter word now"], grid_map[6][0][0], grid_map[6][0][1])
-
-        # Line 7
-        # Start/pause
-        grid.addWidget(self.btn_start_pause, grid_map[7][0][0], grid_map[7][0][1])
-
-        # Line 8
-        # info_transcription
-        grid.addWidget(self.btn_info_transcription, grid_map[8][0][0], grid_map[8][0][1])
-
-        # Line 9
         # Buttons for check word
-        grid.addWidget(self.btn, grid_map[9][0][0], grid_map[9][0][1])
-        # Line 10
+        grid.addWidget(self.btn_info_transcription, grid_map[6][0][0], grid_map[6][0][1])
+        # Line 7
         # Buttons for voice word
-        grid.addWidget(self.btn_voice_transcription, grid_map[10][0][0], grid_map[10][0][1])
+        grid.addWidget(self.btn, grid_map[7][0][0], grid_map[7][0][1])
+        # Line 8
+        grid.addWidget(self.btn_voice_transcription, grid_map[8][0][0], grid_map[8][0][1])
     # -----------------------------------------------------------
         # This is widget!
         widget = QWidget()
         widget.setLayout(grid)
         self.setCentralWidget(widget)
+
+    def grid_for_word_now(self):
+        self.grid_word_now = QGridLayout()
+        self.grid_word_now.setSpacing(1)
+        self.grid_word_now.addWidget(self.information_labels["word now"], 0, 0)
+        self.grid_word_now.addWidget(self.information_labels["parts of speech word now"], 1, 0)
+        self.grid_word_now.addWidget(self.information_labels["transcription word now"], 2, 0)
+
+    def grid_for_information_word(self):
+        # create grid for information word
+        self.grid_information_word = QGridLayout()
+        self.grid_information_word.setSpacing(1)
+        self.grid_information_word.addWidget(self.information_labels["count word now"], 0, 0)
+        self.grid_information_word.addWidget(self.information_labels["timer learn"], 0, 1)
+
 
     def view_data_status_bar_static_words(self):
         self.data_status_bar_static_words(
@@ -170,9 +171,9 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     # This is GOD def keyboards!
     def keyPressEvent(self, event):
-        # Qt.Key.Key_*Button* working but it have bug
+        # Qt.Key.Key_*Button* working, but it has bug
         # 16777220 is Enter.
-        if event.key() == 16777220: #and settings.TIMER_INTERVAL != 0:
+        if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
             self.clicked_main_button()
         # 16777222 is F2
         elif event.key() == 16777265:
@@ -190,7 +191,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     # Functional button "Проверить"
     def clicked_main_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now, self.textEdit.text()))
-        self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text(),self.random_language_now)
+        self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text(), self.random_language_now)
         self.random_language_now = self.choice_ru_or_en_word()
         self.language_control()
         # -----------------------------------------------
