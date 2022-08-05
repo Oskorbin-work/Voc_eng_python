@@ -83,8 +83,6 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((6, 0),                                    (6, 1),),
                 # Chapter                                   # Empty place
                 ((7, 0),                                    (7, 1),),
-                # Chapter                                   # Empty place
-                ((8, 0),                                    (8, 1),),
         )
         # -----------------------------------------------------------
         # add main labels
@@ -92,7 +90,6 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # -----------------------------------------------------------
         # Line 0
         # Timer from start
-        #grid.addWidget(self.information_labels["timer learn"], grid_map[0][1][0], grid_map[0][0][1])
         grid.addLayout(self.grid_information_word, grid_map[0][0][0], grid_map[0][0][1])
 
         # Line 1
@@ -110,19 +107,19 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         grid.addWidget(self.textEdit, grid_map[3][0][0], grid_map[3][0][1])
 
         # Line 4
+        # info_transcription
+        grid.addWidget(self.btn_start_pause, grid_map[4][0][0], grid_map[4][0][1])
 
         # Line 5
-        # info_transcription
-        grid.addWidget(self.btn_start_pause, grid_map[5][0][0], grid_map[5][0][1])
+        # Buttons for check word
+        grid.addWidget(self.btn_info_transcription, grid_map[5][0][0], grid_map[5][0][1])
 
         # Line 6
-        # Buttons for check word
-        grid.addWidget(self.btn_info_transcription, grid_map[6][0][0], grid_map[6][0][1])
-        # Line 7
         # Buttons for voice word
-        grid.addWidget(self.btn, grid_map[7][0][0], grid_map[7][0][1])
-        # Line 8
-        grid.addWidget(self.btn_voice_transcription, grid_map[8][0][0], grid_map[8][0][1])
+        grid.addWidget(self.btn, grid_map[6][0][0], grid_map[6][0][1])
+
+        # Line 7
+        grid.addWidget(self.btn_voice_transcription, grid_map[7][0][0], grid_map[7][0][1])
     # -----------------------------------------------------------
         # This is widget!
         widget = QWidget()
