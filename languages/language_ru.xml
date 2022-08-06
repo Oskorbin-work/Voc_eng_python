@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data >
+  <main_window>
+    <name_program>Vocabulary_English</name_program>
+    <button_pause>Пауза</button_pause>
+    <button_start>Старт</button_start>
+  </main_window>
+  <bar>
+    <label_help>F1 Помощь</label_help>
+  </bar>
+  <wrong_window>
+    <title_window>Вы ошиблись с переводом слова</title_window>
+      <label_table_wrond>
+        <wrong_translate>Ваш перевод</wrong_translate>
+      </label_table_wrond>
+  </wrong_window>
+</data>

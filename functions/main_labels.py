@@ -64,7 +64,7 @@ class MainLabels(WorkDataBd):
 
         self.information_labels["count word now"]. \
             setText(self.text_labels[0] + str(self.list_now_word[8]) +
-                " " +
+                    " " +
                     self.text_labels[2] + str(self.list_now_word[10]))
         self.information_labels["parts of speech word now"]. \
             setText(self.list_now_word[3])
@@ -72,33 +72,30 @@ class MainLabels(WorkDataBd):
         self.information_labels["word now"]. \
             setText(self.list_now_word[lang_now])
         self.information_labels["chapter word now"]. \
-            setText(self.text_labels[1] + self.list_now_word[7] )
+            setText(self.text_labels[1] + self.list_now_word[7])
         self.information_labels["word now"].setText(
             self.information_labels["word now"].text()
         )
         if language == "en":
             self.information_labels["transcription word now"]. \
-                setText(f"[{str(self.list_now_word[4])}]" )
+                setText(f"[{str(self.list_now_word[4])}]")
         elif language == "ru":
             self.information_labels["transcription word now"]. \
                 setText("")
 
-
-
-
     # functional where create wrong word window
     def create_wrong_window(self, list_wrong_word, random_language_now, text_check):
-        self.w = None
-        if self.w is None:
-            self.w = WrondWindow.WrongWordInterface(list_wrong_word,random_language_now,text_check)
-        self.w.exec()
+        self.wrong_window = None
+        if self.wrong_window is None:
+            self.wrong_window = WrondWindow.WrongWordInterface(list_wrong_word, random_language_now, text_check)
+        self.wrong_window.exec()
 
     # check enter word
     def wrong_enter_word(self, random_id_now, status_word="True", text_check="", random_language_now=""):
         list_now_word = self.get_row(random_id_now)
         # if enter word is false
         if not status_word:
-            self.create_wrong_window(list_now_word, random_language_now,text_check)
+            self.create_wrong_window(list_now_word, random_language_now, text_check)
 
             # add 1 life to now word
             if list_now_word[8] < 3:
@@ -119,7 +116,7 @@ class MainLabels(WorkDataBd):
         else:
             # add 1 life to now word
             if list_now_word[8] > 0:
-                self.edit_work_count_life(random_id_now, list_now_word[8]-1)
+                self.edit_work_count_life(random_id_now, list_now_word[8] - 1)
 
             if list_now_word[8] == 1:
                 if self.get_status_word(random_id_now)[0] == "is_activate":

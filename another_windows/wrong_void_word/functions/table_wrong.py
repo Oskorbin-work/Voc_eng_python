@@ -2,7 +2,8 @@
 # Codes other files project
 # -----------------------------------------------------------
 from elements.table_views import TableViews
-
+# Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 
 # Class that create wrong table and fill their
 class WrongTable(TableViews):
@@ -12,18 +13,9 @@ class WrongTable(TableViews):
         self.text_check = text_check
         self.list_now_word = list_now_word
         self.random_language_now = random_language_now
-        self.default_name_label_wrong()
         self.add_items_to_dict_table(self.loop_description_all_row())
         self.add_items_from_dict_to_table()
         self.table_form.resizeColumnsToContents()
-
-    # this method save default label in table. One column
-    def default_name_label_wrong(self):
-        self.default_name_label_text_check = "Ваш перевод"
-        self.default_name_label_truth_translate_word = "Правильный перевод"
-        self.default_name_label_part_of_a_word = "Часть слова"
-        self.default_name_label_definition = "Дефиниция"
-        self.default_name_label_theme = "Тема"
 
     # return word in russian or english word
     def determine_status_lang_word(self, flag_now_language=True):
@@ -48,7 +40,7 @@ class WrongTable(TableViews):
         """
         Wrong translate
         """
-        description_name_label_text_check = "Ваш перевод"
+        description_name_label_text_check = XML.get_attr_XML("wrong_window/label_table_wrond/wrong_translate")
         content_name_label_text_check = self.text_check
         return {f'{description_name_label_text_check}': content_name_label_text_check}
 

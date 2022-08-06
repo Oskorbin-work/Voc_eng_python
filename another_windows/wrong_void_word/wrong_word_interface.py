@@ -11,6 +11,8 @@ from functions.voice.voice import voice
 from another_windows.wrong_void_word.functions.table_wrong import WrongTable
 # Structure wrong buttons
 from another_windows.wrong_void_word.functions.wrong_word_buttons import WrongWordButtons
+#Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 
 
 # clas create window to wrong word
@@ -45,7 +47,7 @@ class WrongWordInterface(QDialog, WrongWordButtons):
     # set text for title window
     def set_window_title(self):
         word_for_title = self.test_table.determine_status_lang_word(True)
-        self.setWindowTitle("Вы ошиблись с переводом слова ' " + word_for_title + " '")
+        self.setWindowTitle(XML.get_attr_XML("wrong_window/title_window") + " ' " + word_for_title + " '")
 
     # create wrong table inside window
     def generate_wrong_table(self, text_check, random_language_now):

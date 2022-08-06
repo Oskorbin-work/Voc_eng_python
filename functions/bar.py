@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import QLabel, QAction
 # Codes other files project
 # -----------------------------------------------------------
 from elements.Vline import VLine
+# Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 # -----------------------------------------------------------
 # Import other modules
 # -----------------------------------------------------------
@@ -16,7 +18,6 @@ from emoji import emojize
 #  In class "Bar" -- menuBar in main program
 class Bar:
     def __init__(self):  # Initiate menuBar
-        self.wcLabel = QLabel('Error')
         self.menubar = self.menuBar()
         self.statusbar = self.statusBar()
         self.statusbar_1 = self.statusBar()
@@ -26,7 +27,7 @@ class Bar:
 
     def elements_for_status_bar(self):
         # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-        self.elements_status_bar['Help'] = [QLabel("F1 Помощь"), VLine()]
+        self.elements_status_bar['Help'] = [QLabel(XML.get_attr_XML("bar/label_help")), VLine()]
         # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
         self.elements_status_bar['All_word'] = [QLabel(emojize(':books:')), QLabel("0")]
         self.elements_status_bar['Activity'] = [QLabel(emojize(':bullseye:')), QLabel("0")]

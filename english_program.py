@@ -1,10 +1,11 @@
 # -----------------------------------------------------------
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
-from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit,QGroupBox,
-)
 import sys
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit, QGroupBox,
+)
+from PyQt5 import QtCore
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
@@ -22,6 +23,8 @@ from functions.voice.voice import voice
 from functions.notifications import view_help
 #work with exit program
 from exit_file import Exit_program
+#Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 
 
 # Class to describe structure main window
@@ -44,6 +47,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.create_transcription_button()
         # Initiate main text edit
         self.textEdit = QLineEdit()
+        self.textEdit.setFixedHeight(25)
         # Initiate grid
         self.main_grid()
 
@@ -54,8 +58,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     # place for main setting "view window"
     def main_window_parameter(self):
         self.setMinimumWidth(550)
-        self.setWindowTitle("Vocabulary_English")
-
+        self.setWindowTitle(XML.get_attr_XML("main_window/name_program"))
 
     # place to main setting "view window"
     def main_grid(self):
@@ -129,14 +132,14 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def grid_for_word_now(self):
         self.grid_word_now = QGridLayout()
         self.grid_word_now.setSpacing(1)
-        self.grid_word_now.addWidget(self.information_labels["word now"], 0, 0)
-        self.grid_word_now.addWidget(self.information_labels["parts of speech word now"], 1, 0)
-        self.grid_word_now.addWidget(self.information_labels["transcription word now"], 2, 0)
+        self.grid_word_now.addWidget(self.information_labels["word now"], 0, 0,QtCore.Qt.AlignCenter)
+        self.grid_word_now.addWidget(self.information_labels["parts of speech word now"], 1, 0,QtCore.Qt.AlignCenter)
+        self.grid_word_now.addWidget(self.information_labels["transcription word now"], 2, 0,QtCore.Qt.AlignCenter)
 
     def grid_for_information_word(self):
         # create grid for information word
         self.grid_information_word = QGridLayout()
-        self.grid_information_word.setSpacing(1)
+
         self.grid_information_word.addWidget(self.information_labels["count word now"], 0, 0)
         self.grid_information_word.addWidget(self.information_labels["timer learn"], 0, 1)
 
@@ -216,12 +219,12 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
             settings.TIMER_INTERVAL = 1
 
             self.view_data_status_bar_hp()
-            self.btn_start_pause.setText("Пауза")
+            self.btn_start_pause.setText(XML.get_attr_XML("main_window/button_pause"))
             self.btn.setEnabled(1)
         else:
             self.btn.setDisabled(1)
             settings.TIMER_INTERVAL = 0
-            self.btn_start_pause.setText("Старт")
+            self.btn_start_pause.setText(XML.get_attr_XML("main_window/button_start"))
 
         self.textEdit.setFocus()
 
