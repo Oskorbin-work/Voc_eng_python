@@ -8,11 +8,12 @@ import random
 from database.sql_query_bd import WorkWithBd
 from functions.notifications import view_info_transcription
 import settings
+# Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 
 
 # Work with Data Bd
 class WorkDataBd(WorkWithBd):
-
 
     # def for get random row
     def get_id_row_bd(self):
@@ -30,7 +31,7 @@ class WorkDataBd(WorkWithBd):
     def check_life_word(self):
         # if all words have been passed
         if self.get_count_false_world()[0] == 0:
-            view_info_transcription("Вы прошли все слова!")
+            view_info_transcription(XML.get_attr_XML("win_window/label_win_text"))
             settings.PROGRAM_STATUS = False
         else:
             # get random word

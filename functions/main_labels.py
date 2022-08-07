@@ -5,13 +5,6 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QLabel
 from PyQt5 import QtCore
 # -----------------------------------------------------------
-# Codes other files project
-# -----------------------------------------------------------
-from database.work_data_bd import WorkDataBd
-from functions.main_buttons import MainButtons
-
-import settings
-# -----------------------------------------------------------
 # Import classes
 # -----------------------------------------------------------
 import another_windows.wrong_void_word.wrong_word_interface as WrondWindow
@@ -20,6 +13,14 @@ import another_windows.wrong_void_word.wrong_word_interface as WrondWindow
 # -----------------------------------------------------------
 from emoji import emojize
 
+# -----------------------------------------------------------
+# Codes other files project
+# -----------------------------------------------------------
+from database.work_data_bd import WorkDataBd
+from functions.main_buttons import MainButtons
+import settings
+# Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 
 # Class to describe  main labels
 class MainLabels(WorkDataBd):
@@ -30,7 +31,7 @@ class MainLabels(WorkDataBd):
         self.timer()
         self.text_labels = [
             emojize(':purple_heart:', variant="emoji_type"),
-            'Подсказки: ',
+            XML.get_attr_XML("main_window/label/help_for_word"),
             emojize(':black_heart:', variant="emoji_type"),
         ]
         self.information_labels = {
@@ -72,7 +73,7 @@ class MainLabels(WorkDataBd):
         self.information_labels["word now"]. \
             setText(self.list_now_word[lang_now])
         self.information_labels["chapter word now"]. \
-            setText(self.text_labels[1] + self.list_now_word[7])
+            setText(self.text_labels[1] + " " + self.list_now_word[7])
         self.information_labels["word now"].setText(
             self.information_labels["word now"].text()
         )
@@ -138,7 +139,7 @@ class MainLabels(WorkDataBd):
     # Change time to timer
     def timer_text(self):
         self.time = self.time.addSecs(settings.TIMER_INTERVAL)
-        self.information_labels["timer learn"].setText(self.time.toString("Время: hh:mm:ss"))
+        self.information_labels["timer learn"].setText(self.time.toString(XML.get_attr_XML("main_window/label/timer"),))
         self.information_labels["timer learn"].setAlignment(QtCore.Qt.AlignRight)
 
     # Main label def

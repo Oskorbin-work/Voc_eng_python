@@ -9,14 +9,14 @@ import random
 import settings
 from database.sql_query_bd import WorkWithBd
 from api.functions_for_all_systems import FuncForAllSystems
-
-
+# Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 # Class to describe  main buttons
 class MainButtons(WorkWithBd):
 
     # def to create main_button
     def create_main_button(self):
-        self.btn = QPushButton('Проверить', self)
+        self.btn = QPushButton(XML.get_attr_XML("main_window/label_button_window/button_check"), self)
         self.btn.setStyleSheet("QPushButton"
                                "{"
                                "margin:0"
@@ -30,7 +30,7 @@ class MainButtons(WorkWithBd):
 
     # def to create button start pause
     def create_button_start_pause(self):
-        self.btn_start_pause = QPushButton('Старт', self)
+        self.btn_start_pause = QPushButton(XML.get_attr_XML("main_window/label_button_window/button_start"), self)
         self.btn_start_pause .setStyleSheet("QPushButton"
                                "{"
                                 "margin:0"
@@ -43,7 +43,7 @@ class MainButtons(WorkWithBd):
                                )
 
     def create_info_transcription(self):
-        self.btn_info_transcription = QPushButton('Дефиниция', self)
+        self.btn_info_transcription = QPushButton(XML.get_attr_XML("main_window/label_button_window/button_definition"), self)
         self.btn_info_transcription.setStyleSheet("QPushButton"
                                "{"
                                 "margin:0"
@@ -56,7 +56,7 @@ class MainButtons(WorkWithBd):
                                )
 
     def create_transcription_button(self):
-        self.btn_voice_transcription = QPushButton('Озвучка', self)
+        self.btn_voice_transcription = QPushButton(XML.get_attr_XML("main_window/label_button_window/button_voice"), self)
         #self.btn_transcription.setFixedSize(40, 40)
         self.btn_voice_transcription.setStyleSheet("QPushButton"
                                 "{"

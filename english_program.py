@@ -219,12 +219,12 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
             settings.TIMER_INTERVAL = 1
 
             self.view_data_status_bar_hp()
-            self.btn_start_pause.setText(XML.get_attr_XML("main_window/button_pause"))
+            self.btn_start_pause.setText(XML.get_attr_XML("main_window/label_button_window/button_pause"))
             self.btn.setEnabled(1)
         else:
             self.btn.setDisabled(1)
             settings.TIMER_INTERVAL = 0
-            self.btn_start_pause.setText(XML.get_attr_XML("main_window/button_start"))
+            self.btn_start_pause.setText(XML.get_attr_XML("main_window/label_button_window/button_start"))
 
         self.textEdit.setFocus()
 

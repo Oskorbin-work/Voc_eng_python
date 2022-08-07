@@ -38,9 +38,9 @@ class WrongTable(TableViews):
     # one row.
     def description_wrong_word(self):
         """
-        Wrong translate
+        Wrong description
         """
-        description_name_label_text_check = XML.get_attr_XML("wrong_window/label_table_wrond/wrong_translate")
+        description_name_label_text_check = XML.get_attr_XML("wrong_window/label_table_wrong/description_wrong_word")
         content_name_label_text_check = self.text_check
         return {f'{description_name_label_text_check}': content_name_label_text_check}
 
@@ -49,16 +49,16 @@ class WrongTable(TableViews):
         """
         Wrong translate
         """
-        description_name_label_truth_translate_word = "Правильный перевод слова "
+        description_name_label_truth_translate_word = XML.get_attr_XML("wrong_window/label_table_wrong/description_true_word_and_translate")
         content_name_label_truth_translate_word = self.determine_status_lang_word(False)
         return {f'{description_name_label_truth_translate_word}': content_name_label_truth_translate_word}
 
     # three row.
     def description_part_of_a_word(self):
         """
-        Wrong translate word
+        Wrong part of a word
         """
-        description_name_label_part_of_a_word = "Часть слова"
+        description_name_label_part_of_a_word = XML.get_attr_XML("wrong_window/label_table_wrong/description_part_of_a_word")
         content_name_label_part_of_a_word = self.list_now_word[3]
         return {f'{description_name_label_part_of_a_word}': content_name_label_part_of_a_word}
 
@@ -67,7 +67,7 @@ class WrongTable(TableViews):
         """
         description transcription word
         """
-        description_transcription = "Транскрипция"
+        description_transcription = XML.get_attr_XML("wrong_window/label_table_wrong/description_transcription")
         content_transcription = self.list_now_word[4]
         return {f'{description_transcription}': content_transcription}
 
@@ -76,7 +76,7 @@ class WrongTable(TableViews):
         """
         description definition word
         """
-        description_name_label_definition = "Дефиниция"
+        description_name_label_definition = XML.get_attr_XML("wrong_window/label_table_wrong/description_definition")
         content_name_label_definition = self.list_now_word[5]
         return {f'{description_name_label_definition}': content_name_label_definition}
 
@@ -85,7 +85,7 @@ class WrongTable(TableViews):
         """
         Theme word or too translate word
         """
-        description_name_label_theme = "Тема"
+        description_name_label_theme = XML.get_attr_XML("wrong_window/label_table_wrong/description_theme_word")
         content_name_label_theme = self.list_now_word[7]
         return {f'{description_name_label_theme}': content_name_label_theme}
 

@@ -1,18 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<data >
+<data>
   <main_window>
     <name_program>Vocabulary_English</name_program>
-    <button_pause>Пауза</button_pause>
-    <button_start>Старт</button_start>
+    <label_button_window>
+      <button_pause>Пауза</button_pause>
+      <button_start>Старт</button_start>
+      <button_check>Проверить</button_check>
+      <button_definition>Дефиниция</button_definition>
+      <button_voice>Озвучить текст</button_voice>
+    </label_button_window>
+    <label>
+      <help_for_word>Подсказки:</help_for_word>
+      <timer> Время: hh:mm:ss</timer>
+    </label>
   </main_window>
   <bar>
     <label_help>F1 Помощь</label_help>
   </bar>
   <wrong_window>
     <title_window>Вы ошиблись с переводом слова</title_window>
-      <label_table_wrond>
-        <wrong_translate>Ваш перевод</wrong_translate>
-      </label_table_wrond>
+    <label_table_wrong>
+      <description_wrong_word>Ваш перевод</description_wrong_word>
+      <description_true_word_and_translate>Правильный перевод слова </description_true_word_and_translate>
+      <description_part_of_a_word>Часть слова</description_part_of_a_word>
+      <description_transcription>Транскрипция</description_transcription>
+      <description_definition>Дефиниция</description_definition>
+      <description_theme_word>Тема</description_theme_word>
+    </label_table_wrong>
+    <label_button_window>
+      <button_exit>В главное меню</button_exit>
+      <button_voice>Озвучить текст</button_voice>
+    </label_button_window>
   </wrong_window>
+  <win_window>
+    <label_win_text> Вы прошли все слова!</label_win_text>
+  </win_window>
+  <notifications>
+    <view_info_transcription>
+      <title>Дефиниция</title>
+      <name_transcription>Дефиниция</name_transcription>
+    </view_info_transcription>
+    <help>
+      <enter>Enter - Проверить слово</enter>
+      <status_program>F2 - Старт/Пауза</status_program>
+      <transcription>⌥ - Вывод транскрипции</transcription>
+      <voice>⌘ - Озвучка слова</voice>
+    </help>
+  </notifications>
+  <error_sector>
+          <xkbswitch_not_fount>
+            <short_description_error>Установите xkbswitch</short_description_error>
+            <long_description_error>
+              Oткройте файл READMI.MD.
+              После чего следуйте инструкциям установки необходимого моудуля в пункте один.
+            </long_description_error>
+          </xkbswitch_not_fount>
+          <language_keyboard>
+            <windows_10>
+              <change_language> Ошибка смены языка клавиатуры</change_language>
+            </windows_10>
+          </language_keyboard>
+          <database>
+            <label_not_working_sql>Не работает sql:</label_not_working_sql>
+            <label_value>Ошибка:</label_value>
+          </database>
+
+  </error_sector>
+
 </data>

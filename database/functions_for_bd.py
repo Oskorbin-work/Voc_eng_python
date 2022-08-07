@@ -8,7 +8,8 @@ import sqlite3
 # -----------------------------------------------------------
 from functions.notifications import view_error_critical
 from settings import ROOT_MAIN_DB
-
+# Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 
 # Decorator for update query the database
 def request_bd_update(func):
@@ -20,7 +21,7 @@ def request_bd_update(func):
             conn.commit()
             conn.close()
         except sqlite3.Error:
-            view_error_critical("Not working sql:", func(*args, **kwargs))
+            view_error_critical(XML.get_attr_XML("error_sector/database/label_not_working_sql"), func(*args, **kwargs))
         return 0  # The comparison
     return wrapper
 
@@ -35,8 +36,8 @@ def request_bd_select(func):
             value = (cur.fetchall())[0]
             conn.close()
         except sqlite3.Error:
-            view_error_critical("Not working sql:", func(*args, **kwargs))
-            value = "Error"
+            view_error_critical(XML.get_attr_XML("error_sector/database/label_not_working_sql"), func(*args, **kwargs))
+            value = XML.get_attr_XML("error_sector/database/label_value")
         return value
     return wrapper
 
@@ -51,9 +52,10 @@ def request_bd_insert(func):
             conn.commit()
             conn.close()
         except sqlite3.Error:
-            view_error_critical("Not working sql:", func(*args, **kwargs))
+            view_error_critical(XML.get_attr_XML("error_sector/database/label_not_working_sql"), func(*args, **kwargs))
         return 0  # The comparison
     return wrapper
+
 
 # Decorator for select query the database
 def request_bd_select_all(func):
@@ -65,7 +67,7 @@ def request_bd_select_all(func):
             value = (cur.fetchall())
             conn.close()
         except sqlite3.Error:
-            view_error_critical("Not working sql:", func(*args, **kwargs))
-            value = "Error"
+            view_error_critical(XML.get_attr_XML("error_sector/database/label_not_working_sql"), func(*args, **kwargs))
+            value = XML.get_attr_XML("error_sector/database/label_value")
         return value
     return wrapper

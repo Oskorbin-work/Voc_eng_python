@@ -13,7 +13,8 @@ from functions.notifications import view_error_critical
 from settings import (
     ROOT_MAIN_DB, NAME_ACTIVE_TABLE,MAX_OLD_WORD
 )
-
+# Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
 
 # Class to work with bd
 class WorkWithBd:
@@ -56,7 +57,7 @@ class WorkWithBd:
             conn.commit()
             conn.close()
         except sqlite3.Error:
-            view_error_critical("Not working sql:", self.order_main_table().__name__)
+            view_error_critical(XML.get_attr_XML("error_sector/database/label_not_working_sql"), self.order_main_table().__name__)
 
     # place for start set up bd data
     def start_set_up(self):
