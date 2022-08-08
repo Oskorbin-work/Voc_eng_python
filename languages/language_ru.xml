@@ -14,8 +14,12 @@
       <timer> Время: hh:mm:ss</timer>
     </label>
   </main_window>
+  <helper_window>
+    <title>Помощь</title>
+  </helper_window>
   <bar>
     <label_help>F1 Помощь</label_help>
+
   </bar>
   <wrong_window>
     <title_window>Вы ошиблись с переводом слова</title_window>

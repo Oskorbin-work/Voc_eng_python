@@ -13,6 +13,8 @@ from emoji import emojize
 # Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
 
+import another_windows.help_for_users.helper as Helper
+
 # View QMessageBox about error
 # (Example about failed sql request)
 def view_error_critical(title, text=""):
@@ -30,9 +32,15 @@ def view_info_transcription(text):
     msg.setText(XML.get_attr_XML("notifications/view_info_transcription/name_transcription") + ":\n" + str(text))
     msg.exec_()
 
+
 # view help
 def view_help():
+    wrong_window = None
+    if wrong_window is None:
+        wrong_window = Helper.HelperNotifications()
+    wrong_window.exec()
 
+def test():
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Information)
     msg.setFont(QFont("Apple Color Emoji"))
