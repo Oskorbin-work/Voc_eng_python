@@ -18,7 +18,7 @@ def get_attr_XML(name):
     if root_conf.find(name) is not None:
         return root_conf.find(name).text
     else:
-        return " Тег " + name + " не існує в файлі" + settings.STATUS_LANGUAGE_INTERFACE+".xml"
+        return " Тег " + name + " не існує в файлі " + settings.STATUS_LANGUAGE_INTERFACE+".xml"
 
 def change_val_XML(name_file_XML, val,new_val):
     root_change = ET.parse(os.path.join(settings.ROOT_DIR, name_file_XML +'.xml'))

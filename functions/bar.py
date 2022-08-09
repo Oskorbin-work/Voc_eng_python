@@ -35,7 +35,7 @@ class Bar:
         self.elements_status_bar['Not_Activity'] = [QLabel(emojize(':military_medal:')), QLabel("0"), VLine()]
         # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
         self.elements_status_bar['Last_word'] = [QLabel("Осталось:"), QLabel("0")]
-        self.elements_status_bar['0_hp'] = [QLabel("\u2705"), QLabel("0")]
+        self.elements_status_bar['0_hp'] = [QLabel(emojize(':check_mark_button:')), QLabel("0")]
         self.elements_status_bar['1_hp'] = [QLabel(emojize(':keycap_1:')), QLabel("0")]
         self.elements_status_bar['1_hp'][0].setFont(QFont("Apple Color Emoji"))
         self.elements_status_bar['2_hp'] = [QLabel(emojize(':keycap_2:')), QLabel("0")]

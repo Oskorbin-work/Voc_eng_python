@@ -45,10 +45,58 @@
       <name_transcription>Дефиниция</name_transcription>
     </view_info_transcription>
     <help>
-      <enter>Enter - Проверить слово</enter>
-      <status_program>F2 - Старт/Пауза</status_program>
-      <transcription>⌥ - Вывод транскрипции</transcription>
-      <voice>⌘ - Озвучка слова</voice>
+      <enter>
+        <name>Enter</name>
+        <description>Проверить слово</description>
+      </enter>
+      <status_program>
+        <name>F2</name>
+        <description>Старт/Пауза</description>
+       </status_program>
+      <transcription>
+        <name>⌥</name>
+        <description>Вывод транскрипции</description>
+      </transcription>
+      <voice>
+        <name>⌘</name>
+        <description>Озвучка слова</description>
+      </voice>
+      <purple_heart>
+        <name>:purple_heart:</name>
+        <description>Озвучка слова</description>
+      </purple_heart>
+      <black_heart>
+        <name>:black_heart:</name>
+        <description>Озвучка слова</description>
+      </black_heart>
+      <books>
+        <name>:books:</name>
+        <description>Озвучка слова</description>
+      </books>
+      <bullseye>
+        <name>:bullseye:</name>
+        <description>Озвучка слова</description>
+      </bullseye>
+      <military_medal>
+        <name>:military_medal:</name>
+        <description>Озвучка слова</description>
+      </military_medal>
+      <check_mark_button>
+        <name>:check_mark_button:</name>
+        <description>Озвучка слова</description>
+      </check_mark_button>
+      <keycap_1>
+        <name>:keycap_1:</name>
+        <description>Озвучка слова</description>
+      </keycap_1>
+      <keycap_2>
+        <name>:keycap_2:</name>
+        <description>Озвучка слова</description>
+      </keycap_2>
+      <keycap_3>
+        <name>:keycap_3:</name>
+        <description>Озвучка слова</description>
+      </keycap_3>
     </help>
   </notifications>
   <error_sector>
