@@ -3,11 +3,14 @@
 # -----------------------------------------------------------
 from PyQt5.QtWidgets import QGridLayout, QDialog, QLabel
 from PyQt5.QtGui import QFont
+import re
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
 # Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
+# pretty format text
+from functions.useful_functions import pretty_print
 # -----------------------------------------------------------
 # Import other modules
 # -----------------------------------------------------------
@@ -38,7 +41,6 @@ class HelperNotifications(QDialog):
         list_widgets = self.label_create_list()
         range = 0
         for i in list_widgets:
-            print(list_widgets[range][0].text())
             self.grid.addWidget(list_widgets[range][0], range, 0)
             self.grid.addWidget(list_widgets[range][1], range, 1)
             range += 1
@@ -83,11 +85,12 @@ class HelperNotifications(QDialog):
         list_path_widgets = self.label_list_path_widgets()
         list_emojii = self.label_add_emojize()
         list_qlabel_widgets = list()
-        print(XML.get_attr_XML("notifications/help"))
         for i, j in zip(list_path_widgets, list_emojii):
             name_text = XML.get_attr_XML(i)
             name_description = XML.get_attr_XML(j)
-            if name_text[0] == ":" and name_text[-1] == ":":
+            name_description = pretty_print.format_file(name_description, 600)
+            # find word with :*any_words*:
+            if re.search("^:.*:$", name_text):
                 name_text = emojize(name_text)
                 list_qlabel_widgets.append(
                     [

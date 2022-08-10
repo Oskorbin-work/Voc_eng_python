@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
+  <!-- words for main window -->
   <main_window>
+      <!-- this if name prgram -->
     <name_program>Vocabulary_English</name_program>
     <label_button_window>
+        <!-- button what stop session-->
       <button_pause>Пауза</button_pause>
+      <!-- button what start session-->
       <button_start>Старт</button_start>
+      <!-- button what check word-->
       <button_check>Проверить</button_check>
+      <!-- button view definition word-->
       <button_definition>Дефиниция</button_definition>
       <button_voice>Озвучить текст</button_voice>
     </label_button_window>
@@ -63,39 +69,39 @@
       </voice>
       <purple_heart>
         <name>:purple_heart:</name>
-        <description>Озвучка слова</description>
+        <description>Количество жизней слова в текущем сеансе. Когда жизней 0, то слово считается выученным в текущем сеансе</description>
       </purple_heart>
       <black_heart>
         <name>:black_heart:</name>
-        <description>Озвучка слова</description>
+        <description>Количество сеансов подряд, когда слово теряло все жизни в каждом сеансе. Когда три сеанса подряд, то слово становиться неактивным </description>
       </black_heart>
       <books>
         <name>:books:</name>
-        <description>Озвучка слова</description>
+        <description>Количество всех слов в программу</description>
       </books>
       <bullseye>
         <name>:bullseye:</name>
-        <description>Озвучка слова</description>
+        <description>Количество слов, что нужно выучить(без учета временно-активных слов)</description>
       </bullseye>
       <military_medal>
         <name>:military_medal:</name>
-        <description>Озвучка слова</description>
+        <description>Количество неактивных слов -- это слова, которые уже были выучены</description>
       </military_medal>
       <check_mark_button>
         <name>:check_mark_button:</name>
-        <description>Озвучка слова</description>
+        <description>Количество слов, что уже были повторены в текущем сеансе</description>
       </check_mark_button>
       <keycap_1>
         <name>:keycap_1:</name>
-        <description>Озвучка слова</description>
+        <description>Количество слов, что имеют одну жизнь</description>
       </keycap_1>
       <keycap_2>
         <name>:keycap_2:</name>
-        <description>Озвучка слова</description>
+        <description>Количество слов, что имеют две жизни</description>
       </keycap_2>
       <keycap_3>
         <name>:keycap_3:</name>
-        <description>Озвучка слова</description>
+        <description>Количество слов, что имеют три жизни</description>
       </keycap_3>
     </help>
   </notifications>
