@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-  <!-- words for main window -->
+  <!-- text for main window -->
   <main_window>
-      <!-- this if name prgram -->
+      <!-- this if name program -->
     <name_program>Vocabulary_English</name_program>
+    <!-- description buttons-->
     <label_button_window>
         <!-- button what stop session-->
       <button_pause>Пауза</button_pause>
@@ -13,113 +14,189 @@
       <button_check>Проверить</button_check>
       <!-- button view definition word-->
       <button_definition>Дефиниция</button_definition>
+      <!-- button voice word-->
       <button_voice>Озвучить текст</button_voice>
     </label_button_window>
+    <!-- text on main window-->
     <label>
+      <!-- Suggestions for the current word-->
       <help_for_word>Подсказки:</help_for_word>
-      <timer> Время: hh:mm:ss</timer>
+      <!-- Stopwatch session-->
+      <timer> hh:mm:ss</timer>
     </label>
   </main_window>
+  <!-- Help window, which explains the characters in the program-->
   <helper_window>
+    <!-- Help window name -->
     <title>Помощь</title>
   </helper_window>
+  <!-- Bottom and top line of the program-->
   <bar>
+    <!-- Help window prompt-->
     <label_help>F1 Помощь</label_help>
-
+    <last_words>Осталось:</last_words>
   </bar>
+  <!-- Wrong translation information window-->
   <wrong_window>
+    <!-- Wrong translation information window name-->
     <title_window>Вы ошиблись с переводом слова</title_window>
+    <!-- Text for Wrong translation information window  -->
     <label_table_wrong>
+      <!-- Description wrong word -->
       <description_wrong_word>Ваш перевод</description_wrong_word>
+      <!-- Stopwatch session-->
       <description_true_word_and_translate>Правильный перевод слова </description_true_word_and_translate>
+      <!-- Description true word and translate-->
       <description_part_of_a_word>Часть слова</description_part_of_a_word>
+      <!-- Description transcription-->
       <description_transcription>Транскрипция</description_transcription>
+      <!-- Description definition-->
       <description_definition>Дефиниция</description_definition>
+      <!-- Description theme word-->
       <description_theme_word>Тема</description_theme_word>
     </label_table_wrong>
+    <!-- description buttons-->
     <label_button_window>
+      <!-- Exit button-->
       <button_exit>В главное меню</button_exit>
+      <!-- button voice word-->
       <button_voice>Озвучить текст</button_voice>
     </label_button_window>
   </wrong_window>
+  <!-- Window of victory-->
   <win_window>
+    <!-- Text when all words are gone-->
     <label_win_text> Вы прошли все слова!</label_win_text>
   </win_window>
+  <!-- Notifications-->
   <notifications>
+    <!-- Definition output window-->
     <view_info_transcription>
+      <!-- Definition output window name-->
       <title>Дефиниция</title>
+      <!-- Text for definition output window-->
       <name_transcription>Дефиниция</name_transcription>
     </view_info_transcription>
+    <!-- text for help window-->
     <help>
+      <!-- Input word-->
       <enter>
+        <!-- One column. Name help-->
         <name>Enter</name>
+         <!-- Two column. Description help-->
         <description>Проверить слово</description>
       </enter>
+      <!-- Status program/session-->
       <status_program>
+        <!-- One column. Name help-->
         <name>F2</name>
+        <!-- Two column. Description help-->
         <description>Старт/Пауза</description>
        </status_program>
+      <!-- Transcription word-->
       <transcription>
+        <!-- One column. Name help-->
         <name>⌥</name>
+        <!-- Two column. Description help-->
         <description>Вывод транскрипции</description>
       </transcription>
+      <!-- Voice word-->
       <voice>
+        <!-- One column. Name help-->
         <name>⌘</name>
+        <!-- Two column. Description help-->
         <description>Озвучка слова</description>
       </voice>
+      <!-- Number of lives of a word in the current session -->
       <purple_heart>
+        <!-- One column. Name help-->
         <name>:purple_heart:</name>
+        <!-- Two column. Description help-->
         <description>Количество жизней слова в текущем сеансе. Когда жизней 0, то слово считается выученным в текущем сеансе</description>
       </purple_heart>
+      <!-- Number of sessions in a row where the word lost all lives in each session.-->
       <black_heart>
+        <!-- One column. Name help-->
         <name>:black_heart:</name>
+        <!-- Two column. Description help-->
         <description>Количество сеансов подряд, когда слово теряло все жизни в каждом сеансе. Когда три сеанса подряд, то слово становиться неактивным </description>
       </black_heart>
+      <!-- Number of all words in programs-->
       <books>
+       <!-- One column. Name help-->
         <name>:books:</name>
+        <!-- Two column. Description help-->
         <description>Количество всех слов в программу</description>
       </books>
+      <!-- Number of words to learnn-->
       <bullseye>
+       <!-- One column. Name help-->
         <name>:bullseye:</name>
+        <!-- Two column. Description help-->
         <description>Количество слов, что нужно выучить(без учета временно-активных слов)</description>
       </bullseye>
+      <!-- Number of inactive words-->
       <military_medal>
+        <!-- One column. Name help-->
         <name>:military_medal:</name>
+        <!-- Two column. Description help-->
         <description>Количество неактивных слов -- это слова, которые уже были выучены</description>
       </military_medal>
+      <!-- Number of words that have already been repeated in the current session-->
       <check_mark_button>
+        <!-- One column. Name help-->
         <name>:check_mark_button:</name>
+       <!-- Two column. Description help-->
         <description>Количество слов, что уже были повторены в текущем сеансе</description>
       </check_mark_button>
+      <!--Number of words that have one life-->
       <keycap_1>
+        <!-- One column. Name help-->
         <name>:keycap_1:</name>
+        <!-- Two column. Description help-->
         <description>Количество слов, что имеют одну жизнь</description>
       </keycap_1>
+      <!-- Number of words that have two life-->
       <keycap_2>
+        <!-- One column. Name help-->
         <name>:keycap_2:</name>
+        <!-- Two column. Description help-->
         <description>Количество слов, что имеют две жизни</description>
       </keycap_2>
+      <!-- Number of words that have three life-->
       <keycap_3>
+        <!-- One column. Name help-->
         <name>:keycap_3:</name>
+        <!-- Two column. Description help-->
         <description>Количество слов, что имеют три жизни</description>
       </keycap_3>
     </help>
   </notifications>
+  <!-- Text for error notifications-->
   <error_sector>
+    <!-- Module xkbswitch -->
           <xkbswitch_not_fount>
+            <!-- Short manual error-->
             <short_description_error>Установите xkbswitch</short_description_error>
+            <!-- Long Manual error-->
             <long_description_error>
-              Oткройте файл READMI.MD.
-              После чего следуйте инструкциям установки необходимого моудуля в пункте один.
+              Oткройте файл README.MD.
+              После чего следуйте инструкциям установки необходимого модуля в пункте один.
             </long_description_error>
           </xkbswitch_not_fount>
+          <!-- Language keyboard error-->
           <language_keyboard>
+            <!-- Language keyboard window`s 10-->
             <windows_10>
+              <!-- Short manual error-->
               <change_language> Ошибка смены языка клавиатуры</change_language>
             </windows_10>
           </language_keyboard>
+    <!-- Database error-->
           <database>
+            <!-- Label not working sql error-->
             <label_not_working_sql>Не работает sql:</label_not_working_sql>
+            <!-- Label value error-->
             <label_value>Ошибка:</label_value>
           </database>
 

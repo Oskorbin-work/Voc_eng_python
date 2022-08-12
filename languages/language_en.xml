@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <!-- text for main window -->
+  <main_window>
+      <!-- this if name program -->
+    <name_program>Vocabulary_English</name_program>
+    <!-- description buttons-->
+    <label_button_window>
+        <!-- button what stop session-->
+      <button_pause>Pause</button_pause>
+      <!-- button what start session-->
+      <button_start>Start</button_start>
+      <!-- button what check word-->
+      <button_check>Check</button_check>
+      <!-- button view definition word-->
+      <button_definition>Verify</button_definition>
+      <!-- button voice word-->
+      <button_voice>Vocalize the text</button_voice>
+    </label_button_window>
+    <!-- text on main window-->
+    <label>
+      <!-- Suggestions for the current word-->
+      <help_for_word>Hints:</help_for_word>
+      <!-- Stopwatch session-->
+      <timer> hh:mm:ss</timer>
+    </label>
+  </main_window>
+  <!-- Help window, which explains the characters in the program-->
+  <helper_window>
+    <!-- Help window name -->
+    <title>Help</title>
+  </helper_window>
+  <!-- Bottom and top line of the program-->
+  <bar>
+    <!-- Help window prompt-->
+    <label_help>F1 Help</label_help>
+    <last_words>Words left:</last_words>
+  </bar>
+  <!-- Wrong translation information window-->
+  <wrong_window>
+    <!-- Wrong translation information window name-->
+    <title_window>You made a mistake with the translation of the word</title_window>
+    <!-- Text for Wrong translation information window  -->
+    <label_table_wrong>
+      <!-- Description wrong word -->
+      <description_wrong_word>Your translation of the word</description_wrong_word>
+      <!-- Stopwatch session-->
+      <description_true_word_and_translate>Correct translation of the word </description_true_word_and_translate>
+      <!-- Description true word and translate-->
+      <description_part_of_a_word>Part of a word</description_part_of_a_word>
+      <!-- Description transcription-->
+      <description_transcription>Transcription</description_transcription>
+      <!-- Description definition-->
+      <description_definition>Definition</description_definition>
+      <!-- Description theme word-->
+      <description_theme_word>Тема</description_theme_word>
+    </label_table_wrong>
+    <!-- description buttons-->
+    <label_button_window>
+      <!-- Exit button-->
+      <button_exit>To main menu</button_exit>
+      <!-- button voice word-->
+      <button_voice>Speak text</button_voice>
+    </label_button_window>
+  </wrong_window>
+  <!-- Window of victory-->
+  <win_window>
+    <!-- Text when all words are gone-->
+    <label_win_text>You passed all the words!</label_win_text>
+  </win_window>
+  <!-- Notifications-->
+  <notifications>
+    <!-- Definition output window-->
+    <view_info_transcription>
+      <!-- Definition output window name-->
+      <title>Definition</title>
+      <!-- Text for definition output window-->
+      <name_transcription>Definition</name_transcription>
+    </view_info_transcription>
+    <!-- text for help window-->
+    <help>
+      <!-- Input word-->
+      <enter>
+        <!-- One column. Name help-->
+        <name>Enter</name>
+         <!-- Two column. Description help-->
+        <description>Check word</description>
+      </enter>
+      <!-- Status program/session-->
+      <status_program>
+        <!-- One column. Name help-->
+        <name>F2</name>
+        <!-- Two column. Description help-->
+        <description>Start/Pause</description>
+       </status_program>
+      <!-- Transcription word-->
+      <transcription>
+        <!-- One column. Name help-->
+        <name>⌥</name>
+        <!-- Two column. Description help-->
+        <description>Transcription output</description>
+      </transcription>
+      <!-- Voice word-->
+      <voice>
+        <!-- One column. Name help-->
+        <name>⌘</name>
+        <!-- Two column. Description help-->
+        <description>Word voice acting</description>
+      </voice>
+      <!-- Number of lives of a word in the current session -->
+      <purple_heart>
+        <!-- One column. Name help-->
+        <name>:purple_heart:</name>
+        <!-- Two column. Description help-->
+        <description>Number of lives of the word in the current session. When life is 0, then the word is considered learned in the current session</description>
+      </purple_heart>
+      <!-- Number of sessions in a row where the word lost all lives in each session.-->
+      <black_heart>
+        <!-- One column. Name help-->
+        <name>:black_heart:</name>
+        <!-- Two column. Description help-->
+        <description>The number of sessions in a row where the word lost all lives in each session. When three sessions in a row, the word becomes inactive</description>
+      </black_heart>
+      <!-- Number of all words in programs-->
+      <books>
+       <!-- One column. Name help-->
+        <name>:books:</name>
+        <!-- Two column. Description help-->
+        <description>Number of all words in the program</description>
+      </books>
+      <!-- Number of words to learnn-->
+      <bullseye>
+       <!-- One column. Name help-->
+        <name>:bullseye:</name>
+        <!-- Two column. Description help-->
+        <description>The number of words to learn (excluding temporarily active words)</description>
+      </bullseye>
+      <!-- Number of inactive words-->
+      <military_medal>
+        <!-- One column. Name help-->
+        <name>:military_medal:</name>
+        <!-- Two column. Description help-->
+        <description>The number of inactive words is the words that have already been learned</description>
+      </military_medal>
+      <!-- Number of words that have already been repeated in the current session-->
+      <check_mark_button>
+        <!-- One column. Name help-->
+        <name>:check_mark_button:</name>
+       <!-- Two column. Description help-->
+        <description>Number of words that have already been repeated in the current session</description>
+      </check_mark_button>
+      <!--Number of words that have one life-->
+      <keycap_1>
+        <!-- One column. Name help-->
+        <name>:keycap_1:</name>
+        <!-- Two column. Description help-->
+        <description>Number of words that have one life</description>
+      </keycap_1>
+      <!-- Number of words that have two life-->
+      <keycap_2>
+        <!-- One column. Name help-->
+        <name>:keycap_2:</name>
+        <!-- Two column. Description help-->
+        <description>Number of words that have two life</description>
+      </keycap_2>
+      <!-- Number of words that have three life-->
+      <keycap_3>
+        <!-- One column. Name help-->
+        <name>:keycap_3:</name>
+        <!-- Two column. Description help-->
+        <description>Number of words that have three life</description>
+      </keycap_3>
+    </help>
+  </notifications>
+  <!-- Text for error notifications-->
+  <error_sector>
+    <!-- Module xkbswitch -->
+          <xkbswitch_not_fount>
+            <!-- Short manual error-->
+            <short_description_error>Install xkbswitch</short_description_error>
+            <!-- Long Manual error-->
+            <long_description_error>
+              Open the README.MD file. Then follow the instructions for installing the required module in step one.
+            </long_description_error>
+          </xkbswitch_not_fount>
+          <!-- Language keyboard error-->
+          <language_keyboard>
+            <!-- Language keyboard window`s 10-->
+            <windows_10>
+              <!-- Short manual error-->
+              <change_language> Keyboard language change error</change_language>
+            </windows_10>
+          </language_keyboard>
+    <!-- Database error-->
+          <database>
+            <!-- Label not working sql error-->
+            <label_not_working_sql>Not working sql:</label_not_working_sql>
+            <!-- Label value error-->
+            <label_value>Error:</label_value>
+          </database>
+
+  </error_sector>
+
+</data>

@@ -23,7 +23,7 @@ KEYBOARD_RUSSIAN = '00000419'
 LANGUAGE_INTERFACE_DIR = 'languages/'
 LANGUAGE_INTERFACE_LIST = {
     "en": ROOT_DIR + LANGUAGE_INTERFACE_DIR + "language_en.xml",
-    "ua": ROOT_DIR + LANGUAGE_INTERFACE_DIR + "language_au.xml",
+    "ua": ROOT_DIR + LANGUAGE_INTERFACE_DIR + "language_ua.xml",
     "ru": ROOT_DIR + LANGUAGE_INTERFACE_DIR + "language_ru.xml",
 }
 STATUS_LANGUAGE_INTERFACE = "ru"
