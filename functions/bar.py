@@ -9,10 +9,12 @@ from PyQt5.QtWidgets import QLabel, QAction
 from elements.Vline import VLine
 # Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
+
 # -----------------------------------------------------------
 # Import other modules
 # -----------------------------------------------------------
 from emoji import emojize
+from functions.menubar.menu_bar import MenuMain
 
 
 #  In class "Bar" -- menuBar in main program
@@ -20,10 +22,10 @@ class Bar:
     def __init__(self):  # Initiate menuBar
         self.menubar = self.menuBar()
         self.statusbar = self.statusBar()
-        self.statusbar_1 = self.statusBar()
         self.elements_status_bar = dict()
         self.elements_for_status_bar()
         self.status_bar_structure()
+        #self.bar_category_file_menu()
 
     def elements_for_status_bar(self):
         # ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -65,6 +67,8 @@ class Bar:
     # is not use
     def bar_category_file_menu(self):
         file_menu = self.menubar.addMenu('File')
-        file_menu.addAction(QAction('', self))
+        exitAction = QAction('Exit', self)
+        file_menu.addAction(exitAction)
+        exitAction.setMenuRole(QAction.NoRole)
         work_with_bd = self.menubar.addMenu('Data Base')
         work_with_bd.addAction(QAction('', self))
