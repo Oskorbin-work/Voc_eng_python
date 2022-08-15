@@ -70,6 +70,20 @@
   </win_window>
   <!-- Notifications-->
   <notifications>
+    <exit_program>
+      <name>
+        Выход из программы
+      </name>
+      <question>
+        Вы хотите выйти из программы?
+      </question>
+      <yes>
+        Да
+      </yes>
+      <no>
+        Нет
+      </no>
+    </exit_program>
     <!-- Definition output window-->
     <view_info_transcription>
       <!-- Definition output window name-->
