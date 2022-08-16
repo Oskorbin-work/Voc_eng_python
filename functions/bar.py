@@ -76,13 +76,16 @@ class Bar:
 
     # first tab in menu bar
     def tab_main_menu(self):
-        self.main_menu = self.menubar.addMenu('Main')
+        # name tab
+        name_main_menu = XML.get_attr_XML("menu_bar/tab_main_menu/name_tab")
+        self.main_menu = self.menubar.addMenu(name_main_menu)
         # row that exit program
         self.main_row_exit()
 
     # row that exit program
     def main_row_exit(self):
-        self.exitAction = QAction('Exit', self)
+        name_exit_action = XML.get_attr_XML("menu_bar/tab_main_menu/rows_tab/row_exit_program")
+        self.exitAction = QAction(name_exit_action, self)
         self.exitAction.setMenuRole(QAction.NoRole)
         self.main_menu.addAction(self.exitAction)
         self.exitAction.triggered.connect(self.func_main_row_exit)
@@ -91,10 +94,10 @@ class Bar:
     def func_main_row_exit(self):
         name = XML.get_attr_XML("notifications/exit_program/name")
         question = XML.get_attr_XML("notifications/exit_program/question")
-        yes =  XML.get_attr_XML("notifications/exit_program/yes")
-        no = XML.get_attr_XML("notifications/exit_program/no")
-        test = exit_program(name,question, yes, no)
-        if test == "Yes":
+        yes = XML.get_attr_XML("notifications/exit_program/choice/yes")
+        no = XML.get_attr_XML("notifications/exit_program/choice/no")
+        test = exit_program(name, question, yes, no)
+        if test == yes:
             self.close()
 
     # ------------------------------------------------------------------------

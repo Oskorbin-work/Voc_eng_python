@@ -37,13 +37,25 @@ def view_info_transcription(text):
 def exit_program(name, question, yes, no):
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Question)
-    # https://stackoverflow.com/questions/35887523/qmessagebox-change-text-of-standard-button
-    status = msg.question(msg, name, question, msg.Yes,
-                                  msg.No)
-    if status == QMessageBox.Yes:
+    msg.setWindowTitle(name)
+    msg.setText(question)
+    # -------------------------------------------
+    # sector buttons
+    msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+    buttonY = msg.button(QMessageBox.Yes)
+    buttonY.setText(yes)
+    buttonN = msg.button(QMessageBox.No)
+    buttonN.setText(no)
+    # -------------------------------------------
+    msg.exec_()
+
+    if msg.clickedButton() == buttonY:
         return yes
-    else:
+    elif msg.clickedButton() == buttonN:
         return no
+
+
+# NO pressed
 
 # view help
 def view_help():

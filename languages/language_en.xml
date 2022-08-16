@@ -70,6 +70,20 @@
   </win_window>
   <!-- Notifications-->
   <notifications>
+        <!-- Exit Confirmation Window -->
+    <exit_program>
+      <!-- Title window-->
+      <name>Exiting the program</name>
+      <!-- question for confirm exit-->
+      <question>Do you want to exit the program?</question>
+      <!-- choice answer-->
+      <choice>
+        <!-- choice exit program-->
+        <yes>Yes</yes>
+        <!-- choice back program -->
+        <no>No</no>
+      </choice>
+    </exit_program>
     <!-- Definition output window-->
     <view_info_transcription>
       <!-- Definition output window name-->
@@ -172,6 +186,19 @@
       </keycap_3>
     </help>
   </notifications>
+    <!-- Data for menu bar-->
+  <menu_bar>
+    <!-- First tab. Main menu - place main function-->
+    <tab_main_menu>
+      <!-- name tab-->
+      <name_tab>Main</name_tab>
+      <!-- elements tabs-->
+      <rows_tab>
+        <!-- element exit program-->
+        <row_exit_program>Exit</row_exit_program>
+      </rows_tab>
+    </tab_main_menu>
+  </menu_bar>
   <!-- Text for error notifications-->
   <error_sector>
     <!-- Module xkbswitch -->
