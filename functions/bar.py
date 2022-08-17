@@ -3,18 +3,19 @@
 # -----------------------------------------------------------
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QLabel, QAction
+
+# Work with XML file
+import functions.work_with_XML_file.work_with_XML as XML
+# -----------------------------------------------------------
+# Import other modules
+# -----------------------------------------------------------
+from emoji import emojize
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
 from elements.Vline import VLine
 from functions.notifications import exit_program
-# Work with XML file
-import functions.work_with_XML_file.work_with_XML as XML
-
-# -----------------------------------------------------------
-# Import other modules
-# -----------------------------------------------------------
-from emoji import emojize
+import another_windows.setting.setting as setting
 
 
 #  In class "Bar" -- menuBar in main program
@@ -22,6 +23,9 @@ class Bar:
     def __init__(self):  # Initiate menuBar
         self.menubar = self.menuBar()
         self.statusbar = self.statusBar()
+        # --------------
+        self.func_main_row_setting()
+        # ---------------
         self.control_menu_bar()
         self.elements_status_bar = dict()
         self.elements_for_status_bar()
@@ -70,17 +74,32 @@ class Bar:
     # ------------------------------------------------------------------------
     # sector menu bar
 
-    # main table
+    # main control menubar
     def control_menu_bar(self):
         self.tab_main_menu()
 
     # first tab in menu bar
     def tab_main_menu(self):
+        # ------------------------------------------------------------------
         # name tab
         name_main_menu = XML.get_attr_XML("menu_bar/tab_main_menu/name_tab")
         self.main_menu = self.menubar.addMenu(name_main_menu)
+
+        # ------------------------------------------------------------------
+
+        self.main_row_setting()
+        # new group buttons
+        self.main_menu.addSeparator()
         # row that exit program
         self.main_row_exit()
+
+    # row that setting program
+    def main_row_setting(self):
+        name_exit_action = XML.get_attr_XML("menu_bar/tab_main_menu/rows_tab/row_setting_program")
+        self.settingAction = QAction(name_exit_action, self)
+        self.settingAction.setMenuRole(QAction.NoRole)
+        self.main_menu.addAction(self.settingAction)
+        self.settingAction.triggered.connect(self.func_main_row_setting)
 
     # row that exit program
     def main_row_exit(self):
@@ -90,6 +109,8 @@ class Bar:
         self.main_menu.addAction(self.exitAction)
         self.exitAction.triggered.connect(self.func_main_row_exit)
 
+    # ------------------------------------------------------------------------
+    # functions buttons
     # add function to "row that exit program"
     def func_main_row_exit(self):
         name = XML.get_attr_XML("notifications/exit_program/name")
@@ -99,5 +120,11 @@ class Bar:
         test = exit_program(name, question, yes, no)
         if test == yes:
             self.close()
+
+    def func_main_row_setting(self):
+            setting_window = None
+            if setting_window is None:
+                setting_window = setting.SettingInterface()
+            setting_window.exec()
 
     # ------------------------------------------------------------------------

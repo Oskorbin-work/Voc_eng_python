@@ -9,22 +9,24 @@ import re
 # -----------------------------------------------------------
 # Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
-# pretty format text
-from functions.useful_functions import pretty_print
-# -----------------------------------------------------------
-# Import other modules
-# -----------------------------------------------------------
-from emoji import emojize
+# Structure wrong buttons
+from another_windows.setting.functions.wrong_word_buttons import WrongWordButtons
 
 
-# class for helper window
-class HelperNotifications(QDialog):
+# class for setting window
+class SettingInterface(QDialog, WrongWordButtons):
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self.main_window_parameter()
+        # Create buttons
+        # ------------------------------------
+        self.start_create_wrong_word_button()
+        self.connect_function_with_button()
+
         self.grid_settings()
         self.label_add_to_grid()
+
 
     # set window parameter
     def main_window_parameter(self):
@@ -33,13 +35,21 @@ class HelperNotifications(QDialog):
 
     # set text for title window
     def set_window_title(self):
-        self.setWindowTitle(XML.get_attr_XML("helper_window/title"))
+        self.setWindowTitle(XML.get_attr_XML("setting_window/title"))
+        self.setMinimumWidth(400)
+
+    # add method to button`s
+    def connect_function_with_button(self):
+        self.btn_unpack.clicked.connect(self.modal_win_hide)
+
+    # funk that close current window
+    def modal_win_hide(self):
+        self.close()
 
     # create and setting grid
     def grid_settings(self):
         self.grid = QGridLayout(self)
 
-    # add label to grid
     def label_add_to_grid(self):
         list_widgets = self.label_create_list()
         range = 0
@@ -47,25 +57,9 @@ class HelperNotifications(QDialog):
             self.grid.addWidget(list_widgets[range][0], range, 0)
             self.grid.addWidget(list_widgets[range][1], range, 1)
             range += 1
-
-    # create list path (in XML_language) to label description help
-    def label_add_emojize(self):
-        list_emojize = [
-            "notifications/help/enter/description",
-            "notifications/help/status_program/description",
-            "notifications/help/transcription/description",
-            "notifications/help/voice/description",
-            "notifications/help/purple_heart/description",
-            "notifications/help/black_heart/description",
-            "notifications/help/books/description",
-            "notifications/help/bullseye/description",
-            "notifications/help/military_medal/description",
-            "notifications/help/check_mark_button/description",
-            "notifications/help/keycap_1/description",
-            "notifications/help/keycap_2/description",
-            "notifications/help/keycap_3/description",
-        ]
-        return list_emojize
+        # add button "Exit" to window
+        self.grid.addWidget(self.btn_unpack, range, 0)
+        self.grid.addWidget(self.btn_save_setting, range, 1)
 
     # create list path (in XML_language) label name help
     def label_list_path_widgets (self):
@@ -85,29 +79,18 @@ class HelperNotifications(QDialog):
             "notifications/help/keycap_3/name",
         ]
         return list_path_widgets
-
-    # create list with name and description
+    # create list with name and place for change
     def label_create_list(self):
         list_path_widgets = self.label_list_path_widgets()
-        list_emojii = self.label_add_emojize()
         list_qlabel_widgets = list()
-        for i, j in zip(list_path_widgets, list_emojii):
+        for i  in list_path_widgets:
             name_text = XML.get_attr_XML(i)
-            name_description = XML.get_attr_XML(j)
-            name_description = pretty_print.format_file(name_description, 600)
-            # find word with :*any_words*:
-            if re.search("^:.*:$", name_text):
-                name_text = emojize(name_text)
-                list_qlabel_widgets.append(
-                    [
-                        QLabel(name_text),
-                        QLabel(name_description)
-                    ])
-                list_qlabel_widgets[-1][0].setFont(QFont("Apple Color Emoji"))
-            else:
-                list_qlabel_widgets.append(
-                    [
-                        QLabel(name_text),
-                        QLabel(name_description)
-                    ])
+            list_qlabel_widgets.append(
+                [
+                    QLabel(name_text),
+                    QLabel("f")
+                ])
         return list_qlabel_widgets
+
+
+

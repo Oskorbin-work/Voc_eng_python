@@ -196,6 +196,8 @@
       <rows_tab>
         <!-- element exit program-->
         <row_exit_program>Вихід</row_exit_program>
+        <!-- element setting program-->
+        <row_setting_program>Налаштування</row_setting_program>
       </rows_tab>
     </tab_main_menu>
   </menu_bar>

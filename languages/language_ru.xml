@@ -30,6 +30,25 @@
     <!-- Help window name -->
     <title>Помощь</title>
   </helper_window>
+  <!-- Help window, which explains the characters in the program-->
+  <setting_window>
+    <!-- Help window name -->
+    <title>Настройки</title>
+    <elements_setting>
+    <enter>
+        <!-- One column. Name help-->
+        <name>Enter</name>
+         <!-- Two column. Description help-->
+        <place>Проверить слово</place>
+    </enter>
+    </elements_setting>
+        <label_button_window>
+      <!-- Exit button-->
+      <button_exit>В главное меню</button_exit>
+      <!-- button voice word-->
+      <button_voice>Сохранить настройки</button_voice>
+    </label_button_window>
+  </setting_window>
   <!-- Bottom and top line of the program-->
   <bar>
     <!-- Help window prompt-->
@@ -196,6 +215,8 @@
       <rows_tab>
         <!-- element exit program-->
         <row_exit_program>Выход</row_exit_program>
+        <!-- element setting program-->
+        <row_setting_program>Настройки</row_setting_program>
       </rows_tab>
     </tab_main_menu>
   </menu_bar>

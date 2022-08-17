@@ -1,30 +1,45 @@
+
 import sys
+from PyQt5.QtWidgets import QMainWindow, QTextEdit, QAction, QApplication
+from PyQt5.QtGui import QIcon
 
-from PyQt5.QtWidgets import QApplication,QMainWindow, QTableWidget, QTableWidgetItem
 
+class Example(QMainWindow):
 
-class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Table Test')
-        table = QTableWidget(self)
-        table.setColumnCount(4)
-        table.setRowCount(3)
-        for j in range(table.rowCount()):
-            for k in range(table.columnCount()):
-                table.setItem(j, k, QTableWidgetItem("{}{}".format(j, k)))
-        self._centralWidget = table
-        self.setCentralWidget(self._centralWidget)
-        self.resize(500, 200)
+
+        self.initUI()
 
 
-def main():
-    app = QApplication(sys.argv)
-    view = MainWindow()
-    view.setStyleSheet("QTableWidget::item {border: 0px; padding: 5px;}")
-    view.show()
-    sys.exit(app.exec_())
+    def initUI(self):
+
+        textEdit = QTextEdit()
+        self.setCentralWidget(textEdit)
+
+        exitAction = QAction(QIcon('exit24.png'), 'Exit', self)
+        print(exitAction.menuRole())
+        exitAction.setMenuRole(QAction.NoRole)
+        exitAction.setShortcut('Ctrl+Q')
+        exitAction.setStatusTip('Exit application')
+        exitAction.triggered.connect(self.close)
+
+        self.statusBar()
+
+        menubar = self.menuBar()
+        fileMenu = menubar.addMenu(' &File')
+        fileMenu.addAction(exitAction)
+
+        toolbar = self.addToolBar(' Exit')
+        toolbar.addAction(exitAction)
+
+        self.setGeometry(300, 300, 350, 250)
+        self.setWindowTitle('Main window')
+        self.show()
 
 
 if __name__ == '__main__':
-    main()
+
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())

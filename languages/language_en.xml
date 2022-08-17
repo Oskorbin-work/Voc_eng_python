@@ -196,6 +196,8 @@
       <rows_tab>
         <!-- element exit program-->
         <row_exit_program>Exit</row_exit_program>
+        <!-- element setting program-->
+        <row_setting_program>Settings</row_setting_program>
       </rows_tab>
     </tab_main_menu>
   </menu_bar>
