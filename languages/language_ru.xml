@@ -34,13 +34,20 @@
   <setting_window>
     <!-- Help window name -->
     <title>Настройки</title>
-    <elements_setting>
-    <enter>
-        <!-- One column. Name help-->
-        <name>Enter</name>
+    <title_column>
+      <general_settings>
+        <name>Главные настройки</name>
          <!-- Two column. Description help-->
-        <place>Проверить слово</place>
-    </enter>
+        <type_change>title</type_change>
+      </general_settings>
+    </title_column>
+    <elements_setting>
+    <language_interface>
+        <!-- One column. Name help-->
+        <name>Язык интерефейса</name>
+         <!-- Two column. Description help-->
+        <type_change>text_area</type_change>
+    </language_interface>
     </elements_setting>
         <label_button_window>
       <!-- Exit button-->

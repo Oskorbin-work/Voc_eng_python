@@ -1,8 +1,8 @@
 # -----------------------------------------------------------
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
-from PyQt5.QtWidgets import QGridLayout, QDialog, QLabel
-from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QGridLayout, QDialog, QLabel, QLineEdit
+from PyQt5 import QtCore
 import re
 # -----------------------------------------------------------
 # Codes other files project
@@ -11,7 +11,8 @@ import re
 import functions.work_with_XML_file.work_with_XML as XML
 # Structure wrong buttons
 from another_windows.setting.functions.wrong_word_buttons import WrongWordButtons
-
+# set labels
+import elements.label as label
 
 # class for setting window
 class SettingInterface(QDialog, WrongWordButtons):
@@ -50,45 +51,68 @@ class SettingInterface(QDialog, WrongWordButtons):
     def grid_settings(self):
         self.grid = QGridLayout(self)
 
+    # check name
+    # status title -- it name category
+    def check_name_widget(self, text, range):
+        if text[1] == "title":
+            widget = QLabel(text[0])
+            widget.setFont(label.set_bold(True))
+            self.grid.addWidget(widget, range, 0, 1, 2, QtCore.Qt.AlignCenter)
+        else:
+            widget = QLabel(text[0])
+            self.grid.addWidget(widget, range, 0)
+
+    def check_place_widget(self,text, range):
+        if text[1] == "title":
+            pass
+        elif text[1] == "text_area":
+            widget = QLineEdit(text[1])
+            self.grid.addWidget(widget, range, 1)
+        else:
+            widget = QLabel(text[1])
+            self.grid.addWidget(widget, range, 1)
+
+    # add label to grid
     def label_add_to_grid(self):
         list_widgets = self.label_create_list()
         range = 0
         for i in list_widgets:
-            self.grid.addWidget(list_widgets[range][0], range, 0)
-            self.grid.addWidget(list_widgets[range][1], range, 1)
+            self.check_name_widget(i, range)
+            self.check_place_widget(i, range)
+            #self.grid.addWidget(list_widgets[range][1], range, 1)
             range += 1
         # add button "Exit" to window
         self.grid.addWidget(self.btn_unpack, range, 0)
         self.grid.addWidget(self.btn_save_setting, range, 1)
 
     # create list path (in XML_language) label name help
-    def label_list_path_widgets (self):
+    def label_list_path_widgets_name(self):
         list_path_widgets = [
-            "notifications/help/enter/name",
-            "notifications/help/status_program/name",
-            "notifications/help/transcription/name",
-            "notifications/help/voice/name",
-            "notifications/help/purple_heart/name",
-            "notifications/help/black_heart/name",
-            "notifications/help/books/name",
-            "notifications/help/bullseye/name",
-            "notifications/help/military_medal/name",
-            "notifications/help/check_mark_button/name",
-            "notifications/help/keycap_1/name",
-            "notifications/help/keycap_2/name",
-            "notifications/help/keycap_3/name",
+            "setting_window/title_column/general_settings/name",
+            "setting_window/elements_setting/language_interface/name",
         ]
         return list_path_widgets
+
+    def label_list_path_widgets_place(self):
+        title_column = [
+            "setting_window/title_column/general_settings/type_change",
+            "setting_window/elements_setting/language_interface/type_change",
+                        ]
+        return title_column
     # create list with name and place for change
     def label_create_list(self):
-        list_path_widgets = self.label_list_path_widgets()
+        list_title_column = self.label_list_path_widgets_place()
+        list_path_widgets = self.label_list_path_widgets_name()
         list_qlabel_widgets = list()
-        for i  in list_path_widgets:
-            name_text = XML.get_attr_XML(i)
+
+        for one_column, two_column in zip(list_path_widgets,list_title_column):
+            name_text = XML.get_attr_XML(one_column)
+            type_change = XML.get_attr_XML(two_column)
+            finale_type_column = type_change
             list_qlabel_widgets.append(
                 [
-                    QLabel(name_text),
-                    QLabel("f")
+                    name_text,
+                    finale_type_column,
                 ])
         return list_qlabel_widgets
 
