@@ -30,29 +30,34 @@
     <!-- Help window name -->
     <title>Помощь</title>
   </helper_window>
-  <!-- Help window, which explains the characters in the program-->
+  <!-- setting window-->
   <setting_window>
-    <!-- Help window name -->
+    <!-- setting window name -->
     <title>Настройки</title>
+    <!-- column setting -->
     <title_column>
+      <!-- column general setting -->
       <general_settings>
         <name>Главные настройки</name>
          <!-- Two column. Description help-->
         <type_change>title</type_change>
       </general_settings>
     </title_column>
+    <!-- name and type elements -->
     <elements_setting>
+      <!-- language settings -->
     <language_interface>
         <!-- One column. Name help-->
         <name>Язык интерефейса</name>
          <!-- Two column. Description help-->
-        <type_change>text_area</type_change>
+        <type_change>choice_area</type_change>
     </language_interface>
     </elements_setting>
+    <!-- Name button -->
         <label_button_window>
       <!-- Exit button-->
       <button_exit>В главное меню</button_exit>
-      <!-- button voice word-->
+      <!-- save setting-->
       <button_voice>Сохранить настройки</button_voice>
     </label_button_window>
   </setting_window>

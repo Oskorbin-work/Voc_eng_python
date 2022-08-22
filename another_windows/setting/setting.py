@@ -1,7 +1,7 @@
 # -----------------------------------------------------------
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
-from PyQt5.QtWidgets import QGridLayout, QDialog, QLabel, QLineEdit
+from PyQt5.QtWidgets import QGridLayout, QDialog, QLabel, QLineEdit,QComboBox
 from PyQt5 import QtCore
 import re
 # -----------------------------------------------------------
@@ -13,6 +13,9 @@ import functions.work_with_XML_file.work_with_XML as XML
 from another_windows.setting.functions.wrong_word_buttons import WrongWordButtons
 # set labels
 import elements.label as label
+# settings programm
+from settings import LANGUAGE_INTERFACE_LIST, STATUS_LANGUAGE_INTERFACE
+from another_windows.setting.functions.save_setting import save_all
 
 # class for setting window
 class SettingInterface(QDialog, WrongWordButtons):
@@ -28,7 +31,6 @@ class SettingInterface(QDialog, WrongWordButtons):
         self.grid_settings()
         self.label_add_to_grid()
 
-
     # set window parameter
     def main_window_parameter(self):
         # self.setMinimumWidth(300)
@@ -42,6 +44,8 @@ class SettingInterface(QDialog, WrongWordButtons):
     # add method to button`s
     def connect_function_with_button(self):
         self.btn_unpack.clicked.connect(self.modal_win_hide)
+        self.btn_save_setting.clicked.connect(save_all)
+
 
     # funk that close current window
     def modal_win_hide(self):
@@ -68,8 +72,10 @@ class SettingInterface(QDialog, WrongWordButtons):
         elif text[1] == "text_area":
             widget = QLineEdit(text[1])
             self.grid.addWidget(widget, range, 1)
-        else:
-            widget = QLabel(text[1])
+        elif text[1] == "choice_area":
+            widget = QComboBox()
+            widget.addItems(LANGUAGE_INTERFACE_LIST.keys())
+            widget.setCurrentText(STATUS_LANGUAGE_INTERFACE)
             self.grid.addWidget(widget, range, 1)
 
     # add label to grid
@@ -99,6 +105,7 @@ class SettingInterface(QDialog, WrongWordButtons):
             "setting_window/elements_setting/language_interface/type_change",
                         ]
         return title_column
+
     # create list with name and place for change
     def label_create_list(self):
         list_title_column = self.label_list_path_widgets_place()

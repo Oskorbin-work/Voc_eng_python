@@ -8,13 +8,25 @@ import xml.etree.ElementTree as ET
 import os
 import settings
 
+def get_language(name="current_language"):
+    path = settings.ROOT_DIR + "another_windows/setting/label_settings.xml"
 
+    try:
+        root_conf = ET.parse(path).getroot()
+    except Exception:
+        return path + " має помилки або не існує "
+
+    if root_conf.find(name) is not None:
+        return root_conf.find(name).text
+    else:
+        return " Тег " + name + " не існує в файлі " + path
 def get_attr_XML(name):
     path = settings.LANGUAGE_INTERFACE
     try:
         root_conf = ET.parse(path).getroot()
     except Exception:
         return settings.STATUS_LANGUAGE_INTERFACE+".xml" + " має помилки або не існує "
+
     if root_conf.find(name) is not None:
         return root_conf.find(name).text
     else:

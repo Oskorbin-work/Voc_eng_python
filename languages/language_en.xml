@@ -30,6 +30,37 @@
     <!-- Help window name -->
     <title>Help</title>
   </helper_window>
+  <!-- setting window-->
+  <setting_window>
+    <!-- setting window name -->
+    <title>Settings</title>
+    <!-- column setting -->
+    <title_column>
+      <!-- column general setting -->
+      <general_settings>
+        <name>Main settings</name>
+         <!-- Two column. Description help-->
+        <type_change>title</type_change>
+      </general_settings>
+    </title_column>
+    <!-- name and type elements -->
+    <elements_setting>
+      <!-- language settings -->
+    <language_interface>
+        <!-- One column. Name help-->
+        <name>Interface language</name>
+         <!-- Two column. Description help-->
+        <type_change>choice_area</type_change>
+    </language_interface>
+    </elements_setting>
+    <!-- Name button -->
+        <label_button_window>
+      <!-- Exit button-->
+      <button_exit>To main menu</button_exit>
+      <!-- save setting-->
+      <button_voice>Save settings</button_voice>
+    </label_button_window>
+  </setting_window>
   <!-- Bottom and top line of the program-->
   <bar>
     <!-- Help window prompt-->
