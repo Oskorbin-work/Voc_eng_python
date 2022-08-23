@@ -12,7 +12,7 @@ import functions.work_with_XML_file.work_with_XML as XML
 # Setting address
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) + '/'
 ROOT_MAIN_DB = ROOT_DIR + "database" + '/' + 'data_word.sqlite'
-print(ROOT_DIR)
+
 #NAME_ACTIVE_TABLE = "Test_table"
 NAME_ACTIVE_TABLE = "Main_table"
 
@@ -28,7 +28,12 @@ LANGUAGE_INTERFACE_LIST = {
     "ua": ROOT_DIR + LANGUAGE_INTERFACE_DIR + "language_ua.xml",
     "ru": ROOT_DIR + LANGUAGE_INTERFACE_DIR + "language_ru.xml",
 }
-STATUS_LANGUAGE_INTERFACE = XML.get_language()
+
+# language_setting.xml have error => set default language
+DEFAULT_LANGUAGE_INTERFACE = "ua"
+# set language
+STATUS_LANGUAGE_INTERFACE = XML.get_language() if XML.get_language() in LANGUAGE_INTERFACE_LIST.keys()\
+    else DEFAULT_LANGUAGE_INTERFACE
 LANGUAGE_INTERFACE = LANGUAGE_INTERFACE_LIST[STATUS_LANGUAGE_INTERFACE]
 
 # Setting timer

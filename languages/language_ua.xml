@@ -48,7 +48,7 @@
       <!-- language settings -->
     <language_interface>
         <!-- One column. Name help-->
-        <name>Мова Інтерфейсу</name>
+        <name>Мова інтерфейсу</name>
          <!-- Two column. Description help-->
         <type_change>choice_area</type_change>
     </language_interface>

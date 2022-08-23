@@ -10,27 +10,28 @@ import re
 # Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
 # Structure wrong buttons
-from another_windows.setting.functions.wrong_word_buttons import WrongWordButtons
+from another_windows.setting.functions.settings_buttons import SettingsButtons
 # set labels
 import elements.label as label
 # settings programm
 from settings import LANGUAGE_INTERFACE_LIST, STATUS_LANGUAGE_INTERFACE
-from another_windows.setting.functions.save_setting import save_all
+
 
 # class for setting window
-class SettingInterface(QDialog, WrongWordButtons):
+class SettingInterface(QDialog, SettingsButtons):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.list_edit = list()
+        self.list_choice = list()
         self.main_window_parameter()
-        # Create buttons
+        # create buttons
         # ------------------------------------
         self.start_create_wrong_word_button()
         self.connect_function_with_button()
 
         self.grid_settings()
         self.label_add_to_grid()
-
     # set window parameter
     def main_window_parameter(self):
         # self.setMinimumWidth(300)
@@ -44,7 +45,7 @@ class SettingInterface(QDialog, WrongWordButtons):
     # add method to button`s
     def connect_function_with_button(self):
         self.btn_unpack.clicked.connect(self.modal_win_hide)
-        self.btn_save_setting.clicked.connect(save_all)
+        self.btn_save_setting.clicked.connect(self.save_all)
 
 
     # funk that close current window
@@ -70,13 +71,14 @@ class SettingInterface(QDialog, WrongWordButtons):
         if text[1] == "title":
             pass
         elif text[1] == "text_area":
-            widget = QLineEdit(text[1])
-            self.grid.addWidget(widget, range, 1)
+            self.list_edit.append(QLineEdit(text[1]))
+            self.grid.addWidget(self.list_edit[-1], range, 1)
         elif text[1] == "choice_area":
-            widget = QComboBox()
-            widget.addItems(LANGUAGE_INTERFACE_LIST.keys())
-            widget.setCurrentText(STATUS_LANGUAGE_INTERFACE)
-            self.grid.addWidget(widget, range, 1)
+            self.list_choice.append(QComboBox())
+            print(self.list_choice[-1])
+            self.list_choice[-1].addItems(LANGUAGE_INTERFACE_LIST.keys())
+            self.list_choice[-1].setCurrentText(STATUS_LANGUAGE_INTERFACE)
+            self.grid.addWidget(self.list_choice[-1], range, 1)
 
     # add label to grid
     def label_add_to_grid(self):
@@ -85,7 +87,6 @@ class SettingInterface(QDialog, WrongWordButtons):
         for i in list_widgets:
             self.check_name_widget(i, range)
             self.check_place_widget(i, range)
-            #self.grid.addWidget(list_widgets[range][1], range, 1)
             range += 1
         # add button "Exit" to window
         self.grid.addWidget(self.btn_unpack, range, 0)
@@ -111,8 +112,7 @@ class SettingInterface(QDialog, WrongWordButtons):
         list_title_column = self.label_list_path_widgets_place()
         list_path_widgets = self.label_list_path_widgets_name()
         list_qlabel_widgets = list()
-
-        for one_column, two_column in zip(list_path_widgets,list_title_column):
+        for one_column, two_column in zip(list_path_widgets, list_title_column):
             name_text = XML.get_attr_XML(one_column)
             type_change = XML.get_attr_XML(two_column)
             finale_type_column = type_change
@@ -121,6 +121,7 @@ class SettingInterface(QDialog, WrongWordButtons):
                     name_text,
                     finale_type_column,
                 ])
+
         return list_qlabel_widgets
 
 
