@@ -50,7 +50,7 @@
         <!-- One column. Name help-->
         <name>Язык интерефейса</name>
          <!-- Two column. Description help-->
-        <type_change>choice_area</type_change>
+        <type_change>choice_area_language</type_change>
     </language_interface>
     </elements_setting>
     <!-- Name button -->
@@ -115,6 +115,20 @@
         <no>Нет</no>
       </choice>
     </exit_program>
+    <!-- Save Confirmation Window -->
+    <save_button>
+      <!-- Title window-->
+      <name>??</name>
+      <!-- question for save setting-->
+      <question>Вы хотите cохранить настройки?</question>
+      <!-- choice answer-->
+      <choice>
+        <!-- choice exit program-->
+        <yes>Да</yes>
+        <!-- choice back program -->
+        <no>Нет</no>
+      </choice>
+    </save_button>
     <!-- Definition output window-->
     <view_info_transcription>
       <!-- Definition output window name-->

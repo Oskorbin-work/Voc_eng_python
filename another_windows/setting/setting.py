@@ -13,7 +13,7 @@ import functions.work_with_XML_file.work_with_XML as XML
 from another_windows.setting.functions.settings_buttons import SettingsButtons
 # set labels
 import elements.label as label
-# settings programm
+# settings program
 from settings import LANGUAGE_INTERFACE_LIST, STATUS_LANGUAGE_INTERFACE
 
 
@@ -22,8 +22,6 @@ class SettingInterface(QDialog, SettingsButtons):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.list_edit = list()
-        self.list_choice = list()
         self.main_window_parameter()
         # create buttons
         # ------------------------------------
@@ -73,12 +71,11 @@ class SettingInterface(QDialog, SettingsButtons):
         elif text[1] == "text_area":
             self.list_edit.append(QLineEdit(text[1]))
             self.grid.addWidget(self.list_edit[-1], range, 1)
-        elif text[1] == "choice_area":
-            self.list_choice.append(QComboBox())
-            print(self.list_choice[-1])
-            self.list_choice[-1].addItems(LANGUAGE_INTERFACE_LIST.keys())
-            self.list_choice[-1].setCurrentText(STATUS_LANGUAGE_INTERFACE)
-            self.grid.addWidget(self.list_choice[-1], range, 1)
+        elif text[1] == "choice_area_language":
+            self.combo_box_language= QComboBox()
+            self.combo_box_language.addItems(LANGUAGE_INTERFACE_LIST.keys())
+            self.combo_box_language.setCurrentText(STATUS_LANGUAGE_INTERFACE)
+            self.grid.addWidget(self.combo_box_language, range, 1)
 
     # add label to grid
     def label_add_to_grid(self):

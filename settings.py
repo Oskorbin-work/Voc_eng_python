@@ -9,6 +9,9 @@ from sys import platform
 # Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
 
+# path to other files
+PATH_SETTING = "another_windows/setting/label_settings.xml"
+
 # Setting address
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) + '/'
 ROOT_MAIN_DB = ROOT_DIR + "database" + '/' + 'data_word.sqlite'

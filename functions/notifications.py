@@ -25,6 +25,26 @@ def view_error_critical(title, text=""):
     msg.exec_()
 
 # view info_transcription
+def view_info(name, question, yes, no):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Question)
+    msg.setWindowTitle(name)
+    msg.setText(question)
+    # -------------------------------------------
+    # sector buttons
+    msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+    buttonY = msg.button(QMessageBox.Yes)
+    buttonY.setText(yes)
+    buttonN = msg.button(QMessageBox.No)
+    buttonN.setText(no)
+    # -------------------------------------------
+    msg.exec_()
+
+    if msg.clickedButton() == buttonY:
+        return yes
+    elif msg.clickedButton() == buttonN:
+        return no
+# view info_transcription
 def view_info_transcription(text):
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Information)

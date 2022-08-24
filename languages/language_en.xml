@@ -50,7 +50,7 @@
         <!-- One column. Name help-->
         <name>Interface language</name>
          <!-- Two column. Description help-->
-        <type_change>choice_area</type_change>
+        <type_change>choice_area_language</type_change>
     </language_interface>
     </elements_setting>
     <!-- Name button -->
@@ -115,6 +115,20 @@
         <no>No</no>
       </choice>
     </exit_program>
+        <!-- Save Confirmation Window -->
+    <save_button>
+      <!-- Title window-->
+      <name>Save setting</name>
+      <!-- question for save setting-->
+      <question>Do you want to save your settings?</question>
+      <!-- choice answer-->
+      <choice>
+        <!-- choice exit program-->
+        <yes>Yes</yes>
+        <!-- choice back program -->
+        <no>No</no>
+      </choice>
+    </save_button>
     <!-- Definition output window-->
     <view_info_transcription>
       <!-- Definition output window name-->
