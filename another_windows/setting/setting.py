@@ -30,6 +30,7 @@ class SettingInterface(QDialog, SettingsButtons):
 
         self.grid_settings()
         self.label_add_to_grid()
+
     # set window parameter
     def main_window_parameter(self):
         # self.setMinimumWidth(300)
@@ -44,7 +45,6 @@ class SettingInterface(QDialog, SettingsButtons):
     def connect_function_with_button(self):
         self.btn_unpack.clicked.connect(self.modal_win_hide)
         self.btn_save_setting.clicked.connect(self.save_all)
-
 
     # funk that close current window
     def modal_win_hide(self):
@@ -65,6 +65,7 @@ class SettingInterface(QDialog, SettingsButtons):
             widget = QLabel(text[0])
             self.grid.addWidget(widget, range, 0)
 
+    # check type setting. It is get true form setting
     def check_place_widget(self,text, range):
         if text[1] == "title":
             pass
@@ -97,6 +98,7 @@ class SettingInterface(QDialog, SettingsButtons):
         ]
         return list_path_widgets
 
+    # type settings
     def label_list_path_widgets_place(self):
         title_column = [
             "setting_window/title_column/general_settings/type_change",

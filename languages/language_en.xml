@@ -128,6 +128,13 @@
         <!-- choice back program -->
         <no>No</no>
       </choice>
+      <!-- window for notification about the need to restart -->
+      <notification_window>
+        <!-- name window -->
+        <title>Necessity to restart the program</title>
+        <!-- text windows -->
+        <text> For the changed parameters to take effect, you need to restart the program</text>
+      </notification_window>
     </save_button>
     <!-- Definition output window-->
     <view_info_transcription>

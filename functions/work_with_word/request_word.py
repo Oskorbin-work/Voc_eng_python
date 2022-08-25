@@ -3,9 +3,13 @@ from bs4 import BeautifulSoup
 import re
 from tabulate import tabulate
 import eng_to_ipa
+import os
+# VALUES (null, 'Screw up', 'Заваливать', 'phrasal verb', 'skruː ʌp',
+# 'to make a mistake, or to spoil something'
+# , 3, 'A2',3, 'is_activate', 1);
 from functions.work_with_clipboard.colour_console import bcolors
 from database.sql_query_bd import WorkWithBd
-
+import random_word
 
 class Word():
     id = ["id"]
@@ -37,9 +41,8 @@ class Word():
 list_words = list()
 
 
-def enter_word():
-    enter_word = input().replace(" ","+")
-    enter_word = enter_word.lower()
+def enter_word(word):
+    enter_word = word.lower()
     #enter_word = "usa"
     #https://dictionary.cambridge.org/dictionary/english-russian/red
     return 'https://dictionary.cambridge.org/dictionary/english-russian/'\
@@ -154,8 +157,11 @@ def check_word_in_bd(word):
 
 while True:
     print("Введите слово:")
-    link = enter_word()
-    print("\n\n\n\n\n\n\n")
+    get_word = input().replace(" ", "+")
+    if get_word == "0":
+        get_word = random_word.random_value()
+
+    link = enter_word(get_word)
     soup = request_all_link(link)
     try:
         name = soup.find("span", {"class":  'hw dhw'}).text.capitalize()
@@ -227,10 +233,13 @@ while True:
                 sql_request += str(j) + ", "
         sql_request = sql_request[:-2]+ ");"
         print(sql_request)
+        print(check_word_in_bd(dict_words_all_row["word " + str(i)][2]))
+
         sql_request = ""
 
-    print(check_word_in_bd(list_words[-1].en[-1]))
+    print("Слово: " + get_word)
     list_words[-1].set(Word)
+
     print("Ссылка для проверки: " + link)
     del list_words[-1]
     # VALUES (null, 'Screw up', 'Заваливать', 'phrasal verb', 'skruː ʌp',

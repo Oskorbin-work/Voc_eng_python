@@ -24,8 +24,16 @@ def view_error_critical(title, text=""):
     msg.setText(text)
     msg.exec_()
 
+# View QMessageBox about information
+def view_info_information(title, text=""):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Information)
+    msg.setWindowTitle(title)
+    msg.setText(text)
+    msg.exec_()
+
 # view info_transcription
-def view_info(name, question, yes, no):
+def view_info_question(name, question, yes, no):
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Question)
     msg.setWindowTitle(name)
@@ -44,6 +52,7 @@ def view_info(name, question, yes, no):
         return yes
     elif msg.clickedButton() == buttonN:
         return no
+
 # view info_transcription
 def view_info_transcription(text):
     msg = QMessageBox()
@@ -73,9 +82,6 @@ def exit_program(name, question, yes, no):
         return yes
     elif msg.clickedButton() == buttonN:
         return no
-
-
-# NO pressed
 
 # view help
 def view_help():

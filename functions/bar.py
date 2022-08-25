@@ -23,9 +23,7 @@ class Bar:
     def __init__(self):  # Initiate menuBar
         self.menubar = self.menuBar()
         self.statusbar = self.statusBar()
-        # --------------
-        self.func_main_row_setting()
-        # ---------------
+
         self.control_menu_bar()
         self.elements_status_bar = dict()
         self.elements_for_status_bar()

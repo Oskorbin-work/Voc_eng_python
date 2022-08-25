@@ -128,6 +128,13 @@
         <!-- choice back program -->
         <no>Нет</no>
       </choice>
+      <!-- window for notification about the need to restart -->
+    <notification_window>
+      <!-- name window -->
+      <title>Необходимость перезагрузки программы</title>
+      <!-- text windows -->
+      <text> Для вступления измененных параметров в действие, вам нужно перезагрузить программу</text>
+    </notification_window>
     </save_button>
     <!-- Definition output window-->
     <view_info_transcription>

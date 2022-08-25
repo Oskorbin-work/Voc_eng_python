@@ -6,9 +6,9 @@ from sys import platform
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
-# Work with XML file
-import functions.work_with_XML_file.work_with_XML as XML
 
+
+from functions.work_with_XML_file.get_language_XML import get_language
 # path to other files
 PATH_SETTING = "another_windows/setting/label_settings.xml"
 
@@ -34,8 +34,9 @@ LANGUAGE_INTERFACE_LIST = {
 
 # language_setting.xml have error => set default language
 DEFAULT_LANGUAGE_INTERFACE = "ua"
+
 # set language
-STATUS_LANGUAGE_INTERFACE = XML.get_language() if XML.get_language() in LANGUAGE_INTERFACE_LIST.keys()\
+STATUS_LANGUAGE_INTERFACE = get_language(ROOT_DIR + PATH_SETTING) if get_language(ROOT_DIR + PATH_SETTING) in LANGUAGE_INTERFACE_LIST.keys()\
     else DEFAULT_LANGUAGE_INTERFACE
 LANGUAGE_INTERFACE = LANGUAGE_INTERFACE_LIST[STATUS_LANGUAGE_INTERFACE]
 

@@ -1,8 +1,6 @@
-+Abandon
 Abate
 Abduct
 Abide
-+Able
 Abnormal
 Aboard
 Abolish
@@ -16,14 +14,11 @@ Absorb
 Abundant
 Abuse
 Accelerate
-+Accept
 Access
 Accessory
-+Accident
 Accidentally
 Acclaim
 Accommodate
-+Accompany
 Accomplish
 Accord
 Account
@@ -34,12 +29,9 @@ Accustom
 Ache
 Achieve
 Acid
-+Acknowledge
 Acquaint
 Acquire
 Acquit
-+Across
-+Act
 Act On
 Acute
 Adamant
@@ -52,12 +44,10 @@ Adjacent
 Adjective
 Adjust
 Admire
-+Admit
 Adolescent
 Adopt
 Adore
 Adorn
-+Adult
 Adultery
 Advance
 Advantage
@@ -67,48 +57,32 @@ Adversary
 Adverse
 Advertise
 Advice
-+Advise
 Advocate
 Aerial
-+Affair
-+Affect
 Affection
 Affiliate
 Affirm
 Afflict
 Affluent
 Afford
-+Afraid
 After All
 Aftermath
-+Age
-+Agenda
+Afterward
 Aggravate
 Aggregate
 Agile
 Agitate
-+Agree
-+Agreement
 Agriculture
 Ahead
-+Aid
 Ailment
-+Aim
-+Air
 Airborne
-+Aircraft
-+Airline
 Aisle
 Akin
-+Alarm
 Alas
 Albeit
 Alert
-+Alien
 Alienate
-+Align
 Alike
-+Alive
 All Along
 Allege
 Allegiance
@@ -120,13 +94,9 @@ Allowance
 Allude
 Allure
 Ally
-+Almost
 Alone
 Alongside
 Aloud
-+Alter
-+Alternate
-+Although
 Altitude
 Altogether
 Amateur
@@ -146,15 +116,11 @@ Amplify
 Amuse
 Ancestor
 Anchor
-+Ancient
 Anew
-+Anger
-+Angle
 Angry
 Anguish
 Animate
-+Ankle
-+Anniversary
+Ankles
 Announce
 Annoy
 Annual
@@ -220,7 +186,6 @@ As Well
 As Well As
 Ascend
 Ascertain
-Ash
 Ashamed
 Ashen
 Ashtray
@@ -244,6 +209,7 @@ Associate
 Assume
 Assure
 Astonish
+Astonishment
 Astound
 Asylum
 At All
@@ -340,7 +306,6 @@ Bartender
 Base
 Basement
 Bash
-Basket
 Bastard
 Bat
 Batch
@@ -386,6 +351,7 @@ Behind
 Behold
 Beige
 Belief
+Believed
 Bell
 Bellow
 Belly
@@ -400,6 +366,7 @@ Bend Down
 Beneath
 Benefit
 Benevolent
+Bent
 Berry
 Berth
 Beside
@@ -427,7 +394,6 @@ Bit
 Bitch
 Bite (Bit, Bitten)
 Bitter
-Bizarre
 Black Out
 Blackmail
 Blade
@@ -498,8 +464,6 @@ Both
 Bother
 Bottom
 Boulder
-Bounce
-Bounced
 Bouncing
 Bound
 Boundary
@@ -647,6 +611,7 @@ Cancel
 Cancer
 Candid
 Candle
+Candles
 Candy
 Cane
 Cannon
@@ -682,6 +647,7 @@ Case
 Cash
 Casket
 Cast (Cast, Cast)
+Castle
 Casual
 Casualty
 Catch
@@ -754,6 +720,7 @@ Chef
 Chemistry
 Cherish
 Chess
+Chessmen
 Chest
 Chestnut
 Chew
@@ -924,6 +891,7 @@ Complex
 Complicate
 Comply
 Compose
+Composition
 Compound
 Comprehend
 Comprehensive
@@ -1063,7 +1031,6 @@ Crank
 Crap
 Crash
 Crate
-Crave
 Crawl
 Crayon
 Creak
@@ -1107,7 +1074,6 @@ Crunch
 Crusade
 Crush
 Crust
-Cry Out
 Cub
 Cubicle
 Cucumber
@@ -1150,8 +1116,11 @@ Dared
 Darling
 Darn
 Dash
+Dashed
+Dashing
 Data
 Database
+Datad
 Date
 Daunt
 Dawn
@@ -1197,6 +1166,7 @@ Defend
 Deficient
 Define
 Definite
+Definitely
 Deflect
 Defrosting
 Deft
@@ -1235,12 +1205,12 @@ Depress
 Deprive
 Depth
 Deputy
-Derive
 Descend
 Descend From
 Describe
 Desert
 Deserve
+Deserved
 Designate
 Desire
 Desk
@@ -1261,6 +1231,7 @@ Deter
 Deteriorate
 Determine
 Determined
+Detested
 Detriment
 Devastate
 Develop
@@ -1291,6 +1262,7 @@ Dim
 Dimension
 Diminish
 Dine
+Dingy
 Dip
 Dire
 Direct
@@ -1367,6 +1339,7 @@ Do Without
 Dock
 Dodge
 Dodged
+Dodging
 Dole
 Doll
 Domain
@@ -1424,6 +1397,7 @@ Drop Off
 Drop Out Of
 Drought
 Drown
+Drowsy
 Drug
 Drum
 Dry
@@ -1526,6 +1500,7 @@ Engage In
 Engaged
 Engender
 Engine
+Engorgement
 Enhance
 Enlarge
 Enlighten
@@ -1568,7 +1543,6 @@ Establish
 Esteem
 Estimate
 Eternal
-Evade
 Evaluate
 Evaporate
 Eve
@@ -1615,6 +1589,7 @@ Expanse
 Expect
 Expected
 Expel
+Expelled
 Expenditure
 Expense
 Experience
@@ -1623,7 +1598,6 @@ Expire
 Explain
 Explained
 Explicit
-Explode
 Exploded
 Exploding
 Exploit
@@ -1698,7 +1672,6 @@ Faucet
 Fault
 Favor
 Favor (Favour)
-Favored
 Favored us
 Favors
 Fear
@@ -1790,8 +1763,7 @@ Flex
 Flick
 Flick Through
 Flicker
-Flight
-Flight Attendant
+Flight Attendant
 Flinch
 Fling (Flung, Flung)
 Flip
@@ -1877,8 +1849,6 @@ Framework
 Frank
 Frantic
 Fraud
-Fray
-Frayed
 Freak
 Freak Out
 Free
@@ -1888,6 +1858,7 @@ Freeze (Froze, Frozen)
 Freight
 Frenzy
 Frequent
+Fresh
 Freshen Up
 Fret
 Friction
@@ -1910,6 +1881,7 @@ Fuel
 Fugitive
 Fulfil
 Fumble
+Fumbled
 Fume
 Fund
 Funeral
@@ -2109,9 +2081,10 @@ Guest
 Guide
 Guideline
 Guilt
+Guiltily
 Guise
 Gulf
-Gulp
+Gulped
 Gum
 Gun
 Gust
@@ -2135,7 +2108,6 @@ Hamper
 Hand Down
 Hand In
 Hand Over
-Handbook
 Handcuffs
 Handful
 Handicap
@@ -2198,6 +2170,7 @@ Held up
 Helicopter
 Helm
 Helmet (Helm)
+Helmeted
 Help Out
 Helpful
 Helpless
@@ -2259,7 +2232,6 @@ Hoop
 Hop
 Hopeful
 Horizon
-Horn
 Horrible
 Horrify
 Horseback
@@ -2272,9 +2244,12 @@ Hound
 Household
 Housewife
 Hover
+Hovering
 However
 Howl
 Howling
+Https://www.javatpoint.com/difference-between-supervised-and-unsupervised-learning#:~:text=in%20supervised%20learning%2c%20input%20data,it%20is%20given%20new%20data.
+Https://www.mapquest.com/
 Huddle
 Hue
 Hug
@@ -2290,9 +2265,11 @@ Hunch
 Hung
 Hunger
 Hunk
+Huntsmen
 Hurdle
 Hurl
 Hurricane
+Hurried
 Hurry
 Hurrying
 Hurt (Hurt, Hurt)
@@ -2390,6 +2367,7 @@ Inner
 Innocent
 Input
 Inquire
+Inquiry
 Insect
 Insert
 Inside
@@ -2451,7 +2429,6 @@ Inward
 Iron
 Irritably
 Irritate
-Island
 Issue
 Itch
 Item
@@ -2571,6 +2548,7 @@ Lavish
 Law
 Lawn
 Lawsuit
+Lay
 Lay (Laid, Laid)
 Lay Down
 Lay Off
@@ -2697,6 +2675,7 @@ Look Smb Up
 Look Up
 Look Up To
 Loom
+Loomed
 Loop
 Loose
 Loot
@@ -2708,6 +2687,7 @@ Lounge
 Lousy
 Lovely
 Lower
+Lowered
 Loyal
 Lucrative
 Ludicrous
@@ -2895,7 +2875,6 @@ Mostly
 Moth
 Motion
 Motto
-Mound
 Mounds
 Mount
 Mountain
@@ -2968,7 +2947,6 @@ Never
 Nevertheless
 Newcomer
 Newspaper
-Nibble
 Nibble On
 Nicer
 Niche
@@ -2980,6 +2958,7 @@ Nitrogen
 No Matter
 Noble
 Nod
+Nodding
 Noise
 Nominate
 None
@@ -2991,6 +2970,7 @@ Nose
 Nose Around
 Nostril
 Nostrils
+Not
 Notch
 Note
 Notice
@@ -3049,6 +3029,7 @@ Of
 Offence
 Offence (Offense)
 Offend
+Offended
 Offer
 Officer
 Offset
@@ -3084,6 +3065,7 @@ Ordinary
 Oriental
 Origin
 Original
+Orm
 Orphan
 Ostensibly
 Otherwise
@@ -3113,6 +3095,7 @@ Outweigh
 Oven
 Over
 Overall
+Overcast
 Overcoat
 Overcome
 Overflow
@@ -3197,6 +3180,8 @@ Pattern
 Pause
 Pave
 Paw
+Pawed
+Pawn
 Pay Back
 Pay Off
 Pay Out
@@ -3237,7 +3222,6 @@ Perhaps
 Peril
 Period
 Perish
-Perk
 Perk Up
 Permanent
 Permit
@@ -3250,8 +3234,8 @@ Persuade
 Pervasive
 Pervert
 Pest
-Pet
 Petal
+Petrified
 Petroleum
 Petty
 Pewter
@@ -3290,6 +3274,7 @@ Placid
 Plague
 Plain
 Plane
+Planet labs
 Plank
 Plant
 Plaque
@@ -3313,6 +3298,7 @@ Plug
 Plug In
 Plum
 Plumbing
+Plumed
 Plump
 Plunge
 Plunged
@@ -3329,6 +3315,7 @@ Poker
 Pole
 Policy
 Polish
+Polished
 Polite
 Poll
 Pollute
@@ -3473,6 +3460,7 @@ Pulled out
 Pump
 Pumpkin
 Punch
+Punctuated
 Punctures
 Punish
 Punishment
@@ -3499,7 +3487,6 @@ Put Through
 Put Together
 Put Up
 Put Up With
-Put it
 Puzzle
 Quaint
 Quality
@@ -3514,6 +3501,7 @@ Question
 Questionnaire
 Queue
 Quiet
+Quill
 Quilt
 Quit (Quit, Quit)
 Quite
@@ -3523,6 +3511,7 @@ Rabbit
 Race
 Racing
 Rack
+Racking sobs
 Radiate
 Raft
 Rag
@@ -3584,7 +3573,6 @@ Recipient
 Reciprocal
 Recite
 Reckless
-Reckon
 Reckons
 Recognize
 Recollection
@@ -3647,7 +3635,6 @@ Remind
 Reminiscent
 Remnant
 Remorse
-Remote
 Remove
 Render
 Renew
@@ -3687,6 +3674,7 @@ Respond
 Response
 Responsible
 Rest
+Restorative
 Restore
 Restrain
 Restrict
@@ -3737,6 +3725,7 @@ Rigid
 Rigorous
 Rim
 Ring (Rang, Rung)
+Rings
 Rinse
 Riot
 Rip
@@ -3811,6 +3800,7 @@ Runway
 Rupture
 Rural
 Rush
+Rushing
 Rust
 Rustic
 Rustle
@@ -3819,6 +3809,7 @@ Ruthless
 Sack
 Sacred
 Sacrifice
+Sacrifices
 Saddle
 Safe
 Sagged
@@ -3840,6 +3831,7 @@ Sandy
 Sane
 Sank
 Satellite
+Satisfied
 Satisfy
 Saturated
 Saucepan
@@ -3852,7 +3844,6 @@ Savings
 Savior
 Savor
 Scaffold
-Scale
 Scales
 Scant
 Scar
@@ -3898,7 +3889,6 @@ Scrutiny
 Scurry
 Scuttled
 Seal
-Seam
 Search
 Season
 Seasoning
@@ -3992,6 +3982,7 @@ Shepherd
 Sherry
 Shield
 Shift
+Shifted
 Shimmer
 Shine (Shone, Shined)
 Ship
@@ -4047,6 +4038,7 @@ Sight
 Sign
 Sign Up
 Signature
+Signed
 Significant
 Signify
 Silence
@@ -4113,6 +4105,7 @@ Slight
 Slim
 Slime
 Slimy
+Slings
 Slip
 Slipper
 Slippery
@@ -4209,7 +4202,6 @@ Spare
 Spark
 Sparkle
 Sparse
-Spawn
 Speak Out
 Speak Up
 Spear
@@ -4220,6 +4212,7 @@ Specify
 Specimen
 Speck
 Spectacle
+Spectacles
 Spectator
 Spectators
 Speculate
@@ -4227,6 +4220,7 @@ Sped up
 Speed Up
 Spell
 Spell Out
+Spellotaped
 Spend (Spent, Spent)
 Spice
 Spike
@@ -4235,6 +4229,7 @@ Spin
 Spine
 Spirit
 Spit (Spat, Spat)
+Spite
 Splash
 Splattered
 Splendid
@@ -4249,6 +4244,7 @@ Spot
 Spotlight
 Spotted
 Spouse
+Sprang
 Sprawl
 Spray
 Spread
@@ -4267,8 +4263,11 @@ Squeak
 Squeal
 Squeeze
 Squeezed
+Squelched
+Squib
 Squid
 Squint
+Squinted
 Squirm
 Squirrel
 Squirt
@@ -4326,7 +4325,6 @@ Step
 Step Down
 Step In
 Stern
-Stew
 Stick
 Stick (Stuck, Stuck)
 Stick At
@@ -4337,6 +4335,7 @@ Sticky
 Stiff
 Stiffly
 Stifle
+Stifled
 Still
 Sting (Stung, Stung)
 Stink (Stank, Stunk)
@@ -4387,6 +4386,7 @@ Stripe
 Strive (Strove, Striven)
 Stroke
 Stroll
+Struck
 Struggle
 Stubborn
 Stud
@@ -4437,7 +4437,6 @@ Sufficient
 Suffocate
 Suggest
 Suit
-Suitcase
 Suite
 Sulfur (Sulphur)
 Sum
@@ -4452,6 +4451,9 @@ Superficial
 Superintendent
 Superior
 Supervise
+Supervised
+Supervisor
+Supper
 Supplement
 Supply
 Support
@@ -4499,6 +4501,7 @@ Swirl
 Swish
 Swishy
 Switch
+Swiveling
 Swoop
 Swooped
 Sword
@@ -4546,7 +4549,6 @@ Tangle
 Tangled
 Tank
 Tap
-Tape
 Tar
 Target
 Tart
@@ -4643,6 +4645,7 @@ Tied Up
 Tier
 Tight
 Tile
+Till
 Tilt
 Timber
 Timely
@@ -4660,7 +4663,6 @@ Tire (Tyre)
 Tired
 Tissue
 Title
-Toad
 Toast
 Toddler
 Toe
@@ -4720,7 +4722,6 @@ Treachery
 Treacle
 Tread
 Treasure
-Treat
 Treaty
 Trek
 Tremble
@@ -4744,6 +4745,7 @@ Trodden on
 Troop
 Trophy
 Trot
+Troubled
 Troublesome
 Trousers
 Trout
@@ -4757,6 +4759,7 @@ Try On
 Try Out
 Tub
 Tube
+Tubeworms
 Tuck
 Tufts
 Tug
@@ -4765,6 +4768,7 @@ Tumble
 Tumor (Tumour)
 Tuna
 Tune
+Tureens
 Turkey
 Turmoil
 Turn
@@ -4910,7 +4914,10 @@ Voluntary
 Vomit
 Vote
 Vow
+Voweb.net
 Voyage
+Voyages
+Vpn
 Vulnerable
 Wad
 Wade
@@ -4946,7 +4953,6 @@ Wash Up
 Waste
 Watch
 Watchful
-Water Down
 Watercolor
 Waterfall
 Wave
@@ -5016,7 +5022,6 @@ Width
 Wield
 Wiggle
 Wild
-Wilderness
 Wildlife
 Wildly
 Will
@@ -5085,10 +5090,82 @@ Yeh
 Yell
 Yelled
 Yellowish
+Yells
 Yet
 Yield
 Youngster
 Youth
-Zeal
-Zipper
++Abandon
++Able
++Accept
++Accident
++Accompany
++Acknowledge
++Across
++Act
++Admit
++Adult
++Advise
++Affair
++Affect
++Afraid
++Age
++Agenda
++Agree
++Agreement
++Aid
++Aim
++Air
++Aircraft
++Airline
++Alarm
++Alien
++Align
++Alive
++Almost
++Alter
++Alternate
++Although
++Ancient
++Anger
++Angle
++Ankle
++Anniversary
++Ash
++Basket
++Bizarre
++Bounce
++Bounced
++Crave
++Cry Out
++Derive
++Evade
++Explode
++Favored
++Flight
++Fray
++Frayed
++Gulp
++Handbook
++Horn
++Island
++Mound
++Nibble
++Perk
++Pet
++Put it
++Reckon
++Remote
++Scale
++Seam
++Spawn
++Stew
++Suitcase
++Tape
++Toad
++Treat
++Water Down
++Wilderness
++Zeal
++Zipper
 +Zoo
