@@ -23,6 +23,11 @@
 ![setting_window](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/setting_window.png
 )
 
+3) Окно помощи
+
+![help_window](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/help_window.png
+)
+
 Видео программы:
 
 [![Watch the video](https://img.youtube.com/vi/zWI3XkgQQMc/0.jpg)](https://youtu.be/zWI3XkgQQMc)
