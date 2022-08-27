@@ -10,12 +10,15 @@
 1) Главное окно
 ![main_window](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/main_window.png
 )
+
 2) Окно ошибок
 ![wrong_window](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/wrong_window.png
 )
+
 3) Окно настроек
 ![setting_window](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/setting_window.png
 )
+
 Видео программы:
 ![video](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/video.mp4
 )
