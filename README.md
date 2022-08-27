@@ -7,6 +7,7 @@
             ~/mac_resourse/xkbswitch-macosx-master/README.md
 
 Скриншоты программы:
+
 1) Главное окно
 
 ![main_window](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/main_window.png
@@ -24,8 +25,9 @@
 
 Видео программы:
 
-![video](https://github.com/Oskorbin99/Voc_eng_python/blob/main/other/resourse_for_READMI/video.mp4
+[![Watch the video](https://img.youtube.com/vi/zWI3XkgQQMc/0.jpg)](https://youtu.be/zWI3XkgQQMc)
 )
+
 Возможно нужно доработать для винды:
 1. Смена языка может не работать.
 2. Эмоджи "1,2,3" вполне могут не работать. 
