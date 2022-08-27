@@ -132,9 +132,9 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def grid_for_word_now(self):
         self.grid_word_now = QGridLayout()
         self.grid_word_now.setSpacing(1)
-        self.grid_word_now.addWidget(self.information_labels["word now"], 0, 0,QtCore.Qt.AlignCenter)
-        self.grid_word_now.addWidget(self.information_labels["parts of speech word now"], 1, 0,QtCore.Qt.AlignCenter)
-        self.grid_word_now.addWidget(self.information_labels["transcription word now"], 2, 0,QtCore.Qt.AlignCenter)
+        self.grid_word_now.addWidget(self.information_labels["word now"], 0, 0, QtCore.Qt.AlignCenter)
+        self.grid_word_now.addWidget(self.information_labels["parts of speech word now"], 1, 0, QtCore.Qt.AlignCenter)
+        self.grid_word_now.addWidget(self.information_labels["transcription word now"], 2, 0, QtCore.Qt.AlignCenter)
 
     def grid_for_information_word(self):
         # create grid for information word
@@ -194,6 +194,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text(), self.random_language_now)
         self.random_language_now = self.choice_ru_or_en_word()
         self.language_control()
+
         # -----------------------------------------------
         # section functional
         self.check_life_word()

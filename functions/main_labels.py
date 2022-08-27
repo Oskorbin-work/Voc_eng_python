@@ -58,6 +58,7 @@ class MainLabels(WorkDataBd):
     # change word
     def label_set_text(self, random_id=1, language="ru"):
         lang_now = MainButtons.check_language_word(MainButtons, language)
+
         if random_id != -1:
             self.list_now_word = self.get_row(random_id)
         else:
