@@ -3,9 +3,9 @@
 # -----------------------------------------------------------
 import sys
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QGridLayout, QWidget, QLineEdit, QGroupBox,
+    QApplication, QMainWindow, QGridLayout, QWidget, QGroupBox,
 )
-from PyQt5 import QtCore
+from PyQt5 import QtCore, QtTest
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
@@ -45,8 +45,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.create_button_start_pause()
         self.create_info_transcription()
         self.create_transcription_button()
-        # Initiate main text edit
-        self.textEdit = QLineEdit()
+        self.create_edit_text()
         self.textEdit.setFixedHeight(25)
         # Initiate grid
         self.main_grid()
@@ -164,7 +163,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def button_connect(self):
         self.btn.setDisabled(1)
         self.btn_voice_transcription.setDisabled(1)
-        self.btn.clicked.connect(lambda: self.clicked_main_button())
+        self.btn.clicked.connect(lambda: self.check_text_edit())
         self.btn_start_pause.clicked.connect(lambda: self.clicked_button_start_pause())
         self.btn_info_transcription.clicked.connect(lambda: self.clicked_button_info_transcription())
         self.btn_voice_transcription.clicked.connect(lambda: self.clicked_button_voice_transcription())
@@ -174,7 +173,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Qt.Key.Key_*Button* working, but it has bug
         # 16777220 is Enter.
         if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
-            self.clicked_main_button()
+            self.check_text_edit()
         # 16777222 is F2
         elif event.key() == 16777265:
             self.clicked_button_start_pause()
@@ -187,6 +186,17 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # 16777264 is F1
         elif event.key() == 16777264:
             view_help()
+
+    # check text.
+    # if text not empty.
+    def check_text_edit(self):
+        if self.textEdit.text() != "":
+            self.clicked_main_button()
+        else:
+            self.change_background_edit_text("red")
+            QtTest.QTest.qWait(150)
+            self.change_background_edit_text("white")
+
 
     # Functional button "Проверить"
     def clicked_main_button(self):

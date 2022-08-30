@@ -13,7 +13,7 @@
       <!-- button what check word-->
       <button_check>Check</button_check>
       <!-- button view definition word-->
-      <button_definition>Verify</button_definition>
+      <button_definition>Definition</button_definition>
       <!-- button voice word-->
       <button_voice>Vocalize the text</button_voice>
     </label_button_window>

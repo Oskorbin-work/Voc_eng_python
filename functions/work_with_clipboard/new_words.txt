@@ -710,7 +710,6 @@ Check Into
 Check On
 Check Out
 Checked
-Checking
 Checkup
 Cheek
 Cheer
@@ -1263,7 +1262,6 @@ Dilute
 Dim
 Dimension
 Diminish
-Dimly
 Dine
 Dingy
 Dip
@@ -1753,6 +1751,7 @@ Flash
 Flashlight
 Flat
 Flatten
+Flattened
 Flatter
 Flavor
 Flaw
@@ -1824,6 +1823,7 @@ Foreign
 Foreman
 Foremost
 Foresee
+Forfeit
 Forge
 Forgive (Forgave, Forgiven)
 Fork
@@ -2371,6 +2371,7 @@ Innocent
 Input
 Inquire
 Inquiry
+Insane
 Insect
 Insert
 Inside
@@ -2445,6 +2446,7 @@ Jar
 Jars
 Jaw
 Jealous
+Jeered
 Jelly
 Jeopardy
 Jerk
@@ -2815,6 +2817,7 @@ Mess With
 Metropolitan
 Mice
 Mid
+Midair
 Middle
 Midnight
 Midst
@@ -3207,7 +3210,6 @@ Pee
 Peek
 Peel
 Peer
-Peered
 Peg
 Penalty
 Pending
@@ -3433,7 +3435,6 @@ Prop
 Propagate
 Propel
 Proper
-Properly
 Property
 Prophet
 Proponent
@@ -3493,7 +3494,6 @@ Put Together
 Put Up
 Put Up With
 Puzzle
-Qt.key.key_*button*
 Quaint
 Quality
 Quantity
@@ -3535,6 +3535,7 @@ Ram
 Ramble
 Ramp
 Random
+Rang out
 Range
 Rank
 Ransom
@@ -3922,7 +3923,6 @@ Send (Sent, Sent)
 Send Out
 Senior
 Sensation
-Sensational
 Sense
 Sensible
 Sensitive
@@ -4252,7 +4252,6 @@ Spotlight
 Spotted
 Spouse
 Sprang
-Sprang up
 Sprawl
 Spray
 Spread
@@ -4544,7 +4543,6 @@ Take Over
 Take Part
 Take Place
 Take Up
-Tale
 Talk Into
 Talk Over
 Talk Smb Out
@@ -4552,6 +4550,7 @@ Talk rubbish
 Tall
 Tally
 Tame
+Tampered
 Tan
 Tangible
 Tangle
@@ -4623,6 +4622,7 @@ Though (Even Though)
 Thought
 Thread
 Threat
+Threats
 Threshold
 Threw
 Thrift
@@ -4826,7 +4826,7 @@ Unit
 Unite
 Universe
 Unless
-Untrustworthy
+Unseat
 Up-To-Date
 Upcoming
 Update
@@ -5105,7 +5105,6 @@ Yet
 Yield
 Youngster
 Youth
-Слова	грамматика	чтение
 +Abandon
 +Able
 +Accept

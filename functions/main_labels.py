@@ -2,7 +2,9 @@
 # Import classical and Pyqt5`s modules
 # -----------------------------------------------------------
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import (
+    QLabel, QLineEdit
+     )
 from PyQt5 import QtCore
 # -----------------------------------------------------------
 # Import classes
@@ -43,6 +45,19 @@ class MainLabels(WorkDataBd):
             "transcription word now": QLabel(),
             "chapter word now": QLabel(),
         }
+
+    # create edit line
+    def create_edit_text(self):
+        # Initiate main text edit
+        self.textEdit = QLineEdit()
+
+    # change background edit line
+    def change_background_edit_text(self, color):
+        self.textEdit.setStyleSheet("QLineEdit"
+                                    "{"
+                                    f"background : {color};"
+                                    "}")
+
 
     # describe font and size labels text
     def label_set_font_and_size(self):
