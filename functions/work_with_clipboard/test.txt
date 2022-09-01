@@ -44,6 +44,7 @@ Adjacent
 Adjective
 Adjust
 Admire
+Admitted
 Adolescent
 Adopt
 Adore
@@ -229,7 +230,7 @@ Attend
 Attic
 Attitude
 Attorney
-Attract
++Attract
 Attribute
 Audible
 Audience
@@ -325,6 +326,7 @@ Be Off
 Be On Fire
 Be Over
 Be Up To
+Beacon
 Bead
 Beak
 Beam
@@ -372,7 +374,7 @@ Berth
 Beside
 Besides
 Bestow
-Bet
++Bet
 Betray
 Beverage
 Beware
@@ -743,7 +745,7 @@ Chord
 Chore
 Chorus
 Christmas
-Chuck
++Chuck
 Chuckle
 Chuckled
 Chunk
@@ -1218,6 +1220,7 @@ Desktop
 Desolate
 Despair
 Desperate
+Desperately
 Despise
 Despite
 Destination
@@ -1380,6 +1383,7 @@ Dreading
 Dreadlocks
 Dream
 Dream Up
+Dregs
 Dress
 Dress Up
 Dried
@@ -1461,7 +1465,7 @@ Elect
 Elevate
 Elicit
 Eligible
-Eliminate
++Eliminate
 Elk
 Eloquent
 Elude
@@ -1509,6 +1513,7 @@ Enormous
 Enrich
 Enrol (Enroll)
 Ensemble
+Enslaved
 Ensue
 Ensure
 Entail
@@ -1632,6 +1637,7 @@ Factory
 Faculty
 Fade
 Faded
+Fading
 Fail
 Failure
 Faint
@@ -1750,6 +1756,7 @@ Flash
 Flashlight
 Flat
 Flatten
+Flattened
 Flatter
 Flavor
 Flaw
@@ -1821,6 +1828,7 @@ Foreign
 Foreman
 Foremost
 Foresee
+Forfeit
 Forge
 Forgive (Forgave, Forgiven)
 Fork
@@ -2319,7 +2327,7 @@ Incentive
 Inch
 Inches
 Incidence
-Incline
++Incline
 Include
 Income
 Incoming
@@ -2368,6 +2376,7 @@ Innocent
 Input
 Inquire
 Inquiry
+Insane
 Insect
 Insert
 Inside
@@ -2442,6 +2451,7 @@ Jar
 Jars
 Jaw
 Jealous
+Jeered
 Jelly
 Jeopardy
 Jerk
@@ -2688,6 +2698,7 @@ Lousy
 Lovely
 Lower
 Lowered
+Lowly
 Loyal
 Lucrative
 Ludicrous
@@ -2787,6 +2798,7 @@ Medium
 Meet (Met, Met)
 Melon
 Melt
+Melted
 Member
 Memoirs
 Memories
@@ -2812,6 +2824,7 @@ Mess With
 Metropolitan
 Mice
 Mid
+Midair
 Middle
 Midnight
 Midst
@@ -3257,6 +3270,7 @@ Pile Up
 Pill
 Pillar
 Pillow
+Pillowcase
 Pin
 Pinch
 Pine
@@ -3529,6 +3543,7 @@ Ram
 Ramble
 Ramp
 Random
+Rang out
 Range
 Rank
 Ransom
@@ -4096,7 +4111,7 @@ Sleek
 Sleep Around
 Sleeve
 Slender
-Slice
++Slice
 Slick
 Slid
 Slide (Slid, Slid)
@@ -4143,6 +4158,7 @@ Snarl
 Snarled
 Snatch
 Sneak
+Sneak up
 Sneakers
 Sneer
 Sneered
@@ -4543,6 +4559,7 @@ Talk rubbish
 Tall
 Tally
 Tame
+Tampered
 Tan
 Tangible
 Tangle
@@ -4614,6 +4631,7 @@ Though (Even Though)
 Thought
 Thread
 Threat
+Threats
 Threshold
 Threw
 Thrift
@@ -4722,6 +4740,7 @@ Treachery
 Treacle
 Tread
 Treasure
+Treated
 Treaty
 Trek
 Tremble
@@ -4817,6 +4836,7 @@ Unit
 Unite
 Universe
 Unless
+Unseat
 Up-To-Date
 Upcoming
 Update
@@ -4874,6 +4894,7 @@ Venture
 Verb
 Verge
 Verify
+Vermin
 Versatile
 Verse
 Vessel
@@ -5032,6 +5053,7 @@ Wind Up
 Windowpane
 Windowsill
 Wine
+Wing
 Wink
 Winked
 Wipe

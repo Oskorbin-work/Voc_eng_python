@@ -37,7 +37,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # ------------------------------
         # Initiate bar menu
         # is not use
-        # self.bar_category_file_menu()  # Initiate Bar category fileMenu
+        # self.bar_category_file_menu()  #Initiate Bar category fileMenu
         # ------------------------------
 
         # Initiate main buttons
@@ -47,6 +47,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.create_transcription_button()
         self.create_edit_text()
         self.textEdit.setFixedHeight(25)
+        self.textEdit.setPlaceholderText(XML.get_attr_XML("main_window/text_edit/placeholder"))
+
         # Initiate grid
         self.main_grid()
 
@@ -193,10 +195,11 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         if self.textEdit.text() != "":
             self.clicked_main_button()
         else:
+            holder_word = self.get_current_word(self.random_id_now, self.random_language_now)
+            self.textEdit.setPlaceholderText(holder_word[0])
             self.change_background_edit_text("red")
             QtTest.QTest.qWait(150)
             self.change_background_edit_text("white")
-
 
     # Functional button "Проверить"
     def clicked_main_button(self):
@@ -216,6 +219,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # -----------------------------------------------
         # status_bar
         self.view_data_status_bar_hp()
+        # default placeholder
+        self.textEdit.setPlaceholderText(XML.get_attr_XML("main_window/text_edit/placeholder"))
         # if all word was checked
         try:
             self.get_first_id_count_life_3()[0]

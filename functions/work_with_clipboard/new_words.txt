@@ -44,6 +44,7 @@ Adjacent
 Adjective
 Adjust
 Admire
+Admitted
 Adolescent
 Adopt
 Adore
@@ -229,7 +230,7 @@ Attend
 Attic
 Attitude
 Attorney
-Attract
++Attract
 Attribute
 Audible
 Audience
@@ -325,6 +326,7 @@ Be Off
 Be On Fire
 Be Over
 Be Up To
+Beacon
 Bead
 Beak
 Beam
@@ -372,7 +374,7 @@ Berth
 Beside
 Besides
 Bestow
-Bet
++Bet
 Betray
 Beverage
 Beware
@@ -743,7 +745,7 @@ Chord
 Chore
 Chorus
 Christmas
-Chuck
++Chuck
 Chuckle
 Chuckled
 Chunk
@@ -1381,6 +1383,7 @@ Dreading
 Dreadlocks
 Dream
 Dream Up
+Dregs
 Dress
 Dress Up
 Dried
@@ -1462,7 +1465,7 @@ Elect
 Elevate
 Elicit
 Eligible
-Eliminate
++Eliminate
 Elk
 Eloquent
 Elude
@@ -1510,6 +1513,7 @@ Enormous
 Enrich
 Enrol (Enroll)
 Ensemble
+Enslaved
 Ensue
 Ensure
 Entail
@@ -1633,6 +1637,7 @@ Factory
 Faculty
 Fade
 Faded
+Fading
 Fail
 Failure
 Faint
@@ -2322,7 +2327,7 @@ Incentive
 Inch
 Inches
 Incidence
-Incline
++Incline
 Include
 Income
 Incoming
@@ -2693,6 +2698,7 @@ Lousy
 Lovely
 Lower
 Lowered
+Lowly
 Loyal
 Lucrative
 Ludicrous
@@ -2792,6 +2798,7 @@ Medium
 Meet (Met, Met)
 Melon
 Melt
+Melted
 Member
 Memoirs
 Memories
@@ -3263,6 +3270,7 @@ Pile Up
 Pill
 Pillar
 Pillow
+Pillowcase
 Pin
 Pinch
 Pine
@@ -4103,7 +4111,7 @@ Sleek
 Sleep Around
 Sleeve
 Slender
-Slice
++Slice
 Slick
 Slid
 Slide (Slid, Slid)
@@ -4150,6 +4158,7 @@ Snarl
 Snarled
 Snatch
 Sneak
+Sneak up
 Sneakers
 Sneer
 Sneered
@@ -4731,6 +4740,7 @@ Treachery
 Treacle
 Tread
 Treasure
+Treated
 Treaty
 Trek
 Tremble
@@ -4884,6 +4894,7 @@ Venture
 Verb
 Verge
 Verify
+Vermin
 Versatile
 Verse
 Vessel
@@ -5042,6 +5053,7 @@ Wind Up
 Windowpane
 Windowsill
 Wine
+Wing
 Wink
 Winked
 Wipe

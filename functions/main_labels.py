@@ -56,8 +56,8 @@ class MainLabels(WorkDataBd):
         self.textEdit.setStyleSheet("QLineEdit"
                                     "{"
                                     f"background : {color};"
+                                    
                                     "}")
-
 
     # describe font and size labels text
     def label_set_font_and_size(self):

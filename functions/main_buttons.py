@@ -97,3 +97,9 @@ class MainButtons(WorkWithBd):
             return True
         else:
             return False
+
+    # get current word
+    def get_current_word(self, id_now_word, language):
+        row_now_word = self.get_row(id_now_word)
+        lang_now = self.check_language_word(language, "reverse_on")
+        return row_now_word[lang_now]
