@@ -25,13 +25,16 @@ from functions.notifications import view_help
 from exit_file import Exit_program
 #Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
-
+# Сервер
+from server.controller import ControllerServer
 
 # Class to describe structure main window
 class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def __init__(self):
         super().__init__()
+        # Настройка для сервера
+        self.server_controller = ControllerServer()
         # Set main setting "view window"
         self.main_window_parameter()
         # ------------------------------
@@ -196,7 +199,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
             self.clicked_main_button()
         else:
             holder_word = self.get_current_word(self.random_id_now, self.random_language_now)
-            self.textEdit.setPlaceholderText(holder_word[0])
+            self.textEdit.setText(holder_word[0])
             self.change_background_edit_text("red")
             QtTest.QTest.qWait(150)
             self.change_background_edit_text("white")
