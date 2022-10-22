@@ -16,6 +16,8 @@ from settings import (
 # Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
 
+from server.controller import ControllerServer
+
 # Class to work with bd
 class WorkWithBd:
 
@@ -64,20 +66,30 @@ class WorkWithBd:
         # Get count all word
         count_row = self.get_count_all_word()[0]
         ls_temp_words = self.get_list_temp_activate()
+        ControllerServer.check_temp_word(ControllerServer(), str(len(ls_temp_words)))
+        count_activity_word = 0
+        count_not_activity_word = 0
         # Copy column count life in column work count life
         for i in range(1, count_row+1):
             count_life = self.get_row(i)[6]
 
             if count_life == -1:
                 self.edit_status_word(i, "not_activate")
+                count_not_activity_word = count_not_activity_word + 1
                 # if word is old then his life is "-1". It is mean what word was learned
                 if i in ls_temp_words:
                     count_life = 1
                     self.edit_status_word(i, "temp_activate")
+                    count_not_activity_word = count_not_activity_word -1
+
             if count_life == 3:
                 self.edit_status_word(i, "is_activate")
+                count_activity_word = count_activity_word +1
             # add count life.
             self.edit_work_count_life(i, str(count_life))
+
+        ControllerServer.check_activity_word(ControllerServer(), str(count_activity_word))
+        ControllerServer.check_not_activity_word(ControllerServer(), str(count_not_activity_word))
 
     # Forming a list of temporary words
     def get_list_temp_activate(self):

@@ -35,6 +35,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         super().__init__()
         # Настройка для сервера
         self.server_controller = ControllerServer()
+        self.server_controller.check_status_session("Completed to no avail")
         # Set main setting "view window"
         self.main_window_parameter()
         # ------------------------------
@@ -236,12 +237,13 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # stop and start program
         if settings.TIMER_INTERVAL == 0:
             settings.TIMER_INTERVAL = 1
-
+            self.server_controller.check_status_session("Partially completed")
             self.view_data_status_bar_hp()
             self.btn_start_pause.setText(XML.get_attr_XML("main_window/label_button_window/button_pause"))
             self.btn.setEnabled(1)
         else:
             self.btn.setDisabled(1)
+            self.server_controller.check_count_pause_program()
             settings.TIMER_INTERVAL = 0
             self.btn_start_pause.setText(XML.get_attr_XML("main_window/label_button_window/button_start"))
 
@@ -266,6 +268,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     # if all word was checked
     def game_over(self):
+
         settings.PROGRAM_STATUS = False
         self.btn.setDisabled(1)
         self.btn_start_pause.setDisabled(1)
@@ -275,9 +278,17 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 # It for run program
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = MainWindow()
+    try:
+        ex = MainWindow()
+    except:
+        ControllerServer.check_status_session(ControllerServer(),"Failed to complete")
     exit = Exit_program()
     try:
         sys.exit(app.exec_())
     finally:
+        ControllerServer.get_end_information_about_session(ControllerServer(), [
+            ex.information_labels["timer learn"].text()[1:],
+            ex.elements_status_bar['All_word'][1].text(),
+        ])
         exit.bd_to_default_state()
+
