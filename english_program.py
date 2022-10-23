@@ -6,6 +6,9 @@ from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QGridLayout, QWidget, QGroupBox,
 )
 from PyQt5 import QtCore, QtTest
+
+from datetime import datetime
+import time
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
@@ -28,6 +31,7 @@ import functions.work_with_XML_file.work_with_XML as XML
 # Сервер
 from server.controller import ControllerServer
 
+
 # Class to describe structure main window
 class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
@@ -35,6 +39,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         super().__init__()
         # Настройка для сервера
         self.server_controller = ControllerServer()
+        self.server_controller.run_program()
         self.server_controller.check_status_session("Completed to no avail")
         # Set main setting "view window"
         self.main_window_parameter()
@@ -169,33 +174,36 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     def button_connect(self):
         self.btn.setDisabled(1)
         self.btn_voice_transcription.setDisabled(1)
-        self.btn.clicked.connect(lambda: self.check_text_edit())
-        self.btn_start_pause.clicked.connect(lambda: self.clicked_button_start_pause())
-        self.btn_info_transcription.clicked.connect(lambda: self.clicked_button_info_transcription())
-        self.btn_voice_transcription.clicked.connect(lambda: self.clicked_button_voice_transcription())
+        self.btn.clicked.connect(lambda: self.check_text_edit("count_click_mouse"))
+        self.btn_start_pause.clicked.connect(lambda: self.clicked_button_start_pause("count_click_mouse"))
+        self.btn_info_transcription.clicked.connect(lambda: self.clicked_button_info_transcription("count_click_mouse"))
+        self.btn_voice_transcription.clicked.connect(lambda: self.clicked_button_voice_transcription("count_click_mouse"))
 
     # This is GOD def keyboards!
     def keyPressEvent(self, event):
         # Qt.Key.Key_*Button* working, but it has bug
         # 16777220 is Enter.
         if event.key() == 16777220 and settings.TIMER_INTERVAL != 0:
-            self.check_text_edit()
+            self.check_text_edit("count_click_keyboard")
         # 16777222 is F2
         elif event.key() == 16777265:
-            self.clicked_button_start_pause()
+            self.clicked_button_start_pause("count_click_keyboard")
         # 16777251 is Option
         elif event.key() == 16777251:
-            self.clicked_button_info_transcription()
+            self.clicked_button_info_transcription("count_click_keyboard")
         # 16777248 is Command
         elif event.key() == 16777249:
-            self.clicked_button_voice_transcription()
+            self.clicked_button_voice_transcription("count_click_keyboard")
         # 16777264 is F1
         elif event.key() == 16777264:
             view_help()
 
     # check text.
     # if text not empty.
-    def check_text_edit(self):
+    def check_text_edit(self, type):
+        start_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+
+        self.server_controller.check_button("server/data_xml/buttons.xml", f"check_text/{type}")
         if self.textEdit.text() != "":
             self.clicked_main_button()
         else:
@@ -204,6 +212,9 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
             self.change_background_edit_text("red")
             QtTest.QTest.qWait(150)
             self.change_background_edit_text("white")
+        end_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+        end_time = end_time - start_time
+        self.server_controller.check_runtime_button("server/data_xml/buttons.xml", "check_text", end_time)
 
     # Functional button "Проверить"
     def clicked_main_button(self):
@@ -235,7 +246,10 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
             self.game_over()
 
     # Button "Старт/Стоп"
-    def clicked_button_start_pause(self):
+    def clicked_button_start_pause(self, type):
+        start_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+
+        self.server_controller.check_button("server/data_xml/buttons.xml", f"pause_start/{type}")
         self.language_control()
         # stop and start program
         if settings.TIMER_INTERVAL == 0:
@@ -251,16 +265,31 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
             self.btn_start_pause.setText(XML.get_attr_XML("main_window/label_button_window/button_start"))
 
         self.textEdit.setFocus()
+        end_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+        end_time = end_time - start_time
+        self.server_controller.check_runtime_button("server/data_xml/buttons.xml", "pause_start", end_time)
+
 
     # view info_transcription
-    def clicked_button_info_transcription(self):
+    def clicked_button_info_transcription(self,type):
+        start_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+        self.server_controller.check_button("server/data_xml/buttons.xml", f"defin/{type}")
         self.get_info_transcription(self.random_id_now)
+        end_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+        end_time = end_time - start_time
+        self.server_controller.check_runtime_button("server/data_xml/buttons.xml", "defin", end_time)
         #notifications.view_info_transcription(self.random_id_now)
 
     # voice word
-    def clicked_button_voice_transcription(self):
+    def clicked_button_voice_transcription(self,type):
+        start_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+
+        self.server_controller.check_button("server/data_xml/buttons.xml", f"audio_text_main_menu/{type}")
         if self.random_language_now == "en":
             voice(self.get_english_word(self.random_id_now)[0][0])
+        end_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+        end_time = end_time - start_time
+        self.server_controller.check_runtime_button("server/data_xml/buttons.xml", "audio_text_main_menu", end_time)
 
     # Place for funk language
     def language_control(self):

@@ -12,12 +12,38 @@ class ControllerServer:
             "Completed to no avail": "Завершено без користі",
             "Failed to complete": "Невдало завершено",
         }
+
+    def run_program(self):
         self.count_pause_control = -1
         self.count_wrong_translate = -1
+
         self.check_count_wrong_translate()
         self.check_count_pause_program()
+        XML.change_val_XML("server/data_xml/buttons.xml", "pause_start/count_click_mouse", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "pause_start/count_click_keyboard", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "pause_start/runtime", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "defin/count_click_mouse", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "defin/count_click_keyboard", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "defin/runtime", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "check_text/count_click_mouse", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "check_text/count_click_keyboard", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "check_text/runtime", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "audio_text_main_menu/count_click_mouse", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "audio_text_main_menu/count_click_keyboard", "0")
+        XML.change_val_XML("server/data_xml/buttons.xml", "audio_text_main_menu/runtime", "0")
         self.check_user_id()
         self.create_session()
+    def check_button(self, path, name_attr):
+        count = int(XML.get_attr_XML_server(path, name_attr)) + 1
+        XML.change_val_XML(path, name_attr, str(count))
+
+    # Значение в микросекундах
+    def check_runtime_button(self, path, name_attr,att):
+        count = int(XML.get_attr_XML_server(path, name_attr+"/runtime"))
+        if (count !=0):
+            XML.change_val_XML(path, name_attr+"/runtime", str((int((att+count)/2))))
+        else:
+            XML.change_val_XML(path, name_attr + "/runtime", str(int(att)))
 
     def check_temp_word(self, count_temp):
         XML.change_val_XML("server/data_xml/session.xml", "temp_word", str(count_temp))
