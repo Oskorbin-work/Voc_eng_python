@@ -2,7 +2,9 @@
 import functions.work_with_XML_file.work_with_XML as XML
 import uuid
 from settings import STATUS_LANGUAGE_INTERFACE
-class ControllerServer():
+
+
+class ControllerServer:
     def __init__(self):
         self.list_status_session ={
             "Successfully completed": "Успішно завершено",
@@ -11,11 +13,13 @@ class ControllerServer():
             "Failed to complete": "Невдало завершено",
         }
         self.count_pause_control = -1
+        self.count_wrong_translate = -1
+        self.check_count_wrong_translate()
         self.check_count_pause_program()
         self.check_user_id()
         self.create_session()
 
-    def check_temp_word(self,count_temp):
+    def check_temp_word(self, count_temp):
         XML.change_val_XML("server/data_xml/session.xml", "temp_word", str(count_temp))
 
     def check_activity_word(self,count_activity):
@@ -23,6 +27,11 @@ class ControllerServer():
 
     def check_not_activity_word(self, count_not_activity):
         XML.change_val_XML("server/data_xml/session.xml", "not_activate_word", str(count_not_activity))
+
+    # Сохраняет количество неправильных переводов
+    def check_count_wrong_translate(self):
+        self.count_wrong_translate = self.count_wrong_translate+1
+        XML.change_val_XML("server/data_xml/session.xml", "count_wrong_translate", str(self.count_wrong_translate))
 
     #  Сохраняет количество остановок программы
     def check_count_pause_program(self):

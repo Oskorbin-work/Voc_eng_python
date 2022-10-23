@@ -208,6 +208,9 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
     # Functional button "Проверить"
     def clicked_main_button(self):
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now, self.textEdit.text()))
+        if status_word == False:
+            self.server_controller.check_count_wrong_translate()
+
         self.wrong_enter_word(self.random_id_now, status_word, self.textEdit.text(), self.random_language_now)
         self.random_language_now = self.choice_ru_or_en_word()
         self.language_control()
@@ -273,6 +276,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.btn.setDisabled(1)
         self.btn_start_pause.setDisabled(1)
         settings.TIMER_INTERVAL = 0
+        self.server_controller.check_status_session("Successfully completed")
 
 
 # It for run program
