@@ -196,6 +196,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
             self.clicked_button_voice_transcription("count_click_keyboard")
         # 16777264 is F1
         elif event.key() == 16777264:
+            self.server_controller.check_helper()
             view_help()
 
     # check text.

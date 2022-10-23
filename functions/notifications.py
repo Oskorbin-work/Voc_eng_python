@@ -26,6 +26,7 @@ def view_error_critical(title, text=""):
 
 # View QMessageBox about information
 def view_info_information(title, text=""):
+
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Information)
     msg.setWindowTitle(title)

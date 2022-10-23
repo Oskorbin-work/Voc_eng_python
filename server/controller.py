@@ -16,7 +16,9 @@ class ControllerServer:
     def run_program(self):
         self.count_pause_control = -1
         self.count_wrong_translate = -1
+        self.count_helper = -1
 
+        self.check_helper()
         self.check_count_wrong_translate()
         self.check_count_pause_program()
         XML.change_val_XML("server/data_xml/buttons.xml", "pause_start/count_click_mouse", "0")
@@ -58,6 +60,11 @@ class ControllerServer:
     def check_count_wrong_translate(self):
         self.count_wrong_translate = self.count_wrong_translate+1
         XML.change_val_XML("server/data_xml/session.xml", "count_wrong_translate", str(self.count_wrong_translate))
+
+    # Сохраняет количество неправильных переводов
+    def check_helper(self):
+        self.count_helper = self.count_helper+1
+        XML.change_val_XML("server/data_xml/session.xml", "check_helper", str(self.count_helper))
 
     #  Сохраняет количество остановок программы
     def check_count_pause_program(self):
