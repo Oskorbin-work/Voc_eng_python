@@ -113,6 +113,7 @@ class MainLabels(WorkDataBd):
         # if enter word is false
         if not status_word:
             self.create_wrong_window(list_now_word, random_language_now, text_check)
+            self.edit_count_not_true_translate(random_id_now, 1)
 
             # add 1 life to now word
             if list_now_word[8] < 3:
@@ -131,6 +132,7 @@ class MainLabels(WorkDataBd):
 
         # if enter word is true
         else:
+            self.edit_count_true_translate(random_id_now, 1)
             # add 1 life to now word
             if list_now_word[8] > 0:
                 self.edit_work_count_life(random_id_now, list_now_word[8] - 1)

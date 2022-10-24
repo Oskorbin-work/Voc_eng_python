@@ -41,6 +41,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.server_controller = ControllerServer()
         self.server_controller.run_program()
         self.server_controller.check_status_session("Completed to no avail")
+        start_time_user_translate = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
+        end_time_user_translate = 0
         # Set main setting "view window"
         self.main_window_parameter()
         # ------------------------------
@@ -208,6 +210,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         if self.textEdit.text() != "":
             self.clicked_main_button()
         else:
+            self.get_auto_add_first_letter(self.random_id_now)
             holder_word = self.get_current_word(self.random_id_now, self.random_language_now)
             self.textEdit.setText(holder_word[0])
             self.change_background_edit_text("red")
@@ -219,6 +222,10 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     # Functional button "Проверить"
     def clicked_main_button(self):
+        self.end_time_user_translate = (60 * (
+                    60 * datetime.now().hour + datetime.now().minute) + datetime.now().second) * 1000_000 + datetime.now().microsecond
+        self.get_user_translate(self.random_id_now,self.end_time_user_translate - self.start_time_user_translate)
+
         status_word = (self.check_enter_word(self.random_id_now, self.random_language_now, self.textEdit.text()))
         if status_word == False:
             self.server_controller.check_count_wrong_translate()
@@ -241,6 +248,9 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # default placeholder
         self.textEdit.setPlaceholderText(XML.get_attr_XML("main_window/text_edit/placeholder"))
         # if all word was checked
+        self.start_time_user_translate = (60 * (
+                60 * datetime.now().hour + datetime.now().minute) + datetime.now().second) * 1000_000 + datetime.now().microsecond
+
         try:
             self.get_first_id_count_life_3()[0]
         except:
@@ -288,6 +298,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.server_controller.check_button("server/data_xml/buttons.xml", f"audio_text_main_menu/{type}")
         if self.random_language_now == "en":
             voice(self.get_english_word(self.random_id_now)[0][0])
+            self.get_view_bd(self.random_id_now)
         end_time = (60 * (60 * datetime.now().hour + datetime.now().minute) + datetime.now().second)*1000_000 + datetime.now().microsecond
         end_time = end_time - start_time
         self.server_controller.check_runtime_button("server/data_xml/buttons.xml", "audio_text_main_menu", end_time)

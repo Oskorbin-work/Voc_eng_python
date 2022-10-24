@@ -3,6 +3,7 @@
 # -----------------------------------------------------------
 import random
 import sqlite3
+from datetime import datetime
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
@@ -41,19 +42,38 @@ class WorkWithBd:
                         "other_information," 
                         "work_count_life, "  
                         "status_word, "  
-                        "count_true_attempt "
+                        "count_true_attempt, "
+                        "count_not_true_translate, "
+                        "count_true_translate, "
+                        "count_view_defin, "
+                        "count_voice, "
+                        "count_user_translate, "
+                        "count_auto_add_first_letter "
                         f"FROM {NAME_ACTIVE_TABLE} "
                         "Order by "
                         "work_count_life ,"
                         "english_word ")
             # Get all rows
             all_row = [[str(j) for j in i] for i in cur.fetchall()]
+
             # Clear table main_table
             cur.execute(f"DELETE FROM {NAME_ACTIVE_TABLE};")
             # Add ordering rows in main_table
             for i in range(len(all_row)):
+                # строка count_not_true_translate
+                all_row[i][10] = "0"
+                # строка count_true_translate
+                all_row[i][11] = "0"
+                # строка count_view_defin
+                all_row[i][12] = "0"
+                # строка count_voice
+                all_row[i][13] = "0"
+                # строка count_user_translate
+                all_row[i][14] = "0"
+                # строка count_auto_add_first_letter
+                all_row[i][15] = "0"
                 # '1', 'Abandon', 'Покидать', 'verb', 'əˈbændə', 'to leave someone or something somewhere,
-                # sometimes not returning to get them', '-1', 'LEAVE', '-1'
+                # sometimes not returning to get them', '-1', 'LEAVE', '-1' '0'
                 string = f"'{i+1}', '" + "', '".join(all_row[i]) + "'"
                 cur.execute(f"INSERT INTO {NAME_ACTIVE_TABLE} VALUES ({string});")
             conn.commit()
@@ -63,6 +83,9 @@ class WorkWithBd:
 
     # place for start set up bd data
     def start_set_up(self):
+        self.start_time_user_translate = (60 * (
+                    60 * datetime.now().hour + datetime.now().minute) + datetime.now().second) * 1000_000 + datetime.now().microsecond
+        print(self.start_time_user_translate)
         # Get count all word
         count_row = self.get_count_all_word()[0]
         ls_temp_words = self.get_list_temp_activate()
@@ -117,6 +140,66 @@ class WorkWithBd:
             elif count_life == 3:
                 self.edit_status_word(i, "is_activate")
 
+    # edit count_life
+    @request_bd_update
+    def edit_count_auto_add_first_letter(self, id_row, add_int):
+        count = str(int(self.get_count_auto_add_first_letter(id_row)[0]) + add_int)
+        return f'update {NAME_ACTIVE_TABLE} set count_auto_add_first_letter = {count} where id_main = {id_row};'
+
+    @request_bd_select
+    def get_count_auto_add_first_letter(self, id_row):
+        return f"select count_auto_add_first_letter from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
+
+    @request_bd_update
+    def edit_average_user_translate(self, id_row, add_int):
+        count = int(self.get_average_user_translate(id_row)[0])
+        if count == 0:
+            count = str(add_int/1000_000)
+        elif count != 0:
+            count = str((count + add_int)/2/1000_000)
+        return f'update {NAME_ACTIVE_TABLE} set count_user_translate = {count} where id_main = {id_row};'
+
+    @request_bd_select
+    def get_average_user_translate(self, id_row):
+        return f"select count_user_translate from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
+    # edit count_life
+    @request_bd_update
+    def edit_count_voice(self, id_row, add_int):
+        count = str(int(self.get_count_voice(id_row)[0]) + add_int)
+        return f'update {NAME_ACTIVE_TABLE} set count_voice = {count} where id_main = {id_row};'
+
+    @request_bd_select
+    def get_count_voice(self, id_row):
+        return f"select count_voice from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
+    # edit count_life
+    @request_bd_update
+    def edit_count_view_defin(self, id_row, add_int):
+        count = str(int(self.get_count_view_defin(id_row)[0]) + add_int)
+        return f'update {NAME_ACTIVE_TABLE} set count_view_defin = {count} where id_main = {id_row};'
+
+    @request_bd_select
+    def get_count_view_defin(self, id_row):
+        return f"select count_view_defin from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
+
+    # edit count_life
+    @request_bd_update
+    def edit_count_not_true_translate(self, id_row, add_int):
+        count = str(int(self.get_count_not_true_translate(id_row)[0]) + add_int)
+        return f'update {NAME_ACTIVE_TABLE} set count_not_true_translate = {count} where id_main = {id_row};'
+
+    @request_bd_select
+    def get_count_not_true_translate(self, id_row):
+        return f"select count_not_true_translate from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
+
+    # edit count_life
+    @request_bd_update
+    def edit_count_true_translate(self, id_row, add_int):
+        count = str(int(self.get_count_true_translate(id_row)[0]) + add_int)
+        return f'update {NAME_ACTIVE_TABLE} set count_true_translate = {count} where id_main = {id_row};'
+
+    @request_bd_select
+    def get_count_true_translate(self, id_row):
+        return f"select count_true_translate from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
     # edit work_count_life.
     # uses for copy values from count_life in work_count_life
     # uses for update value work_count_life while user has doing wrong
@@ -219,6 +302,7 @@ class WorkWithBd:
     def get_all_english_word(self):
         return f"select english_word from {NAME_ACTIVE_TABLE}"
     # insert row  to database
+
     @request_bd_insert
     def insert_row(self, list):
         if int(list[5]) == -1:

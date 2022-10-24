@@ -3,7 +3,7 @@
     <pause_start>
         <count_click_mouse>1</count_click_mouse>
         <count_click_keyboard>0</count_click_keyboard>
-        <runtime>4232</runtime>
+        <runtime>3601</runtime>
     </pause_start>
     <defin>
         <count_click_mouse>0</count_click_mouse>
@@ -12,8 +12,8 @@
     </defin>
     <check_text>
         <count_click_mouse>0</count_click_mouse>
-        <count_click_keyboard>0</count_click_keyboard>
-        <runtime>0</runtime>
+        <count_click_keyboard>1</count_click_keyboard>
+        <runtime>155360</runtime>
     </check_text>
     <audio_text_main_menu>
         <count_click_mouse>0</count_click_mouse>
