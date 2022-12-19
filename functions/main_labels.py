@@ -14,7 +14,6 @@ import another_windows.wrong_void_word.wrong_word_interface as WrondWindow
 # Import other modules
 # -----------------------------------------------------------
 from emoji import emojize
-
 # -----------------------------------------------------------
 # Codes other files project
 # -----------------------------------------------------------
@@ -74,6 +73,7 @@ class MainLabels(WorkDataBd):
     def label_set_text(self, random_id=1, language="ru"):
         lang_now = MainButtons.check_language_word(MainButtons, language)
 
+
         if random_id != -1:
             self.list_now_word = self.get_row(random_id)
         else:
@@ -87,7 +87,7 @@ class MainLabels(WorkDataBd):
             setText(self.list_now_word[3])
 
         self.information_labels["word now"]. \
-            setText(self.list_now_word[lang_now])
+        setText(self.list_now_word[lang_now])
         self.information_labels["chapter word now"]. \
             setText(self.text_labels[1] + " " + self.list_now_word[7])
         self.information_labels["word now"].setText(
@@ -113,7 +113,6 @@ class MainLabels(WorkDataBd):
         # if enter word is false
         if not status_word:
             self.create_wrong_window(list_now_word, random_language_now, text_check)
-            self.edit_count_not_true_translate(random_id_now, 1)
 
             # add 1 life to now word
             if list_now_word[8] < 3:

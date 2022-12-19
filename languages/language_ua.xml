@@ -20,7 +20,7 @@
       <!-- button view definition word-->
       <button_definition>Дефініція</button_definition>
       <!-- button voice word-->
-      <button_voice>Озвучити текст</button_voice>
+      <button_voice>Озвучити слово</button_voice>
     </label_button_window>
     <!-- text on main window-->
     <label>
@@ -89,14 +89,14 @@
       <!-- Description definition-->
       <description_definition>Дефініція</description_definition>
       <!-- Description theme word-->
-      <description_theme_word>Тема</description_theme_word>
+      <description_theme_word>Підказки</description_theme_word>
     </label_table_wrong>
     <!-- description buttons-->
     <label_button_window>
       <!-- Exit button-->
       <button_exit>В головне меню</button_exit>
       <!-- button voice word-->
-      <button_voice>Озвучити текст</button_voice>
+      <button_voice>Озвучити слово</button_voice>
     </label_button_window>
   </wrong_window>
   <!-- Window of victory-->

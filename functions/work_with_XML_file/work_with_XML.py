@@ -21,7 +21,7 @@ def get_attr_XML(name):
         return " Тег " + name + " не існує в файлі " + settings.STATUS_LANGUAGE_INTERFACE+".xml"
 
 def change_val_XML(path, val,new_val):
-    root_change = ET.parse(path)
+    root_change = ET.parse(settings.ROOT_DIR+path)
 
     for t in root_change.iterfind(val):
         t.text = new_val
@@ -30,6 +30,7 @@ def change_val_XML(path, val,new_val):
 
 def set_val_XML(path, attr, val):
     path = settings.ROOT_DIR+path
+
     root_conf = ET.parse(path)
     xmlRoot = root_conf.getroot()
     child = ET.Element(attr)
@@ -39,7 +40,7 @@ def set_val_XML(path, attr, val):
 
     root_conf.write(path, encoding="UTF-8", xml_declaration=True)
 
-def get_attr_XML_server(path,attr):
+def get_attr_XML_server(path, attr):
     path = settings.ROOT_DIR+path
     try:
         root_conf = ET.parse(path).getroot()

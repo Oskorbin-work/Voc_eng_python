@@ -17,7 +17,6 @@ from settings import (
 # Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
 
-from server.controller import ControllerServer
 
 # Class to work with bd
 class WorkWithBd:
@@ -42,13 +41,7 @@ class WorkWithBd:
                         "other_information," 
                         "work_count_life, "  
                         "status_word, "  
-                        "count_true_attempt, "
-                        "count_not_true_translate, "
-                        "count_true_translate, "
-                        "count_view_defin, "
-                        "count_voice, "
-                        "count_user_translate, "
-                        "count_auto_add_first_letter "
+                        "count_true_attempt "
                         f"FROM {NAME_ACTIVE_TABLE} "
                         "Order by "
                         "work_count_life ,"
@@ -60,18 +53,6 @@ class WorkWithBd:
             cur.execute(f"DELETE FROM {NAME_ACTIVE_TABLE};")
             # Add ordering rows in main_table
             for i in range(len(all_row)):
-                # строка count_not_true_translate
-                all_row[i][10] = "0"
-                # строка count_true_translate
-                all_row[i][11] = "0"
-                # строка count_view_defin
-                all_row[i][12] = "0"
-                # строка count_voice
-                all_row[i][13] = "0"
-                # строка count_user_translate
-                all_row[i][14] = "0"
-                # строка count_auto_add_first_letter
-                all_row[i][15] = "0"
                 # '1', 'Abandon', 'Покидать', 'verb', 'əˈbændə', 'to leave someone or something somewhere,
                 # sometimes not returning to get them', '-1', 'LEAVE', '-1' '0'
                 string = f"'{i+1}', '" + "', '".join(all_row[i]) + "'"
@@ -85,11 +66,9 @@ class WorkWithBd:
     def start_set_up(self):
         self.start_time_user_translate = (60 * (
                     60 * datetime.now().hour + datetime.now().minute) + datetime.now().second) * 1000_000 + datetime.now().microsecond
-        print(self.start_time_user_translate)
         # Get count all word
         count_row = self.get_count_all_word()[0]
         ls_temp_words = self.get_list_temp_activate()
-        ControllerServer.check_temp_word(ControllerServer(), str(len(ls_temp_words)))
         count_activity_word = 0
         count_not_activity_word = 0
         # Copy column count life in column work count life
@@ -110,9 +89,6 @@ class WorkWithBd:
                 count_activity_word = count_activity_word +1
             # add count life.
             self.edit_work_count_life(i, str(count_life))
-
-        ControllerServer.check_activity_word(ControllerServer(), str(count_activity_word))
-        ControllerServer.check_not_activity_word(ControllerServer(), str(count_not_activity_word))
 
     # Forming a list of temporary words
     def get_list_temp_activate(self):
@@ -140,66 +116,6 @@ class WorkWithBd:
             elif count_life == 3:
                 self.edit_status_word(i, "is_activate")
 
-    # edit count_life
-    @request_bd_update
-    def edit_count_auto_add_first_letter(self, id_row, add_int):
-        count = str(int(self.get_count_auto_add_first_letter(id_row)[0]) + add_int)
-        return f'update {NAME_ACTIVE_TABLE} set count_auto_add_first_letter = {count} where id_main = {id_row};'
-
-    @request_bd_select
-    def get_count_auto_add_first_letter(self, id_row):
-        return f"select count_auto_add_first_letter from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
-
-    @request_bd_update
-    def edit_average_user_translate(self, id_row, add_int):
-        count = int(self.get_average_user_translate(id_row)[0])
-        if count == 0:
-            count = str(add_int/1000_000)
-        elif count != 0:
-            count = str((count + add_int)/2/1000_000)
-        return f'update {NAME_ACTIVE_TABLE} set count_user_translate = {count} where id_main = {id_row};'
-
-    @request_bd_select
-    def get_average_user_translate(self, id_row):
-        return f"select count_user_translate from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
-    # edit count_life
-    @request_bd_update
-    def edit_count_voice(self, id_row, add_int):
-        count = str(int(self.get_count_voice(id_row)[0]) + add_int)
-        return f'update {NAME_ACTIVE_TABLE} set count_voice = {count} where id_main = {id_row};'
-
-    @request_bd_select
-    def get_count_voice(self, id_row):
-        return f"select count_voice from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
-    # edit count_life
-    @request_bd_update
-    def edit_count_view_defin(self, id_row, add_int):
-        count = str(int(self.get_count_view_defin(id_row)[0]) + add_int)
-        return f'update {NAME_ACTIVE_TABLE} set count_view_defin = {count} where id_main = {id_row};'
-
-    @request_bd_select
-    def get_count_view_defin(self, id_row):
-        return f"select count_view_defin from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
-
-    # edit count_life
-    @request_bd_update
-    def edit_count_not_true_translate(self, id_row, add_int):
-        count = str(int(self.get_count_not_true_translate(id_row)[0]) + add_int)
-        return f'update {NAME_ACTIVE_TABLE} set count_not_true_translate = {count} where id_main = {id_row};'
-
-    @request_bd_select
-    def get_count_not_true_translate(self, id_row):
-        return f"select count_not_true_translate from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
-
-    # edit count_life
-    @request_bd_update
-    def edit_count_true_translate(self, id_row, add_int):
-        count = str(int(self.get_count_true_translate(id_row)[0]) + add_int)
-        return f'update {NAME_ACTIVE_TABLE} set count_true_translate = {count} where id_main = {id_row};'
-
-    @request_bd_select
-    def get_count_true_translate(self, id_row):
-        return f"select count_true_translate from {NAME_ACTIVE_TABLE} where id_main = {id_row};"
     # edit work_count_life.
     # uses for copy values from count_life in work_count_life
     # uses for update value work_count_life while user has doing wrong
@@ -303,6 +219,9 @@ class WorkWithBd:
         return f"select english_word from {NAME_ACTIVE_TABLE}"
     # insert row  to database
 
+    @request_bd_select_all
+    def server_all_word(self):
+        return f"select * from {NAME_ACTIVE_TABLE}"
     @request_bd_insert
     def insert_row(self, list):
         if int(list[5]) == -1:

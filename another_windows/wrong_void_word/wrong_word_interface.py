@@ -13,8 +13,6 @@ from another_windows.wrong_void_word.functions.table_wrong import WrongTable
 from another_windows.wrong_void_word.functions.wrong_word_buttons import WrongWordButtons
 #Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
-# Сервер
-from server.controller import ControllerServer
 
 
 # clas create window to wrong word

@@ -11,9 +11,8 @@ from functions.notifications import view_info_question,view_info_information
 class SaveSetting():
 
     def set_language(self,status):
-        if (status == False):
-            root_change = os.path.join(ROOT_DIR, PATH_SETTING)
-            XML.change_val_XML(root_change,'current_language',self.combo_box_language.currentText())
+        if status == False:
+            XML.change_val_XML(PATH_SETTING, 'current_language', self.combo_box_language.currentText())
 
     def check_language(self):
         if self.combo_box_language.currentText() != STATUS_LANGUAGE_INTERFACE:

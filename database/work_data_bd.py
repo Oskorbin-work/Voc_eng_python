@@ -25,17 +25,7 @@ class WorkDataBd(WorkWithBd):
 
     # get transcription now word
     def get_info_transcription(self, id_now):
-        self.edit_count_view_defin(id_now, 1)
-        view_info_transcription(self.get_row(id_now)[5])
-
-    def get_view_bd(self, id_now):
-        self.edit_count_voice(id_now, 1)
-
-    def get_user_translate(self, id_now, user_time):
-        self.edit_average_user_translate(id_now,user_time)
-
-    def get_auto_add_first_letter(self, id_now):
-        self.edit_count_auto_add_first_letter(id_now,1)
+         view_info_transcription(self.get_row(id_now)[5])
 
     # check and get life word
     def check_life_word(self):
