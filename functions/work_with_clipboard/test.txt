@@ -230,7 +230,6 @@ Attend
 Attic
 Attitude
 Attorney
-+Attract
 Attribute
 Audible
 Audience
@@ -374,7 +373,6 @@ Berth
 Beside
 Besides
 Bestow
-+Bet
 Betray
 Beverage
 Beware
@@ -449,6 +447,7 @@ Bolster
 Bond
 Bone
 Bonfire
+Bonnet
 Boobs
 Boogers
 Book
@@ -648,6 +647,7 @@ Carve
 Case
 Cash
 Casket
+Cast
 Cast (Cast, Cast)
 Castle
 Casual
@@ -745,7 +745,6 @@ Chord
 Chore
 Chorus
 Christmas
-+Chuck
 Chuckle
 Chuckled
 Chunk
@@ -1413,6 +1412,7 @@ Duckling
 Dude
 Due
 Due To
+Duel
 Duke
 Dull
 Dumb
@@ -1465,7 +1465,6 @@ Elect
 Elevate
 Elicit
 Eligible
-+Eliminate
 Elk
 Eloquent
 Elude
@@ -2327,7 +2326,6 @@ Incentive
 Inch
 Inches
 Incidence
-+Incline
 Include
 Income
 Incoming
@@ -2630,6 +2628,7 @@ Likewise
 Limb
 Limit
 Limp
+Limply
 Line
 Line Up
 Lineage
@@ -3045,6 +3044,7 @@ Offend
 Offended
 Offer
 Officer
+Offices
 Offset
 Offspring
 Oil
@@ -3227,6 +3227,7 @@ Peppermint
 Per
 Perceive
 Perception
+Perch
 Perched
 Perennial
 Perfect
@@ -3313,6 +3314,7 @@ Plug In
 Plum
 Plumbing
 Plumed
+Plummeted
 Plump
 Plunge
 Plunged
@@ -3470,6 +3472,7 @@ Pull Off
 Pull Over
 Pull Through
 Pulled
+Pulled it off
 Pulled out
 Pump
 Pumpkin
@@ -3549,6 +3552,7 @@ Rank
 Ransom
 Rape
 Rapid
+Rapped
 Rare
 Rash
 Raspberry
@@ -3989,6 +3993,7 @@ Shed (Shed, Shed)
 Sheep (Pl:Sheep)
 Sheer
 Sheet
+Shelf
 Shelf (Pl: Shelves)
 Shell
 Shelter
@@ -4111,7 +4116,6 @@ Sleek
 Sleep Around
 Sleeve
 Slender
-+Slice
 Slick
 Slid
 Slide (Slid, Slid)
@@ -4122,6 +4126,8 @@ Slime
 Slimy
 Slings
 Slip
+Slipped
+Slipped down
 Slipper
 Slippery
 Slit
@@ -4340,6 +4346,7 @@ Stench
 Step
 Step Down
 Step In
+Stepped
 Stern
 Stick
 Stick (Stuck, Stuck)
@@ -4644,6 +4651,7 @@ Through(все переводы)
 Throw (Threw, Thrown)
 Throw Away
 Throw Up
+Thrown out
 Thrust
 Thud
 Thug
@@ -4689,11 +4697,10 @@ Token
 Tolerate
 Toll
 Tomb
-Tongue
++Tongue
 Took
 Took out
 Tool
-Tooth (Pl: Teeth)
 Toothless
 Topic
 Topple
@@ -5071,6 +5078,7 @@ Withhold
 Within
 Withstand
 Witness
+Wits
 Wizard
 Wobble
 Woe
@@ -5154,13 +5162,17 @@ Youth
 +Ankle
 +Anniversary
 +Ash
++Attract
 +Basket
++Bet
 +Bizarre
 +Bounce
 +Bounced
++Chuck
 +Crave
 +Cry Out
 +Derive
++Eliminate
 +Evade
 +Explode
 +Favored
@@ -5170,6 +5182,7 @@ Youth
 +Gulp
 +Handbook
 +Horn
++Incline
 +Island
 +Mound
 +Nibble
@@ -5180,6 +5193,7 @@ Youth
 +Remote
 +Scale
 +Seam
++Slice
 +Spawn
 +Stew
 +Suitcase

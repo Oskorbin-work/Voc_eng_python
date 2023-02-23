@@ -1,7 +1,7 @@
 import random
 import re
 
-def count_lines(filename="../work_with_clipboard/new_words.txt", chunk_size=1<<13):
+def count_lines(filename="functions/work_with_clipboard/new_words.txt", chunk_size=1<<13):
     with open(filename) as f:
         line_count = 0
         for line in f:
@@ -14,7 +14,7 @@ def random_value():
     return search_word(random.randint(0,count_lines()))
 
 def search_word(random_value):
-    with open("../work_with_clipboard/test.txt") as f:
+    with open("functions/work_with_clipboard/new_words.txt") as f:
         n = 0
         for line in f:
             n += 1

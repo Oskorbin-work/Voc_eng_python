@@ -51,8 +51,11 @@ class MainLabels(WorkDataBd):
         self.textEdit = QLineEdit()
 
     # change background edit line
-    def change_background_edit_text(self, color):
-        self.textEdit.setStyleSheet("QLineEdit"
+    def change_background_edit_text(self, color="default"):
+        if color == "default":
+            self.textEdit.setStyleSheet("")
+        else:
+            self.textEdit.setStyleSheet("QLineEdit"
                                     "{"
                                     f"background : {color};"
                                     

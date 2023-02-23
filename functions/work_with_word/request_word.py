@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import re
 from tabulate import tabulate
 import eng_to_ipa
-import os
 # VALUES (null, 'Screw up', 'Заваливать', 'phrasal verb', 'skruː ʌp',
 # 'to make a mistake, or to spoil something'
 # , 3, 'A2',3, 'is_activate', 1);

@@ -200,7 +200,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
             self.textEdit.setText(holder_word[0])
             self.change_background_edit_text("red")
             QtTest.QTest.qWait(150)
-            self.change_background_edit_text("white")
+            self.change_background_edit_text()
 
 
     # Functional button "Проверить"
