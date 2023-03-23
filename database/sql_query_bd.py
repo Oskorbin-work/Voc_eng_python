@@ -153,6 +153,11 @@ class WorkWithBd:
     def get_count_all_word(self):
         return f"select COUNT(*) from {NAME_ACTIVE_TABLE}"
 
+    # get count rows from database
+    @request_bd_select
+    def get_count_all_unique_eng_word(self):
+        return f"select COUNT(*) from (SELECT DISTINCT english_word from  {NAME_ACTIVE_TABLE})"
+
     # get work count row  anyway hp from database
     @request_bd_select
     def get_work_count_words(self, count):
@@ -186,6 +191,10 @@ class WorkWithBd:
     @request_bd_select
     def get_count_change_world(self):
         return f"select COUNT(*) from {NAME_ACTIVE_TABLE} where work_count_life =-1"
+
+    @request_bd_select
+    def get_count_change_eng_world(self):
+        return f"select COUNT(*) from (SELECT DISTINCT english_word from  {NAME_ACTIVE_TABLE} where work_count_life =-1) "
 
     # get first id word where default count life == 3
     @request_bd_select
@@ -222,6 +231,7 @@ class WorkWithBd:
     @request_bd_select_all
     def server_all_word(self):
         return f"select * from {NAME_ACTIVE_TABLE}"
+
     @request_bd_insert
     def insert_row(self, list):
         if int(list[5]) == -1:

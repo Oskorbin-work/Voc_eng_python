@@ -147,9 +147,9 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def view_data_status_bar_static_words(self):
         self.data_status_bar_static_words(
-            str(self.get_count_all_word()[0]),
+            str(self.get_count_all_unique_eng_word()[0]),
             str(self.get_count_false_world_time()[0]),
-            str(self.get_count_change_world()[0]),
+            str(self.get_count_change_eng_world()[0]),
         )
 
     def view_data_status_bar_hp(self):

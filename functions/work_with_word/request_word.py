@@ -126,8 +126,10 @@ def get_all(el, default_value='', type=''):
 def get_block_name(pos_body):
     default_value_name = pos_body.find("span", {"class": 'hw dhw'})
     default_value_pronoun = pos_body.find("span", {"class": 'pos dpos'}).getText()
-    default_value_trans = pos_body.find("span", {"class": 'ipa dipa lpr-2 lpl-1'}).getText()
+    # Below line maybe must delete
+    #default_value_trans = pos_body.find("span", {"class": 'ipa dipa lpr-2 lpl-1'}).getText()
     pr_dsense_list = pos_body.find_all("div", {"class":  re.compile('^pr dsense')})
+
     default_value_count_life = 3
     default_value_status_word = "is_activate"
     default_value_count_true_attempt = 0
@@ -136,7 +138,10 @@ def get_block_name(pos_body):
             list_words[-1].id.append("null")
         except:
             print("Сломался айди слова (Указывается дефолтн. слово)" + default_value_name)
-        list_words[-1].en.append(get_all(el, default_value_name, "en"))
+        try:
+            list_words[-1].en.append(get_all(el, default_value_name, "en"))
+        except:
+            print("Сломался английское слово (Указывается дефолтн. слово)" + default_value_name)
         list_words[-1].ru.append(get_all(el, default_value_name, "ru"))
         list_words[-1].transcription.append(eng_to_ipa.convert(list_words[-1].en[-1]).replace("*",""))
         list_words[-1].pronoun.append(get_all(el, default_value_pronoun, "pronoun"))

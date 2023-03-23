@@ -33,7 +33,7 @@ LANGUAGE_INTERFACE_LIST = {
 }
 
 # language_setting.xml have error => set default language
-DEFAULT_LANGUAGE_INTERFACE = "ua"
+DEFAULT_LANGUAGE_INTERFACE = "ru"
 
 # set language
 STATUS_LANGUAGE_INTERFACE = get_language(ROOT_DIR + PATH_SETTING) if get_language(ROOT_DIR + PATH_SETTING) in LANGUAGE_INTERFACE_LIST.keys()\

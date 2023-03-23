@@ -1194,7 +1194,7 @@ Dental
 Deny
 Denying
 Depart
-Department
++Department
 Depend
 Dependent
 Depict
@@ -1249,8 +1249,8 @@ Dictionary
 Die Down
 Die Out
 Differ
-Different
-Difficulty
++Different
++Difficulty
 Diffuse
 Dig (Dug, Dug)
 Dig Up
