@@ -160,7 +160,7 @@ def check_word_in_bd(word):
         return bcolors.OKGREEN +"Это новое слово. Можно добавлять."+ bcolors.ENDC
 
 while True:
-    print("Введите слово:")
+    print("Введите слово(Если нужно случайное слово, то введите \"0\"):")
     get_word = input().replace(" ", "+")
     if get_word == "0":
         get_word = random_word.random_value()

@@ -43,6 +43,7 @@ class MainLabels(WorkDataBd):
             "word now": QLabel(),
             "transcription word now": QLabel(),
             "chapter word now": QLabel(),
+            "last letter": QLabel(),
         }
 
     # create edit line
@@ -72,9 +73,21 @@ class MainLabels(WorkDataBd):
         self.information_labels["parts of speech word now"].setFont(QFont('JetBrains Mono', 13))
         self.information_labels["transcription word now"].setFont(QFont('JetBrains Mono', 13))
 
+    # it's setting last letter
+    def last_letter_text(self, text):
+        self.information_labels["last letter"].setText(
+            "[" +
+            text +
+            " - " +
+            XML.get_attr_XML("main_window/label/last_letter_reverse_word")+
+            "]"
+        )
+        self.information_labels["last letter"].setAlignment(QtCore.Qt.AlignRight)
+
     # change word
     def label_set_text(self, random_id=1, language="ru"):
         lang_now = MainButtons.check_language_word(MainButtons, language)
+        lang_reverse_now = MainButtons.check_language_word(MainButtons, language, "reverse_on")
 
 
         if random_id != -1:
@@ -93,6 +106,11 @@ class MainLabels(WorkDataBd):
         setText(self.list_now_word[lang_now])
         self.information_labels["chapter word now"]. \
             setText(self.text_labels[1] + " " + self.list_now_word[7])
+
+        # last letter
+        self.last_letter_text(self.list_now_word[lang_reverse_now][-1])
+
+
         self.information_labels["word now"].setText(
             self.information_labels["word now"].text()
         )
@@ -146,6 +164,7 @@ class MainLabels(WorkDataBd):
                         self.edit_count_true_attempt(random_id_now, 0)
                         self.edit_count_life(random_id_now, -1)
                         self.edit_status_word(random_id_now, "not_activate")
+
 
     # Create timer
     def timer(self):

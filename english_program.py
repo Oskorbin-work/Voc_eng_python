@@ -58,7 +58,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     # place for main setting "view window"
     def main_window_parameter(self):
-        self.setMinimumWidth(550)
+        self.setMinimumWidth(700)
         self.setWindowTitle(XML.get_attr_XML("main_window/name_program"))
 
     # place to main setting "view window"
@@ -70,8 +70,9 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.button_connect()
         self.grid_for_word_now()
         self.grid_for_information_word()
+        self.grid_for_help_word()
         grid_map = (
-                # Timer from start                          # Words start program
+                # Words start program                       # Timer from start
                 ((0, 0),                                    (0, 1),),
                 # Count words are for learning              # Count words that can change
                 ((1, 0),                                    (1, 1),),
@@ -105,7 +106,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         grid.addLayout(self.grid_word_now, grid_map[1][0][0], grid_map[1][0][1])
 
         # Line 2
-        grid.addWidget(self.information_labels["chapter word now"], grid_map[2][0][0], grid_map[2][0][1])
+        grid.addLayout(self.grid_help_word, grid_map[2][0][0], grid_map[2][0][1])
 
         # Line 3
         grid.addWidget(self.textEdit, grid_map[3][0][0], grid_map[3][0][1])
@@ -136,6 +137,12 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.grid_word_now.addWidget(self.information_labels["word now"], 0, 0, QtCore.Qt.AlignCenter)
         self.grid_word_now.addWidget(self.information_labels["parts of speech word now"], 1, 0, QtCore.Qt.AlignCenter)
         self.grid_word_now.addWidget(self.information_labels["transcription word now"], 2, 0, QtCore.Qt.AlignCenter)
+
+    def grid_for_help_word(self):
+        # create grid for help word
+        self.grid_help_word = QGridLayout()
+        self.grid_help_word.addWidget(self.information_labels["chapter word now"], 0, 0)
+        self.grid_help_word.addWidget(self.information_labels["last letter"], 0, 1)
 
     def grid_for_information_word(self):
         # create grid for information word
