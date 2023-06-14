@@ -74,14 +74,12 @@ class MainLabels(WorkDataBd):
         self.information_labels["transcription word now"].setFont(QFont('JetBrains Mono', 13))
 
     # it's setting last letter
-    def last_letter_text(self, text):
+    def last_letter_text(self, tip):
         self.information_labels["last letter"].setText(
-            "[" +
-            text +
-            " - " +
-            XML.get_attr_XML("main_window/label/last_letter_reverse_word")+
-            "]"
+            XML.get_attr_XML("main_window/label/last_letter_reverse_word")
         )
+        self.information_labels["last letter"].setToolTip(tip)
+        self.information_labels["last letter"].setStyleSheet(" QToolTip{font: 20pt}")
         self.information_labels["last letter"].setAlignment(QtCore.Qt.AlignRight)
 
     # change word
