@@ -44,6 +44,7 @@ class MainLabels(WorkDataBd):
             "transcription word now": QLabel(),
             "chapter word now": QLabel(),
             "last letter": QLabel(),
+            "transcription pre last word": QLabel(),
         }
 
     # create edit line
@@ -80,18 +81,33 @@ class MainLabels(WorkDataBd):
         )
         self.information_labels["last letter"].setToolTip(tip)
         self.information_labels["last letter"].setStyleSheet(" QToolTip{font: 20pt}")
-        self.information_labels["last letter"].setAlignment(QtCore.Qt.AlignRight)
+        #self.information_labels["last letter"].setAlignment(QtCore.Qt.AlignRight)
+
+    # Shows transcription pre last word
+    def translate_pre_last_word(self, pre_word, pre_translate, status):
+        if status:
+            self.information_labels["transcription pre last word"].setText(
+                str(pre_word) + " - [" + str(pre_translate) + "]"
+            )
+        else:
+            pass
+        self.information_labels["transcription pre last word"].setAlignment(QtCore.Qt.AlignRight)
 
     # change word
     def label_set_text(self, random_id=1, language="ru"):
         lang_now = MainButtons.check_language_word(MainButtons, language)
         lang_reverse_now = MainButtons.check_language_word(MainButtons, language, "reverse_on")
 
+        if hasattr(self, "list_now_word"):
+            self.translate_pre_last_word(self.list_now_word[1], self.list_now_word[4], True)
+        else:
+            self.translate_pre_last_word("", "",False)
 
         if random_id != -1:
             self.list_now_word = self.get_row(random_id)
         else:
             self.list_now_word = ["", "", "", "", "", "", "", "", ""]
+
 
         self.information_labels["count word now"]. \
             setText(self.text_labels[0] + str(self.list_now_word[8]) +

@@ -71,6 +71,7 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         self.grid_for_word_now()
         self.grid_for_information_word()
         self.grid_for_help_word()
+        self.grid_for_last_letter()
         grid_map = (
                 # Words start program                       # Timer from start
                 ((0, 0),                                    (0, 1),),
@@ -88,6 +89,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
                 ((6, 0),                                    (6, 1),),
                 # Chapter                                   # Empty place
                 ((7, 0),                                    (7, 1),),
+                # Chapter                                   # Empty place
+                ((8, 0),                                    (8, 1),),
         )
         # -----------------------------------------------------------
         # add main labels
@@ -100,8 +103,8 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # Line 1
         # Word is checking
         groupbox_word_now = QGroupBox()
+        # set color
         groupbox_word_now.setStyleSheet("background-color: lightgreen;")
-        #set color
         grid.addWidget(groupbox_word_now, grid_map[1][0][0], grid_map[1][0][1])
         grid.addLayout(self.grid_word_now, grid_map[1][0][0], grid_map[1][0][1])
 
@@ -109,22 +112,25 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         grid.addLayout(self.grid_help_word, grid_map[2][0][0], grid_map[2][0][1])
 
         # Line 3
-        grid.addWidget(self.textEdit, grid_map[3][0][0], grid_map[3][0][1])
+        grid.addLayout(self.grid_last_letter, grid_map[3][0][0], grid_map[3][0][1])
 
         # Line 4
-        # info_transcription
-        grid.addWidget(self.btn_start_pause, grid_map[4][0][0], grid_map[4][0][1])
+        grid.addWidget(self.textEdit, grid_map[4][0][0], grid_map[4][0][1])
 
         # Line 5
-        # Buttons for check word
-        grid.addWidget(self.btn_info_transcription, grid_map[5][0][0], grid_map[5][0][1])
+        # info_transcription
+        grid.addWidget(self.btn_start_pause, grid_map[5][0][0], grid_map[5][0][1])
 
         # Line 6
-        # Buttons for voice word
-        grid.addWidget(self.btn, grid_map[6][0][0], grid_map[6][0][1])
+        # Buttons for check word
+        grid.addWidget(self.btn_info_transcription, grid_map[6][0][0], grid_map[6][0][1])
 
         # Line 7
-        grid.addWidget(self.btn_voice_transcription, grid_map[7][0][0], grid_map[7][0][1])
+        # Buttons for voice word
+        grid.addWidget(self.btn, grid_map[7][0][0], grid_map[7][0][1])
+
+        # Line 8
+        grid.addWidget(self.btn_voice_transcription, grid_map[8][0][0], grid_map[8][0][1])
     # -----------------------------------------------------------
         # This is widget!
         widget = QWidget()
@@ -142,7 +148,12 @@ class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
         # create grid for help word
         self.grid_help_word = QGridLayout()
         self.grid_help_word.addWidget(self.information_labels["chapter word now"], 0, 0)
-        self.grid_help_word.addWidget(self.information_labels["last letter"], 0, 1)
+
+    def grid_for_last_letter(self):
+        # create grid for help word
+        self.grid_last_letter = QGridLayout()
+        self.grid_last_letter.addWidget(self.information_labels["last letter"], 0, 0)
+        self.grid_last_letter.addWidget(self.information_labels["transcription pre last word"], 0, 1)
 
     def grid_for_information_word(self):
         # create grid for information word
