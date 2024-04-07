@@ -20,19 +20,20 @@ from functions.main_buttons import MainButtons
 from functions.bar import Bar
 # Voice
 from functions.voice.voice import voice
-#notifications
+# Notifications
 from functions.notifications import view_help
-#work with exit program
+# Work with exit program
 from exit_file import Exit_program
-#Work with XML file
+# Work with XML file
 import functions.work_with_XML_file.work_with_XML as XML
+
 
 # Class to describe structure main window
 class MainWindow(QMainWindow, Bar, MainLabels, MainButtons, ):
 
     def __init__(self):
         super().__init__()
-         # Set main setting "view window"
+        # Set main setting "view window"
         self.main_window_parameter()
         # ------------------------------
         # Initiate bar menu

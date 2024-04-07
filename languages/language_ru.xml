@@ -27,7 +27,7 @@
       <!-- Suggestions for the current word-->
       <help_for_word>Подсказки:</help_for_word>
       <!-- Last letter for the current reverse word-->
-      <last_letter_reverse_word>Последняя буква перевода (Наведи на меня)</last_letter_reverse_word>
+      <last_letter_reverse_word>Последняя буква перевода</last_letter_reverse_word>
       <!-- Stopwatch session-->
       <timer> hh:mm:ss</timer>
     </label>
